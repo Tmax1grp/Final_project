@@ -17,7 +17,7 @@
   - API 설계서
 - [화면 설계서](https://docs.google.com/presentation/d/1v9jZN-RnLxU3hFlDITTAdjOBOzMNIoAIEV3mUk0_Rms/edit?usp=sharing)
 
-## 개발 일정
+## [개발 일정](https://github.com/Tmax1grp/Final_project/milestones)
 
 
 ## 구조
