@@ -1,7 +1,14 @@
 # Final_project
 # 재택 학습 플랫폼 
 - 기관: 한국 품질 재단, 티맥스 클라우드 - 클라우드 네이티브 개발자 양성 과정
-- 구성 인원: 4명(FE 2명, BE 3명)
+- 구성 인원: 5명
+FE 2명
+- :girl: jjiiiiinie: https://github.com/jjiiiiinie
+- :boy: 방성호: https://github.com/crosstreet74
+BE 3명
+- :man: 김광채: https://github.com/kimkc
+- :boy: 김성연: https://github.com/k-ksy
+- :man: 황선호: 
 - 수행 기간: 2021.10.01 ~ 진행중
 
 ## 주제
