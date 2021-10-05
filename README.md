@@ -2,10 +2,10 @@
 # 재택 학습 플랫폼 
 - 기관: 한국 품질 재단, 티맥스 클라우드 - 클라우드 네이티브 개발자 양성 과정
 - 구성 인원: 5명
-- FE: 2명
+- `FE`: 2명
   - :girl: [박지은](https://github.com/jjiiiiinie)
   - :boy: [방성호](https://github.com/crosstreet74)
-- BE: 3명
+- `BE`: 3명
   - :man: [김광채](https://github.com/kimkc)
   - :boy: [김성연](https://github.com/k-ksy)
   - :man: [황선호](https://github.com/Alexhwang95)
