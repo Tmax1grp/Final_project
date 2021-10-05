@@ -16,8 +16,11 @@
   - WBS
   - API 설계서
 - [화면 설계서](https://docs.google.com/presentation/d/1v9jZN-RnLxU3hFlDITTAdjOBOzMNIoAIEV3mUk0_Rms/edit?usp=sharing)
+- [ERD](https://www.erdcloud.com/d/sY8xqemYbdWvrKxSs)
+![image](https://user-images.githubusercontent.com/42633180/135993085-b6beff8d-1ad4-47c0-8507-f20d8d52ab32.png)
 
-## [개발 일정](https://github.com/Tmax1grp/Final_project/milestones)
+
+## [일정](https://github.com/Tmax1grp/Final_project/milestones)
 
 
 ## 구조
