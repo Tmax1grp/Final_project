@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apigateway-service/apigateway-service.iml" filepath="$PROJECT_DIR$/apigateway-service/apigateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/apigatewayService.iml" filepath="$PROJECT_DIR$/.idea/apigatewayService.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,75 @@
+server:
+  port: 8000
+
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+     globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "http://35.82.227.83:3000"
+              - "http://35.112.12.39:3000"
+              - "http://3.142.173.27:3000"
+              - "http://ec2-3-142-173-27.us-east-2.compute.amazonaws.com:3000"
+            allowCredentials: true
+            allowedHeaders:
+              - x-requested-with
+              - authorization
+              - content-type
+              - credential
+              - X-AUTH-TOKEN
+              - X-CSRF-TOKEN
+            allowedMethods:
+              - POST
+              - GET
+              - PUT
+              - OPTIONS
+              - DELETE
+     routes:
+        - id: user-service
+          predicates:
+            - Path=/user-service/health_check
+            - Method=GET
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          predicates:
+            - Path=/user-service/users, /user-service/duplicatedEmail, /user-service/login
+            - Method=POST
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          predicates:
+            - Path=/user-service/swagger*/**, /user-service/configuration/**, /user-service/webjars/**, /user-service/v2/api-docs, /user-service/actuator/**, /user-service/h2*/**
+            - Method=GET, POST, PUT, DELETE
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          predicates:
+            - Path=/user-service/**
+            - Method=GET, PUT, DELETE, POST
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh, info
