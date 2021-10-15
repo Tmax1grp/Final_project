@@ -7,12 +7,13 @@ export default function Signup() {
 
   const [ values, setValues ] = useState({
     email: '',
-    emailcheck: '',
     username: '',
     password: '',
     confirmpwd: '',
     tel: ''
   })
+
+  const [ emailcheck, setEmailcheck ] = useState()
   
   // 이메일 중복검사
   const checkEmail = (e) => {
@@ -20,20 +21,18 @@ export default function Signup() {
     let email = {
       'email': values.email
     }
-    let url = '/user-service/duplicatedeEmail'
+    let url = '/user-service/duplicatedEmail'
     var config={
       header: {
         'Content-Type' : 'application/json',
       }
     }
     axios.post(url, email, config)
-    .then(res => res.json())
-    .then(json => {
-      if(json.tf === true){
+    .then(res => res.status)
+    .then(status => {
+      if(status === 200){
         alert("사용가능한 email입니다.");
-        this.setState({
-          emailcheck: this.state.email
-        })
+        setEmailcheck(200)
       }
       else {
         alert("이미 사용 중인 email입니다.")
@@ -49,7 +48,7 @@ export default function Signup() {
     let url = '/user-service/users'
     let User = {
       'email' : values.email,
-      'emailcheck' : values.emailcheck,
+      'emailcheck' : emailcheck,
       'userName' : values.username,
       'password' : values.password,
       'tel' : values.tel
@@ -63,8 +62,9 @@ export default function Signup() {
       alert("이메일 형식에 맞게 작성해 주세요.")
       return;
     }
-    if(values.emailcheck !== values.email){
-      alert("이미 사용 중인 email입니다.")
+    if(emailcheck !== 200){
+      alert("이미 사용 중인 이메일입니다.")
+      return;
     }
     if(pwdpattern.test(values.password)===false){
       alert("숫자,문자,특수문자를 조합해서 최소 8자 이상 입력해 주세요.")
@@ -78,6 +78,7 @@ export default function Signup() {
     .then((res)=>{
       alert("회원가입완료")
       console.log(res);
+      document.location.href = '/'
     }).catch(error => {
       alert("회원가입실패")
       console.log(error);
@@ -97,18 +98,18 @@ export default function Signup() {
       <header className="App-header">
         <Link to="/"><h2>재택학습 플랫폼</h2></Link>
         <div className="container">
-          <form onSubmit={join}>
+          <form>
             <h1>
               회원가입
             </h1>
             <div className="form-content">
               <input id="email" name="email" placeholder="email" type="email" value={values.email} onChange={handleChangeForm}/>
-              <button onClick={checkEmail}>중복확인</button>
+              <div className="button2" onClick={checkEmail}>중복확인</div>
               <input id="username" name="username" placeholder="username" type="text"  value={values.username} onChange={handleChangeForm}/>
               <input id="password" name="password" placeholder="password" type="password"  value={values.password} onChange={handleChangeForm}/>
               <input id="confirmpwd" name="confirmpwd" placeholder="password check" type="password"  value={values.confirmpwd} onChange={handleChangeForm}/>
               <input id="phone" name="tel" placeholder="phone" type="tel"  value={values.tel} onChange={handleChangeForm} maxLength="13"/>
-              <div className="button" type="submit">
+              <div className="button" type="submit" onClick={join}>
                 등록
               </div>
               <div className="signup-message">

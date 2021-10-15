@@ -6,12 +6,13 @@ import './App.css';
 import Signup from './Account/Signup';
 import Login from './Account/Login';
 import Home from './Home/Home';
+import Lecture from './Lecture/Lecture';
 
 import axios from 'axios';
 
 function App() {
 
-  axios.defaults.baseURL = 'http://192.168.0.199:8000' 
+  axios.defaults.baseURL = 'http://localhost:8000' 
 
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/"><Home /></Route>
         <Route exact path="/login"><Login /></Route>
         <Route exact path="/signup"><Signup /></Route>
+        <Route exact path="/lecture"><Lecture /></Route>
         <Signup/>
       </Switch>
     </BrowserRouter>

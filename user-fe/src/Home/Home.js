@@ -22,13 +22,14 @@ export default function Home() {
       {/* 로그인, 로그아웃 */}
       {
         sessionStorage.userId !== undefined ?
-        <button type="button" className="btn btn-outline-primary" onClick={Logout}><i class="fas fa-sign-out-alt"></i></button> :
+        <button type="button" className="btn btn-outline-primary" onClick={Logout}>로그아웃<i className="fas fa-sign-out-alt"></i></button> :
         <button type="button" className="btn btn-outline-primary" onClick={Login}>로그인</button> 
       }
       {
         sessionStorage.userId !== undefined ?
-        <p>{sessionStorage.email}님</p> : null
+        <p>{sessionStorage.userName}님</p> : null
       }
+      <button type="button" className="btn btn-outline-primary" ><a href="/lecture">화상회의 생성</a></button>
     </Fragment>
   );
 }

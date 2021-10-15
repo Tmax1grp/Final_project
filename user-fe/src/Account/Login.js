@@ -19,7 +19,7 @@ export default function Signup() {
 
   const onClickLogin = (e) => {
     e.preventDefault();
-    let url = '/user-service/nosec/login'
+    let url = '/user-service/login'
     let User = {
       'email':values.email,
       'password':values.password
