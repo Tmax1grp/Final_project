@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ChatMessage from './ChatMessage';
 
-function ChatMessageList(props) {
+function ChatMessageList({ messages }) {
+
+    useEffect(() => {
+        console.log(messages);
+        return () => {
+        }
+    }, [messages])
+
     return (
         <>
-            <ChatMessage />
+            {
+                messages.length > 0 ? messages.map(message => (
+                    <ChatMessage message={message} />
+                ))
+                    :
+                    <ChatMessage />
+            }
         </>
     );
 }

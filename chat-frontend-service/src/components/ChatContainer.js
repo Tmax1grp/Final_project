@@ -2,10 +2,11 @@ import React from 'react';
 import ChatMessageList from './ChatMessageList';
 import ChatMessageInput from './ChatMessageInput';
 
-function ChatContainer(props) {
+function ChatContainer({messages}) {
+    
     return (
         <>
-            <ChatMessageList />
+            <ChatMessageList messages={messages}/>
             <ChatMessageInput />
         </>
     );

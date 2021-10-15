@@ -1,11 +1,18 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button'
 
 export default function MessageInput(props) {
+    const setAttachment = () => {
+
+    }
+    const handleSubmit = () => {
+
+    }
     return (
         <div>
-            <input type="button" onClick="setAttachment" />
+            <Button onClick="setAttachment">+</Button>
             <input type="text" onChange="setInput" />
-            <input type="button" onClick="handleSubmit" />
+            <Button onClick="handleSubmit">전송</Button>
         </div>
     );
 }
