@@ -1,0 +1,44 @@
+server:
+  port: 55000
+
+
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+#
+#greeting:
+#  message: Welcome to the simple E-commerce.
+
+
+spring:
+  application:
+    name: user-service
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#      console:
+#      enabled: true
+#    datasource:
+#      driver-class-name: org.h2.Driver
+#      url: jdbc:h2:mem:testdb
+#      username: sa
+#      password:
+
+
+
+  jpa:
+    show-sql: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/chat?
+    hikari:
+      username: root
+      password: mariadb
+
