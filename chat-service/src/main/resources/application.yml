@@ -1,0 +1,9 @@
+server:
+  port: 55000
+
+spring:
+  application:
+    name: user-service
+
+
+
