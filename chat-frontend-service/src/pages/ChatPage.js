@@ -9,19 +9,26 @@ import ChatLecture from '../components/ChatLecture';
 import ChatClassroom from '../components/ChatClassroom';
 
 export default function ChatPage(props) {
+    // classID/setClassID: 현재 페이지의 강의실 번호/setter
     const [classID, setClassID] = useState(1);
-    const [userID, setUserID] = useState('sunho');
+    // userID/setClassID: 현재 로그인된 사용자 번호/setter
+    // const [userID, setUserID] = useState('sunho');
 
-    // 현재 url 혹은 sessionStorage에서 classroomID 정보를 불러온다.
     useEffect(() => {
+        // 현재 url 혹은 sessionStorage에서 classroomID 정보를 불러온다.
+        // // TODO: check 
+        // let url = window.location.href
+        // let urlArr = url.split('/')
+        // let classID = parseInt(urlArr[urlArr.length-1])
+        // setClassID(classID) 
         setClassID(1);
     }, []);
 
     return (
         <>
-            화상 수업 중 채팅 테스트
+            <h2>화상 수업 중 채팅 테스트</h2>
             <ChatLecture classID={classID} />
-            채팅 모달 테스트
+            <h2>채팅 모달 테스트</h2>
             <ChatClassroom classID={classID} />
         </>
     );

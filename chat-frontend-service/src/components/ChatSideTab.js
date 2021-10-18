@@ -1,20 +1,29 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
-export default function ChatSideTab({ setTabSelected }) {
+export default function ChatSideTab({ tabSelected, setTabSelected }) {
 
-    const setChatVisible = e => {
-        setTabSelected(0);
-    }
+    const handleTabClick = e => {
+        let tabName = e.target.name;
+        let buttonId = 0;
 
-    const setMemberVisible = e => {
-        setTabSelected(1);
+        if (tabName.toString() === "chatTabBtn")
+            buttonId = 1;
+        else if (tabName.toString() === "membersTabBtn")
+            buttonId = 2;
+        else
+            console.log('ERROR: handleTabClick');
+
+        if (buttonId === tabSelected)
+            setTabSelected(0);
+        else
+            setTabSelected(buttonId);
     }
 
     return (
         <div>
-            <Button class="tabButton" onClick={setChatVisible}> 채팅 </Button>
-            <Button class="tabButton" onClick={setMemberVisible}> 참가자 </Button>
+            <Button className="tabButton" name="chatTabBtn" onClick={handleTabClick}> 채팅 </Button>
+            <Button className="tabButton" name="membersTabBtn" onClick={handleTabClick}> 참가자 </Button>
         </div>
     );
 }

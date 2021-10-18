@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MembersContainer(props) {
+export default function ChatMessageInputCard(props) {
     return (
         <>
 

@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
-import ChatMessage from './ChatMessage';
+import ChatMessageCard from './ChatMessageCard';
 
 function ChatMessageList({ messages }) {
 
     useEffect(() => {
-        console.log(messages);
-        return () => {
-        }
     }, [messages])
 
     return (
         <>
             {
                 messages.length > 0 ? messages.map(message => (
-                    <ChatMessage message={message} />
+                    <ChatMessageCard key={message.id} message={message} />
                 ))
                     :
-                    <ChatMessage />
+                    ''
             }
         </>
     );
