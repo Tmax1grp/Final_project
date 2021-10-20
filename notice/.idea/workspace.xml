@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="92a32482-738d-4553-b3b7-79c6b20787d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/main/java/com/example/apigatewayservice/ApigatewayServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/main/java/com/example/apigatewayservice/config/FilterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/test/java/com/example/apigatewayservice/ApigatewayServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/src/test/java/com/example/userservice/UserServiceApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1zAD1053qvl7ihfwJGc7jTwnjp0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/notice" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="board" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notice.NoticeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92a32482-738d-4553-b3b7-79c6b20787d2" name="Default Changelist" comment="" />
+      <created>1633581780491</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633581780491</updated>
+      <workItem from="1633581782159" duration="1284000" />
+      <workItem from="1633590907951" duration="2656000" />
+      <workItem from="1633681364735" duration="2750000" />
+      <workItem from="1634109066716" duration="3495000" />
+      <workItem from="1634188090876" duration="9567000" />
+      <workItem from="1634579413809" duration="750000" />
+      <workItem from="1634608316607" duration="2569000" />
+      <workItem from="1634614092114" duration="855000" />
+      <workItem from="1634617513461" duration="5613000" />
+      <workItem from="1634711948134" duration="525000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
