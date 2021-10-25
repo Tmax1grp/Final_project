@@ -32,23 +32,15 @@ spring:
               - OPTIONS
               - DELETE
      routes:
-#        - id: notice
-#          predicates:
-#            - Path=/notice-service/health_check
-#            - Method=GET
-#          uri: lb://NOTICE
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/board-service/(?<segment>.*), /$\{segment}
-
-        - id: board
-          uri: lb://BOARD
+        - id: notice
+          uri: lb://NOTICE
           predicates:
-            - Path=/board/**
+            - Path=/notice/**
             - Method=GET, POST, DELETE, PUT
           filters:
-            - RewritePath=/board/(?<segment>.*), /$\{segment}
-            -
+            - RewritePath=/notice/(?<segment>.*), /$\{segment}
+
+
 
 
 eureka:

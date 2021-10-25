@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92a32482-738d-4553-b3b7-79c6b20787d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/main/java/com/example/apigatewayservice/ApigatewayServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/main/java/com/example/apigatewayservice/config/FilterConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/apigateway-service/src/test/java/com/example/apigatewayservice/ApigatewayServiceApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../tstudy/intelli/workspace/user-service/src/test/java/com/example/userservice/UserServiceApplicationTests.java" afterDir="false" />
+    <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/service/NoticeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/ResponseNotice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +23,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
-        <option value="CSS File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1zAD1053qvl7ihfwJGc7jTwnjp0" />
+  <component name="ProjectId" id="1zlAnoDasSWv7Kzgf07hVU3rsNi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -50,31 +47,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/notice" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="board" />
+      <module name="notice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notice.NoticeApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -84,25 +64,34 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="92a32482-738d-4553-b3b7-79c6b20787d2" name="Default Changelist" comment="" />
-      <created>1633581780491</created>
+      <changelist id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="" />
+      <created>1634712472422</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1633581780491</updated>
-      <workItem from="1633581782159" duration="1284000" />
-      <workItem from="1633590907951" duration="2656000" />
-      <workItem from="1633681364735" duration="2750000" />
-      <workItem from="1634109066716" duration="3495000" />
-      <workItem from="1634188090876" duration="9567000" />
-      <workItem from="1634579413809" duration="750000" />
-      <workItem from="1634608316607" duration="2569000" />
-      <workItem from="1634614092114" duration="855000" />
-      <workItem from="1634617513461" duration="5613000" />
-      <workItem from="1634711948134" duration="525000" />
+      <updated>1634712472422</updated>
+      <workItem from="1634712475991" duration="398000" />
+      <workItem from="1634732627178" duration="18648000" />
+      <workItem from="1635146401020" duration="825000" />
+      <workItem from="1635147598774" duration="1314000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.UnsatisfiedDependencyException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
