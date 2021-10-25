@@ -1,11 +1,12 @@
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ChatPage from './pages/ChatPage';
 
 function App() {
   return (
-    <div className="App">
-      <ChatPage />
-    </div>
+    <Router className="App">
+      <Route exact path="/classroom/:classId" component={ChatPage} />
+    </Router>
   );
 }
 

@@ -13,10 +13,10 @@ export default function ChatClassroom({ classID }) {
 
     //  TODO: 채팅 데이터가 많다면 컴포넌트 로딩 표시
     useEffect(() => {
-        axios.get(`http://localhost:3006/messages?class_id=${classID}&to_id=sungho`)
-            .then(res => {
-                setMessages(res.data);
-            })
+        // axios.get(`http://localhost:3006/messages?class_id=${classID}&to_id=sungho`)
+        //     .then(res => {
+        //         setMessages(res.data);
+        //     })
     }, [classID]);
 
     return (

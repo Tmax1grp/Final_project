@@ -11,9 +11,15 @@ export default function ChatLecture({ classID }) {
     const [members, setMembers] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:3006/messages?class_id=${classID}`)
+        axios({
+            method: 'get',
+            url: `http://localhost:55000/class/${classID}/lecture`,
+            // url: `http://localhost:55000/class/1/findall`,
+            data: JSON.stringify({ fromId: 123 })
+        })
             .then(res => {
-                setMessages(res.data);
+                console.log(res.data);
+                // setMessages(res.data);
             })
 
         // TODO: 참가자(참가중, 자리비움, 강사) 데이터 요청
