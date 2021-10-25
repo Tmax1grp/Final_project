@@ -29,7 +29,6 @@ export default function Home() {
         sessionStorage.userId !== undefined ?
         <p>{sessionStorage.userName}님</p> : null
       }
-      <button type="button" className="btn btn-outline-primary" ><a href="/lecture">화상회의 생성</a></button>
     </Fragment>
   );
 }
