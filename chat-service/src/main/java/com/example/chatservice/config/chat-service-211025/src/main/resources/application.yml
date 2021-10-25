@@ -1,0 +1,37 @@
+server:
+  port: 55000
+
+spring:
+  application:
+    name: user-service
+
+# AWS
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://chat-database.ckei73ux6bwm.ap-northeast-1.rds.amazonaws.com:3306/chat?
+    hikari:
+      username: admin
+      password: test1234
+
+# docker
+#  jpa:
+#    show-sql: true
+#  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/chat?
+#    hikari:
+#      username: root
+#      password: mariadb
+
+# file size
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location: C:\\twmp\\chat_file
+
+
