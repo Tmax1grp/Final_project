@@ -24,7 +24,7 @@ export default function ChatPage(props) {
 
     return (
         <>
-            {`강의 번호: ${classID}`}
+            {`강의 번호???: ${classID}`}
             <h2>화상 수업 중 채팅 테스트</h2>
             <ChatLecture classID={classID} />
             <h2>채팅 모달 테스트</h2>
