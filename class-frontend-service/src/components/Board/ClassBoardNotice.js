@@ -9,7 +9,7 @@ export default function ClassBoardNotice({ classId }) {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:9999/{classroomId}/notice')
+        axios.get(`http://localhost:9999/lectures/${classId}/notice/{noticeId}`)
         .then(res => {
             console.log(res.data)
             setClasses(res.data);

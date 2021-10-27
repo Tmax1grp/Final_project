@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/")
+@RequestMapping("/lectures/{classId}")
 //@CrossOrigin(origins = {"http://localhost:3000"})
 public class NoticeController {
 
@@ -32,8 +33,8 @@ public class NoticeController {
         return noticeRepository.findAll();
     }
 
-    @GetMapping("/notice/{classroomId}")
-    public List<NoticeEntity> searchNotice( @PathVariable String classroomId , @RequestBody NoticeEntity noticeEntity){
+    @GetMapping("/notice/{noticeId}")
+    public List<NoticeEntity> searchNotice( @PathVariable String classroomId , @PathVariable String noticeId , @RequestBody NoticeEntity noticeEntity){
         final List<NoticeEntity> noticeList =
                 noticeRepository.findNoticeEntityByNoticeId(
                         noticeEntity.getNoticeId()

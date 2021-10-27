@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/NoticeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/NoticeApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -47,9 +52,15 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.notice" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -85,7 +96,7 @@
       <workItem from="1634732627178" duration="18648000" />
       <workItem from="1635146401020" duration="825000" />
       <workItem from="1635147598774" duration="18016000" />
-      <workItem from="1635311087535" duration="7237000" />
+      <workItem from="1635311087535" duration="16799000" />
     </task>
     <servers />
   </component>
@@ -101,8 +112,28 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
-          <line>48</line>
+          <line>50</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
