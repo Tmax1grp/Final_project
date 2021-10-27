@@ -16,6 +16,7 @@ public class NoticeService {
 
     NoticeRepository noticeRepository;
 
+    @Autowired
     public NoticeService(NoticeRepository noticeRepository){
         this.noticeRepository = noticeRepository;
     }

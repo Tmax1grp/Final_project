@@ -3,21 +3,22 @@ package com.example.notice.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="NOTICE")
+@Table(name="notice")
 public class NoticeEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long notice_id;
+    private Long noticeId;
 
     @Column(nullable = false)
-    private Long class_id;
+    private Long classId;
 
     @Column(nullable = false)
     private String title;
@@ -26,14 +27,13 @@ public class NoticeEntity implements Serializable {
     private String content;
 
     @Column(nullable = false)
-    private Long click_cnt;
+    private Long clickCnt;
 
     @Column(nullable = false)
-    private String delyn;
+    private String delYn;
 
-    @Column(nullable = false, insertable = false, updatable = false)
-    @ColumnDefault(value="CURRENT_TIMESTAMP")
-    private LocalDate create_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createDate;
 
     @Column(nullable = false)
     private String author;

@@ -8,10 +8,10 @@ import java.time.LocalDate;
 
 @Data
 public class ResponseNotice {
-    private Long notice_id;
+    private Long noticeId;
 
 
-    private Long class_id;
+    private Long classId;
 
 
     private String title;
@@ -20,13 +20,13 @@ public class ResponseNotice {
     private String content;
 
 
-    private Long click_cnt;
+    private Long clickCnt;
 
 
-    private String delyn;
+    private String delYn;
 
 
-    private LocalDate create_date;
+    private LocalDate createDate;
 
 
     private String author;

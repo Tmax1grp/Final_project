@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class RequestNotice {
 
-    private Long notice_id;
-    private Long class_id;
+    private Long noticeId;
+    private Long classCd;
     private String title;
     private String content;
     private String author;
