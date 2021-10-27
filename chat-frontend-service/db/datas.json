@@ -1,0 +1,43 @@
+{
+  "classrooms": [
+    {
+      "classroom_id": 1,
+      "name": "MSA with Spring",
+      "img_path": "https://source.unsplash.com/random",
+      "user_id": 1,
+      "content": "MSA with Spring",
+      "participant_num": 16,
+      "status": 0,
+      "created_date": "2021-09-01 13:51:50"
+    }
+  ],
+  "messages": [
+    {
+      "key": "0",
+      "class_id": "1",
+      "from_id": "sungho",
+      "to_id": "sunho",
+      "chat_content": "hi",
+      "chat_date": "2021-10-09 13:51:50",
+      "attachment": "https://source.unsplash.com/random"
+    },
+    {
+      "key": "1",
+      "class_id": "1",
+      "from_id": "sunho",
+      "to_id": "sungho",
+      "chat_content": "good",
+      "chat_date": "2021-10-09 13:51:52",
+      "attachment": "https://source.unsplash.com/random"
+    },
+    {
+      "key": "2",
+      "class_id": "1",
+      "from_id": "sunho",
+      "to_id": "sungho",
+      "chat_content": "good",
+      "chat_date": "2021-10-09 13:51:52",
+      "attachment": ""
+    }
+  ]
+}
