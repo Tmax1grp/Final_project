@@ -5,43 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../class-frontend-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/classroom-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/ClassromServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/dto/ClassroomDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/entity/ClassroomEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/jpa/ClassroomRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/service/ClassRoomService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/vo/RequestClassroom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/java/com/example/classroomservice/vo/ResponseClassroom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/src/test/java/com/example/classroomservice/ClassromServiceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/ClassromServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/controller/ClassroomController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/dto/ClassroomDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/entity/ClassroomEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/jpa/ClassroomRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/service/ClassRoomService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/vo/RequestClassroom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/classes/com/example/classroomservice/vo/ResponseClassroom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classrom-service/target/test-classes/com/example/classroomservice/ClassromServiceApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/NoticeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/NoticeApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/service/NoticeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/ResponseNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/ResponseNotice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +52,19 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="notice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notice.NoticeApplication" />
@@ -104,7 +85,7 @@
       <workItem from="1634732627178" duration="18648000" />
       <workItem from="1635146401020" duration="825000" />
       <workItem from="1635147598774" duration="18016000" />
-      <workItem from="1635311087535" duration="3953000" />
+      <workItem from="1635311087535" duration="7237000" />
     </task>
     <servers />
   </component>
@@ -118,6 +99,11 @@
           <properties class="org.springframework.beans.factory.UnsatisfiedDependencyException" package="org.springframework.beans.factory" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -50,7 +51,7 @@ public class NoticeController {
         notice.setContent(noticeEntity.getContent());
         notice.setAuthor(noticeEntity.getAuthor());
         notice.setAttach(noticeEntity.getAttach());
-        notice.setCreateDate(noticeEntity.getCreateDate());
+        notice.setCreateDate(LocalDateTime.now());
 
         noticeRepository.save(notice);
     }

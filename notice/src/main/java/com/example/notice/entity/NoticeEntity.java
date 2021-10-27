@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="notice")
 public class NoticeEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noticeId;

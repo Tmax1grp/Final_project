@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 @Data
-public class NoticeDto implements Serializable {
+public class NoticeDto  {
     private Long noticeId;
     private Long classId;
     private String title;
