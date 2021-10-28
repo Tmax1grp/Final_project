@@ -2,7 +2,6 @@ package com.example.chatservice.controller;
 
 import com.example.chatservice.entity.ChatEntity;
 import com.example.chatservice.jpa.ChatRepository;
-import com.example.chatservice.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -16,17 +15,16 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/class")
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
 public class ChatController {
 
     @Autowired
     private ChatRepository chatRepository;
 
-    @Autowired
-    private final S3Service s3Service;
 
     @GetMapping("/{classId}/findall")
     public List<ChatEntity> readChat(@PathVariable Long classId) {
@@ -39,6 +37,7 @@ public class ChatController {
 //    and from_id LIKE '3205'
 //    ORDER BY id;
     @GetMapping("/{classId}/lecture")
+//    @GetMapping("/lecture")
     @ResponseBody
     public List<ChatEntity> readChat(
             @PathVariable Long classId,
@@ -116,11 +115,7 @@ public class ChatController {
         chatRepository.save(chat);
     }
 
-    @PutMapping("/{classId}/lecture")
-    public String createChat(@RequestParam("*") MultipartFile multipartFile) throws IOException {
-        s3Service.upload(multipartFile, "static");
-        return "FileIN";
-    }
+
 
     @DeleteMapping("/{id}")
     public void deleteChat(@PathVariable Long id) {

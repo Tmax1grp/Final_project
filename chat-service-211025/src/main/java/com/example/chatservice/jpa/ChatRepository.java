@@ -34,6 +34,8 @@ public interface ChatRepository extends JpaRepository<ChatEntity, Long> {
                     "ORDER BY 'id'"
             , nativeQuery = true)
     List<ChatEntity> findChatEntityByAndClassIdAndFromId(@Param("ClassId") Long ClassId, @Param("FromId") String FromId);
+
     List<ChatEntity> findChatEntityByAndClassId(Long ClassId, Sort sort);
+
     List<ChatEntity> findAllById(Long Id);
 }

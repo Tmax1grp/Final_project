@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: user-service
+    name: chat-service
 
 # AWS
   jpa:
@@ -34,4 +34,14 @@ spring:
       max-request-size: 10MB
       location: C:\\twmp\\chat_file
 
-
+# 유레카 클라이언트
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://10.10.20.52:8761/eureka
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+    ip-address: 10.10.20.95
+    hostname: 10.10.20.95
