@@ -7,8 +7,8 @@ import axios from 'axios';
 
 function App() {
 
-  axios.defaults.baseURL = 'http://localhost:56000'
-  
+  axios.defaults.baseURL = 'http://10.10.20.36:8000'
+
   return (
 
     <BrowserRouter>

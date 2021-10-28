@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ClassroomRepository extends JpaRepository<ClassroomEntity, Long> {
-    List<ClassroomEntity> findClassroomEntityByClassroomId(Long ClassroomId);
+    List<ClassroomEntity> findClassroomEntityByClassId(Long ClassId);
 }

@@ -3,7 +3,7 @@ package com.example.classroomservice.dto;
 import java.util.Date;
 
 public class ClassroomDto {
-    private Long classRoomId;
+    private Long classId;
     private String name;
     private String imgPath;
     private Long userId;

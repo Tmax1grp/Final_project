@@ -9,9 +9,9 @@ export default function ClassBoardHome() {
                 <Col>
                     <ClassBoardSummary name="notice" />
                 </Col>
-                <Col>
+                {/* <Col>
                     <ClassBoardSummary name="discuss" />
-                </Col>
+                </Col> */}
             </Row>
         </Container>
     );

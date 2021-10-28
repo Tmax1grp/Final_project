@@ -9,16 +9,27 @@ export default function ClassBoardNotice({ classId }) {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:9999/lectures/${classId}/notice/{noticeId}`)
+        axios.get(`/notice/${classId}/notice/findall`)
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setClasses(res.data);
         })
         .catch((err) =>
           console.log(err)
         )
-      },[])
-
+      },[classId])
+      
+      const classeslist = classes.map((clas) => {
+        return (
+    <tr>
+      <th scope="row">{clas.noticeId}</th>
+      <td>{clas.title}</td>
+      <td>{clas.author}</td>
+      <td>{clas.createDate}</td>
+    </tr>
+            
+        )
+    })
 
     return (
         <div>
@@ -26,29 +37,14 @@ export default function ClassBoardNotice({ classId }) {
   <thead>
     <tr>
       <th scope="col">목록</th>
-      <th scope="col">작성자</th>
       <th scope="col">제목</th>
-      <th scope="col">Handle</th>
+      <th scope="col">작성자</th>
+      <th scope="col">날짜</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+      {classeslist}
+   
   </tbody>
 </table>
             {/* <ClassBoardList name="notice" classId={classId} /> */}

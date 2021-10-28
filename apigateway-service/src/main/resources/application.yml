@@ -12,6 +12,12 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
+              - "http://localhost:3001"
+              - "http://10.10.20.16:3000"
+              - "http://localhost:3002"
+
+              - "http://10.10.20.69:3002"
+              - "http://10.10.20.36:3001"
               - "http://localhost:3000"
               - "http://35.82.227.83:3000"
               - "http://35.112.12.39:3000"
@@ -39,7 +45,7 @@ spring:
             - Method=GET, POST, DELETE, PUT
           filters:
             - RewritePath=/notice/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+#            - AuthorizationHeaderFilter
 
         - id: classroom-service
           uri: lb://CLASSROOM-SERVICE
@@ -48,7 +54,7 @@ spring:
             - Method=GET, POST, DELETE, PUT
           filters:
             - RewritePath=/classroom-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+#            - AuthorizationHeaderFilter
 
         - id: chat-service
           uri: lb://CHAT-SERVICE
@@ -57,7 +63,7 @@ spring:
             - Method=GET, POST, DELETE, PUT
           filters:
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+#            - AuthorizationHeaderFilter
 
         - id: user-service
           predicates:

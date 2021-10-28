@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class RequestClassroom {
 
-    private Long classroomId;
+    private Long classId;
 
     @NotNull(message = "name cannot be null")
     @Size(min=2)

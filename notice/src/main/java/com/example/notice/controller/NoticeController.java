@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/lectures/{classId}")
+@RequestMapping("/{classId}")
 //@CrossOrigin(origins = {"http://localhost:3000"})
 public class NoticeController {
 
@@ -34,7 +34,7 @@ public class NoticeController {
     }
 
     @GetMapping("/notice/{noticeId}")
-    public List<NoticeEntity> searchNotice( @PathVariable String classroomId , @PathVariable String noticeId , @RequestBody NoticeEntity noticeEntity){
+    public List<NoticeEntity> searchNotice(  @PathVariable String noticeId , @RequestBody NoticeEntity noticeEntity){
         final List<NoticeEntity> noticeList =
                 noticeRepository.findNoticeEntityByNoticeId(
                         noticeEntity.getNoticeId()

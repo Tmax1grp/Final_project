@@ -13,7 +13,7 @@ public class ClassroomEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long classroomId;
+    private Long classId;
 
     @Column(nullable = false, length = 100)
     private String name;

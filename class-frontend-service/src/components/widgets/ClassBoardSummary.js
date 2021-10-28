@@ -1,45 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 
-export default function ClassBoardSummary({ name }) {
+export default function ClassBoardSummary({ classId }) {
 
-    const [articles, setArticles] = useState(null);
+    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        let res;
-        // TODO: props로 넘겨받은 'name' 게시판의 게시글 목록 GET
-        // axios.get(https://localhost:55000)
-        if (name === "notice")
-            ; // res = [];
-        else if (name === "discuss")
-            ; // res = [];
-        else
-            alert("ERROR: Invalid summary name");
-        // TODO: GET한 데이터 slicing (가장 늦은 게시글 2개의 제목, 작성자, 내용)
-        // setArticles(res);
-    }, [name])
+        axios.get(`/notice/${classId}/notice/findall`)
+        .then(res => {
+            console.log(res.data)
+            setArticles(res.data);
+        })
+        .catch((err) =>
+          console.log(err)
+        )
+      },[])
 
+      
+    const articlelist = articles.map((article) => {
+        return (
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {article.title}
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {article.content}
+                    </div>
+                </div>
+            </div>
+        )
+    }).slice(-2)
     return (
-        <div>
-            <h2>{name}</h2>
-            <Card style={{ width: '30rem' }}>
-                <Card.Body>
-                    <Row>
-                        <Col>
-                            <Card.Title>
-                                <Card.Link href="#">Article Link</Card.Link>
-                            </Card.Title>
-                        </Col>
-                        <Col>
-                            <Card.Subtitle className="text-muted">Author</Card.Subtitle>
-                        </Col>
-                    </Row>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+        <div className="accordion" id="accordionExample">
+            {articlelist}    
         </div>
     );
 }

@@ -10,8 +10,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/classroom-service")
-@CrossOrigin(origins = {"http://localhost:3000"})
+//@RequestMapping("/classroom-service")
+//@CrossOrigin(origins = {"http://localhost:3000"})
 public class ClassroomController {
 
     @Autowired
@@ -28,8 +28,8 @@ public class ClassroomController {
     @ResponseBody
     public List<ClassroomEntity> searchClassroom(@RequestBody ClassroomEntity classroomEntity){
         final List<ClassroomEntity> classList =
-                classroomRepository.findClassroomEntityByClassroomId(
-                        classroomEntity.getClassroomId()
+                classroomRepository.findClassroomEntityByClassId(
+                        classroomEntity.getClassId()
                 );
         return classList;
     }
@@ -50,7 +50,7 @@ public class ClassroomController {
 
     @DeleteMapping("/lectures")
     public void deleteClassRoom(@RequestBody ClassroomEntity classRoomEntity){
-        classroomRepository.deleteById(classRoomEntity.getClassroomId());
+        classroomRepository.deleteById(classRoomEntity.getClassId());
     }
 
 }
