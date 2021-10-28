@@ -17,11 +17,10 @@ export default function ChatClassroom({ classID }) {
             axios({
                 method: 'get',
                 // method: 'post',
-                url: `http://localhost:55000/class/${classID}/lecture`,
+                url: `http://10.10.20.36:8000/chat-service/class/${classID}/lecture`,
                 // url: `http://localhost:55000/class/22105`,
                 params: (
                     {
-                        // fromId: "123"
                         fromId: "123",
                         // toId:"123",
                         // chatContent:"dd5ssdfffs6sssssddsdfd23asdf2323sdfss"
