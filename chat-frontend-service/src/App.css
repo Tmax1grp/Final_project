@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.chat-modal-content{
+  max-width: 60%
+}
+
+.chat-container{
+  display: block;
+  justify-content: center;
+}
+
+.chat-input{
+  display: flex;
+  justify-content: center;
+}

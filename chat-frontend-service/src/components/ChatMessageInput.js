@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button'
 import { BsPaperclip } from "react-icons/bs";
 
@@ -7,7 +7,7 @@ import { BsPaperclip } from "react-icons/bs";
 // * - 텍스트 필드
 // * - 파일 첨부완료 시, 파일 삭제 버튼 표시
 export default function MessageInput(props) {
-    const [selectedFile, setSelectedFile] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null);
     const handleFileSelected = e => {
         // TODO: S3 파일 업로드 및 메시지 입력 필드에 표시, 입력 비활성화
         // * 현재 단일 파일 첨부
@@ -18,17 +18,15 @@ export default function MessageInput(props) {
         }
         return 0;
     }
+
     const handleSubmit = () => {
         // TODO: 세션 연결 확인 & 메시지 전송 POST API 요청
         return 0;
     }
 
-    useEffect(() => {
-        // effect
-        return () => {
-            // cleanup
-        }
-    }, [selectedFile])
+    const handleTextInput = () => {
+
+    }
 
     return (
         <div>
@@ -39,8 +37,10 @@ export default function MessageInput(props) {
                 type="file"
                 onChange={handleFileSelected}
             />
-            <input type="text" onChange="setInput" />
-            <Button onClick="handleSubmit">전송</Button>
+            {/** 파일 첨부를 위한 input field */}
+            {/* <input type="text" /> */}
+            <input type="text" onChange={handleTextInput} />
+            <Button onClick={handleSubmit}>전송</Button>
         </div>
     );
 }

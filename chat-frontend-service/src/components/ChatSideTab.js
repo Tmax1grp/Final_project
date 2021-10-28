@@ -22,8 +22,8 @@ export default function ChatSideTab({ tabSelected, setTabSelected }) {
 
     return (
         <div>
-            <Button className="tabButton" name="chatTabBtn" onClick={handleTabClick}> 채팅 </Button>
-            <Button className="tabButton" name="membersTabBtn" onClick={handleTabClick}> 참가자 </Button>
+            <Button name="chatTabBtn" onClick={handleTabClick}> 채팅 </Button>
+            <Button name="membersTabBtn" onClick={handleTabClick}> 참가자 </Button>
         </div>
     );
 }

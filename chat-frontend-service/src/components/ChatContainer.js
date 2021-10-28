@@ -7,10 +7,10 @@ import ChatMessageInput from './ChatMessageInput';
 function ChatContainer({ messages }) {
 
     return (
-        <>
+        <div>
             <ChatMessageList messages={messages} />
             <ChatMessageInput />
-        </>
+        </div>
     );
 }
 

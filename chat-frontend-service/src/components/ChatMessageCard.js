@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export default function ChatMessageCard({ message }) {
     const [author, setAuthor] = useState('');
@@ -6,13 +8,13 @@ export default function ChatMessageCard({ message }) {
     const [wdate, setWdate] = useState('');
     const [attach, setAttach] = useState('');
 
-    // TODO: 불러온 메시지 없을 때 다른 컴포넌트 출력
+    // TODO: 메시지 데이터의 속성 검사
     useEffect(() => {
         if (message !== undefined) {
-            setAuthor(message.from_id);
-            setContent(message.chat_content);
-            setWdate(message.chat_date);
-            setAttach(message.attach);
+            setAuthor(message.fromId);
+            setContent(message.chatContent);
+            setWdate(message.chatDate);
+            // setAttach(message.orgFileName);
         }
         else {
             setAuthor('author');
@@ -22,13 +24,19 @@ export default function ChatMessageCard({ message }) {
     }, [message]);
 
     return (
-        <>
-            <div class="d-flex justify-content-center">
-                <div>[{wdate}]</div>
-                <div>{author}:</div>
-                <div>{content}</div>
-                <div>{attach}</div>
-            </div>
-        </>
+        <Row className="justify-content-md-center">
+            <Col sm={3}>
+                [{wdate}]
+            </Col>
+            <Col sm={1}>
+                {author}:
+            </Col>
+            <Col sm={3}>
+                {content}
+            </Col>
+            <Col sm={2}>
+                {attach}
+            </Col>
+        </Row>
     );
 }
