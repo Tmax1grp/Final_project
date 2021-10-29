@@ -5,78 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_6_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_google_code_gson_gson_2_8_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_google_guava_guava_19_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_google_inject_guice_4_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_netflix_eureka_eureka_client_1_10_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_netflix_eureka_eureka_core_1_10_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_netflix_netflix_commons_netflix_eventbus_0_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_netflix_netflix_commons_netflix_infix_0_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_netflix_servo_servo_core_0_12_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_stoyanr_evictor_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__com_thoughtworks_xstream_xstream_1_4_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__commons_configuration_commons_configuration_1_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__commons_jxpath_commons_jxpath_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__io_github_x_stream_mxparser_1_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__io_projectreactor_addons_reactor_extra_3_4_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__io_projectreactor_reactor_core_3_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__javax_ws_rs_jsr311_api_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__joda_time_joda_time_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_antlr_antlr_runtime_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_antlr_stringtemplate_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_apache_commons_commons_math_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_bouncycastle_bcpkix_jdk15on_1_68.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_68.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_codehaus_jettison_jettison_1_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_2_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_cache_2_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_commons_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_context_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_loadbalancer_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_eureka_client_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_loadbalancer_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_netflix_eureka_client_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_security_spring_security_rsa_1_0_10_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../classroom-service/.idea/libraries/Maven__xmlpull_xmlpull_1_1_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../class-frontend-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/src/components/Board/ClassBoardNotice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../class-frontend-service/src/pages/ClassroomPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../class-frontend-service/src/pages/ClassroomPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/classroom-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/classroom-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/ClassroomServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/ClassroomServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/dto/ClassroomDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/dto/ClassroomDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/entity/ClassroomEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/entity/ClassroomEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/jpa/ClassroomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/jpa/ClassroomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/vo/RequestClassroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/vo/RequestClassroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/vo/ResponseClassroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/vo/ResponseClassroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/ClassroomServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/ClassroomServiceApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/controller/ClassroomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/controller/ClassroomController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/dto/ClassroomDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/dto/ClassroomDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/entity/ClassroomEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/entity/ClassroomEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/jpa/ClassroomRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/jpa/ClassroomRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/vo/RequestClassroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/vo/RequestClassroom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/vo/ResponseClassroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/vo/ResponseClassroom.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service-discovery/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../service-discovery/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service-discovery/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../service-discovery/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service-discovery/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../service-discovery/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,19 +65,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="notice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notice.NoticeApplication" />
@@ -160,6 +86,9 @@
       <workItem from="1635146401020" duration="825000" />
       <workItem from="1635147598774" duration="18016000" />
       <workItem from="1635311087535" duration="23128000" />
+      <workItem from="1635468897957" duration="1817000" />
+      <workItem from="1635472333596" duration="2133000" />
+      <workItem from="1635480763369" duration="1565000" />
     </task>
     <servers />
   </component>

@@ -3,8 +3,9 @@ server:
 
 spring:
   application:
-    name: service-discovery
+    name: discoveryservice
 
+# 서버 역할
 eureka:
   client:
     register-with-eureka: false

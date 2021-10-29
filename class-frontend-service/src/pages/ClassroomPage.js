@@ -34,7 +34,7 @@ export default function ClassroomPage(){
     })
     return(
         <div>
-            <a href="http://10.10.20.16:3000">HOME</a><br/>
+            <a href="http://10.10.20.17:3000">HOME</a><br/>
             <h2>강의실</h2>
             {classeslist}
             <br/>
