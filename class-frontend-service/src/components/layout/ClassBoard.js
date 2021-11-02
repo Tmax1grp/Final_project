@@ -7,14 +7,14 @@ import React, { useState, useEffect } from 'react';
 import ClassBoardHome from '../Board/ClassBoardHome'
 import ClassBoardNotice from '../Board/ClassBoardNotice'
 import ClassBoardIndex from '../Board/ClassBoardIndex'
-import ClassBoardHomework from '../Board/ClassBoardHomework'
+import ClassBoardReference from '../Board/ClassBoardReference';
 import ClassBoardDiscuss from '../Board/ClassBoardDiscuss'
-import ClassBoardResource from '../Board/ClassBoardResource'
+import ClassBoardAssignment from '../Board/ClassBoardAssignment'
 
 export default function ClassBoard({ classId, activeBoard }) {
     const [board, selectBoard] = useState(null);
     // boards: 게시판(board) 조건부 렌더링을 위한 게시판 이름 배열
-    const boards = [ClassBoardHome, ClassBoardNotice, ClassBoardIndex, ClassBoardHomework, ClassBoardDiscuss, ClassBoardResource]
+    const boards = [ClassBoardHome, ClassBoardNotice, ClassBoardIndex,  ClassBoardDiscuss, ClassBoardAssignment, ClassBoardReference]
 
     useEffect(() => {
         var boardName = boards[activeBoard];
