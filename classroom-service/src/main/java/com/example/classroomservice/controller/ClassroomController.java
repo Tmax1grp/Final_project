@@ -48,6 +48,8 @@ public class ClassroomController {
         classroomRepository.save(classRoom);
     }
 
+
+
     @DeleteMapping("/lectures")
     public void deleteClassRoom(@RequestBody ClassroomEntity classRoomEntity){
         classroomRepository.deleteById(classRoomEntity.getClassId());

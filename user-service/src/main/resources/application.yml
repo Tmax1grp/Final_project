@@ -42,11 +42,11 @@ eureka:
     #     eureka-server-url:
     #       defaultZone: http://localhost:8761/eureka
     service-url:
-      defaultZone: http://10.10.20.36:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-    ip-address: 10.10.20.36
-    hostname: 10.10.20.36
+#    ip-address: 10.10.20.36
+#    hostname: 10.10.20.36
 
 management:
   endpoints:

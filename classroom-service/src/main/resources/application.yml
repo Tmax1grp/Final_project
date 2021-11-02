@@ -8,10 +8,10 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://classroom-database.cntsvs6tpecb.us-east-2.rds.amazonaws.com:3306/classroom?
+    url: jdbc:mariadb://localhost:13306/noticedb
     hikari:
-      username: admin
-      password: test1234
+      username: root
+      password: 1357
 
 
 
@@ -21,9 +21,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://10.10.20.36:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-    ip-address: 10.10.20.36
-
-    hostname: 10.10.20.36
+#    ip-address: 10.10.20.36
+#
+#    hostname: 10.10.20.36
