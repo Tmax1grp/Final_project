@@ -17,6 +17,17 @@ export default function ClassBoardSummary({ classId }) {
         )
       },[])
 
+    useEffect(() => {
+        axios.get(`/discuss/${classId}/discuss/findall`)
+        .then(res => {
+            console.log(res.data)
+            setArticles(res.data);
+        })
+        .catch((err) =>
+          console.log(err)
+        )
+      },[])
+
       
     const articlelist = articles.map((article) => {
         return (
