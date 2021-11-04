@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class NoticeService {
@@ -20,5 +22,7 @@ public class NoticeService {
     public NoticeService(NoticeRepository noticeRepository){
         this.noticeRepository = noticeRepository;
     }
+
+
 
 }
