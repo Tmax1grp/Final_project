@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function App() {
 
-  axios.defaults.baseURL = 'http://10.10.20.36:8000'
+  axios.defaults.baseURL = 'http://10.10.20.26:8000'
 
   return (
 
