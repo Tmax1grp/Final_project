@@ -24,7 +24,7 @@ export default function Main() {
         </div>
       </div>
       <div className='right'>
-        <a href="/home" className="btn-start">시작하기</a>
+        <a href="/signup" className="btn-start">시작하기</a>
         <div className='maintitle-right' style={{color:"#FFCA95", fontSize:"150px"}}>O MEET</div>
         <div className='dog'>
           <div className='ears2'></div>
