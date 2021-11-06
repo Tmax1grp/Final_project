@@ -1,15 +1,9 @@
-package com.example.notice.service;
+package com.example.noticeservice.service;
 
-import com.example.notice.dto.NoticeDto;
-import com.example.notice.entity.NoticeEntity;
-import com.example.notice.jpa.NoticeRepository;
+import com.example.noticeservice.jpa.NoticeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service

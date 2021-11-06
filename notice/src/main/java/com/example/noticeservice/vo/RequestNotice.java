@@ -1,6 +1,5 @@
-package com.example.notice.vo;
+package com.example.noticeservice.vo;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 @Data

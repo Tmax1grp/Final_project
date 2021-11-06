@@ -10,14 +10,14 @@ import java.util.List;
 
 
 @RestController
-//@RequestMapping("/classroom-service")
+@RequestMapping("/classroom-service")
 //@CrossOrigin(origins = {"http://localhost:3000"})
 public class ClassroomController {
 
     @Autowired
     private ClassroomRepository classroomRepository;
 
-    @GetMapping("/lectures/findall")
+    @GetMapping("/lectures/all")
     @ResponseBody
     public List<ClassroomEntity> allSearchClassRoom(){
 //        final List<ClassRoomEntity> classList = classRoomRepository.findAll();

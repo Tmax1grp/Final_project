@@ -1,9 +1,7 @@
-package com.example.notice.vo;
+package com.example.noticeservice.vo;
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 
 @Data

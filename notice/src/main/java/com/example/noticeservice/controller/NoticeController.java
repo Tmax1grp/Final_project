@@ -1,8 +1,8 @@
-package com.example.notice.controller;
+package com.example.noticeservice.controller;
 
 
-import com.example.notice.entity.NoticeEntity;
-import com.example.notice.jpa.NoticeRepository;
+import com.example.noticeservice.entity.NoticeEntity;
+import com.example.noticeservice.jpa.NoticeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +31,25 @@ public class NoticeController {
     }
 
 
+    // 조회수 , 상세조회
+    @GetMapping("/notice/{noticeId}")
+    public NoticeEntity searchNotice(@PathVariable Long noticeId,
+                                     @RequestParam(value = "clickCnt", required = false) Integer clickCnt ){
+
+        NoticeEntity notice = noticeRepository.findByNoticeId(noticeId); //    NoticeEntity findByNoticeId(Long noticeId); <- 원형
+
+        int count = 0;
+        if(clickCnt == null){
+            count = 0;
+        }
+        else{
+            count = 1;
+        }
+        notice.setClickCnt(notice.getClickCnt()+count);
+        noticeRepository.save(notice);
+        return notice;
+    }
+
 
 // 검색
     @PutMapping("/notice/search")
@@ -55,23 +74,7 @@ public class NoticeController {
 
 
 
-// 조회수
-    @GetMapping("/notice/{noticeId}")
-    public NoticeEntity searchNotice(@PathVariable Long noticeId,
-                                     @RequestParam(value = "clickCnt", required = false) Integer clickCnt ){
 
-        NoticeEntity notice = noticeRepository.findByNoticeId(noticeId); //    NoticeEntity findByNoticeId(Long noticeId); <- 원형
-        int count = 0;
-        if(clickCnt == null){
-            count = 0;
-        }
-        else{
-            count = 1;
-        }
-        notice.setClickCnt(notice.getClickCnt()+count);
-        noticeRepository.save(notice);
-        return notice;
-    }
 
 // 글 작성
     @PostMapping("/notice")

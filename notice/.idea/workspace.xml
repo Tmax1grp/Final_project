@@ -5,16 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/ReplyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/ReplyEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/ReplyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/controller/ReplyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/AssignmentServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/AssignmentServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/controller/AssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/controller/AssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/jpa/AssignmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment-service/src/main/java/com/example/assignmentservice/jpa/AssignmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assignment-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discuss-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../discuss-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/DiscussServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/DiscussServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/controller/DiscussController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/controller/DiscussController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/jpa/DiscussRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../discuss-service/src/main/java/com/example/discussservice/jpa/DiscussRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../discuss-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../discuss-service/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/NoticeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/NoticeServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/controller/NoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/controller/ReplyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/dto/NoticeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/dto/NoticeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/entity/NoticeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/entity/ReplyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/entity/ReplyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/NoticeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/jpa/NoticeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/jpa/ReplyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/jpa/ReplyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/service/NoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/RequestNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/vo/RequestNotice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/notice/vo/ResponseNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/noticeservice/vo/ResponseNotice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/notice/NoticeApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/noticeservice/NoticeServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reference-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../reference-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/ReferenceServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/ReferenceServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/controller/ReferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/controller/ReferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/jpa/ReferenceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../reference-service/src/main/java/com/example/referenceservice/jpa/ReferenceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reference-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../reference-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +98,8 @@
       </method>
     </configuration>
     <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="notice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.notice.NoticeApplication" />
+      <module name="notice-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.noticeservice.NoticeServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,7 +124,9 @@
       <workItem from="1635579098416" duration="2620000" />
       <workItem from="1635725591349" duration="18594000" />
       <workItem from="1635830285525" duration="37483000" />
-      <workItem from="1636187154770" duration="2444000" />
+      <workItem from="1636187154770" duration="2490000" />
+      <workItem from="1636190518865" duration="2229000" />
+      <workItem from="1636192958504" duration="10764000" />
     </task>
     <servers />
   </component>

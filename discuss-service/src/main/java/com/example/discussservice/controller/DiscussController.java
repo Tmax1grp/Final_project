@@ -11,25 +11,63 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/{classId}")
+
+
 public class DiscussController {
 
     @Autowired
     private DiscussRepository discussRepository;
 
-    @GetMapping("/discuss/findall")
+    //전체 조회
+    @GetMapping("/discuss/all")
     public List<DiscussEntity> allSearchDiscuss() {
         return discussRepository.findAll();
     }
 
+
+    //조회수, 상세조회
     @GetMapping("/discuss/{discussId}")
-    public List<DiscussEntity> searchDiscuss(@PathVariable String discussId , @RequestBody DiscussEntity discussEntity){
-        final List<DiscussEntity> discussList =
-                discussRepository.findDiscussEntityByDiscussId(
-                        discussEntity.getDiscussId()
-                );
-        return discussList;
+    public DiscussEntity searchDiscuss(@PathVariable Long discussId,
+                                     @RequestParam(value = "clickCnt", required = false) Integer clickCnt ){
+
+        DiscussEntity discuss = discussRepository.findByDiscussId(discussId); //    NoticeEntity findByNoticeId(Long noticeId); <- 원형
+
+        int count = 0;
+        if(clickCnt == null){
+            count = 0;
+        }
+        else{
+            count = 1;
+        }
+        discuss.setClickCnt(discuss.getClickCnt()+count);
+        discussRepository.save(discuss);
+        return discuss;
     }
 
+    // 검색
+    @PutMapping("/discuss/search")
+    public List<DiscussEntity> allSearchDiscuss(@PathVariable Long classId,
+                                              @RequestBody DiscussEntity discussEntity
+    ){
+
+
+        if(discussEntity.getTitle().length() > 0){
+            return discussRepository.findByClassIdAndTitle(classId, discussEntity.getTitle());
+        }
+        else if(discussEntity.getAuthor().length() > 0){
+            return discussRepository.findByClassIdAndAuthor(classId, discussEntity.getAuthor());
+        }
+        else{
+            return discussRepository.findByClassId(classId);
+        }
+    }
+
+
+
+
+
+
+    //글 작성
     @PostMapping("/discuss")
     public void createDiscuss(@RequestBody DiscussEntity discussEntity){
         DiscussEntity discuss = new DiscussEntity();
@@ -45,6 +83,32 @@ public class DiscussController {
         discussRepository.save(discuss);
     }
 
+    //글 수정
+    @PutMapping("/discuss/{discussId}")
+    public DiscussEntity updateDiscuss(
+            @PathVariable Long discussId,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "content", required = false) String content
+
+    ) {
+        DiscussEntity discuss = discussRepository.findAllBy(discussId);
+
+        if (title.length() > 0) {
+            discuss.setTitle(title);
+        }
+
+        if (content.length() > 0) {
+            discuss.setContent(content);
+        }
+
+
+        discussRepository.save(discuss);
+        return discuss;
+    }
+
+
+
+    //글 삭제
     @DeleteMapping("/discuss")
     public void deleteDiscuss(@RequestBody DiscussEntity discussEntity){
         discussRepository.deleteById(discussEntity.getClassId());

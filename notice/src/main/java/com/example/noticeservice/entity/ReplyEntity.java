@@ -1,4 +1,4 @@
-package com.example.notice.entity;
+package com.example.noticeservice.entity;
 
 
 import lombok.Data;
@@ -28,7 +28,7 @@ public class ReplyEntity {
     private LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(name = "noticeId")
+    @JoinColumn(name = "notice_id")
     private NoticeEntity noticeEntity;
 
 

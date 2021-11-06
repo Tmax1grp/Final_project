@@ -1,8 +1,7 @@
-package com.example.notice.entity;
+package com.example.noticeservice.entity;
 
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,6 +15,7 @@ public class NoticeEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "notice_id")
     private Long noticeId;
 
     @Column(nullable = false)

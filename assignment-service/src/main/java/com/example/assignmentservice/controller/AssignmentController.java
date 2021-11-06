@@ -19,8 +19,8 @@ public class AssignmentController {
 
 
 
-
-    @GetMapping("/assignment/findall")
+// 전체조회
+    @GetMapping("/assignment/all")
     @ResponseBody
     public List<AssignmentEntity> allSearchAssignment(){
 
@@ -28,21 +28,48 @@ public class AssignmentController {
     }
 
 
+// 조회수, 상세조회
+
+    @GetMapping("/assignment/{assignmentId}")
+    public AssignmentEntity searchAssignment(@PathVariable Long assignmentId,
+                                     @RequestParam(value = "clickCnt", required = false) Integer clickCnt ){
+
+        AssignmentEntity assignment = assignmentRepository.findByAssignmentId(assignmentId); //    NoticeEntity findByNoticeId(Long noticeId); <- 원형
+
+        int count = 0;
+        if(clickCnt == null){
+            count = 0;
+        }
+        else{
+            count = 1;
+        }
+        assignment.setClickCnt(assignment.getClickCnt()+count);
+        assignmentRepository.save(assignment);
+        return assignment;
+    }
+
+    //검색
+    @PutMapping("/assignment/search")
+    public List<AssignmentEntity> allSearchAssignment(@PathVariable Long classId,
+                                              @RequestBody AssignmentEntity assignmentEntity
+    ){
 
 
-    @GetMapping("/assignment/{assignment-id}")
-    @ResponseBody
-    public List<AssignmentEntity> searchAssignment(@PathVariable String noticeId ,@RequestBody AssignmentEntity assignmentEntity){
-        final List<AssignmentEntity> assignmentList =
-                assignmentRepository.findAssignmentEntityByAssignmentId(
-                        assignmentEntity.getAssignmentId()
-                );
-        return assignmentList;
+        if(assignmentEntity.getTitle().length() > 0){
+            return assignmentRepository.findByClassIdAndTitle(classId, assignmentEntity.getTitle());
+        }
+        else if(assignmentEntity.getAuthor().length() > 0){
+            return assignmentRepository.findByClassIdAndAuthor(classId, assignmentEntity.getAuthor());
+        }
+        else{
+            return assignmentRepository.findByClassId(classId);
+        }
     }
 
 
 
 
+    //글 작성
     @PostMapping("/assignment")
     public void createAssignment(@RequestBody AssignmentEntity assignmentEntity){
         AssignmentEntity assignment = new AssignmentEntity();
@@ -58,7 +85,32 @@ public class AssignmentController {
         assignmentRepository.save(assignment);
     }
 
-    @DeleteMapping("/assignment")
+    //글 수정
+    @PutMapping("/assignment/{assignmentId}")
+    public AssignmentEntity updateAssignment(
+            @PathVariable Long assignmentId,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "content", required = false) String content
+
+    ) {
+        AssignmentEntity assignment = assignmentRepository.findAllBy(assignmentId);
+
+        if (title.length() > 0) {
+            assignment.setTitle(title);
+        }
+
+        if (content.length() > 0) {
+            assignment.setContent(content);
+        }
+
+
+        assignmentRepository.save(assignment);
+        return assignment;
+    }
+
+
+    //글 삭제
+    @DeleteMapping("/assignment/{assignmentId}")
     public void deleteAssignment(@RequestBody AssignmentEntity assignmentEntity){
         assignmentRepository.deleteById(assignmentEntity.getClassId());
     }

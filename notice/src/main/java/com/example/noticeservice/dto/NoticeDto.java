@@ -1,4 +1,4 @@
-package com.example.notice.dto;
+package com.example.noticeservice.dto;
 
 
 import lombok.Data;

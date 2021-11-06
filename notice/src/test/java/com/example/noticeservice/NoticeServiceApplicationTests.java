@@ -1,10 +1,10 @@
-package com.example.notice;
+package com.example.noticeservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NoticeApplicationTests {
+class NoticeServiceApplicationTests {
 
     @Test
     void contextLoads() {
