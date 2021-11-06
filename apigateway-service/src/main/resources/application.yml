@@ -14,7 +14,8 @@ spring:
             allowedOrigins:
               - "http://localhost:3001"
               - "http://localhost:3002"
-              -
+              - "http://192.168.201.126:3000"
+
               - "http://10.10.20.16.3000"
               - "http://10.10.20.16.3001"
               -
@@ -45,24 +46,52 @@ spring:
               - OPTIONS
               - DELETE
      routes:
-        - id: notice
-          uri: lb://NOTICE
-          predicates:
-            - Path=/notice/**
-            - Method=GET, POST, DELETE, PUT
-          filters:
-            - RewritePath=/notice/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+       - id: notice-service
+         uri: lb://NOTICE-SERVICE
+         predicates:
+           - Path=/notice-service/
+           - Method=GET, POST, DELETE , PUT
+         filters:
+           - RewritePath=/notice-service/(?<segment>.*), /${segment}
+       #            - AuthorizationHeaderFilter
 
-        - id: classroom-service
-          uri: lb://CLASSROOM-SERVICE
-          predicates:
-            - Path=/classroom-service/**
-            - Method=GET, POST, DELETE, PUT
-          filters:
-            - RewritePath=/classroom-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
+       - id: classroom-service
+         uri: lb://CLASSROOM-SERVICE
+         predicates:
+           - Path=/classroom-service/
+           - Method=GET, POST, DELETE, PUT
+         filters:
+           - RewritePath=/classroom-service/(?<segment>.), /${segment}
+       #            - AuthorizationHeaderFilter
 
+       - id: assignment-service
+         uri: lb://ASSIGNMENT-SERVICE
+         predicates:
+           - Path=/assignment-service/**
+           - Method=GET, POST, DELETE, PUT
+         filters:
+           - RewritePath=/assignment-service/(?<segment>.), /${segment}
+       #            - AuthorizationHeaderFilter
+
+       - id: discuss-service
+         uri: lb://DISCUSS-SERVICE
+         predicates:
+           - Path=/discuss-service/
+           - Method=GET, POST, DELETE, PUT
+         filters:
+           - RewritePath=/discuss-service/(?<segment>.*), /${segment}
+       #            - AuthorizationHeaderFilter
+
+       - id: reference-service
+         uri: lb://REFERENCE-SERVICE
+         predicates:
+           - Path=/reference-service/
+           - Method=GET, POST, DELETE, PUT
+         filters:
+           - RewritePath=/reference-service/(?<segment>.*), /${segment}
+       #            - AuthorizationHeaderFilter
+
+         
         - id: chat-service
           uri: lb://CHAT-SERVICE
           predicates:
