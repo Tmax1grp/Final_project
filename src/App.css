@@ -915,9 +915,13 @@ body {
 }
 
 .card-back {
-  background: #fff;
+  background: #20314E;
   transform: rotateY(-180deg);
   padding: 0 2em;
+}
+
+.card-back h2 {
+  color: #fff;
 }
 .card-back .card-button {
   background: linear-gradient(135deg, #1a9be6, #1a57e6);
@@ -959,6 +963,7 @@ body {
   transition: 300ms ease;
 }
 .card-button:before {
+  background-color: #20314E;
   transition: 300ms ease;
   position: absolute;
   display: block;

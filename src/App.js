@@ -11,11 +11,11 @@ import Lecture from './Lecture/Lecture';
 import Signup from './Account/Signup';
 import Login from './Account/Login';
 import ClassroomMain from './Classroom/ClassroomMain';
-// import Classpage from './pages/ClassPage';
 
 function App() {
 
-  axios.defaults.baseURL = 'http://192.168.201.129:8000'
+  // axios.defaults.baseURL = 'http://192.168.201.129:8000'
+  axios.defaults.baseURL = 'http://10.10.20.26:8000'
 
   return (
     <BrowserRouter>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Nav.module.css';
+import styles from './Home.module.css';
 import { Navbar, Nav } from 'react-bootstrap';
 
 export default function Navmenu() {
