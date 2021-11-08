@@ -1,0 +1,18 @@
+server:
+  port: 19000
+
+spring:
+  application:
+    name: admin-service
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/chat?
+    hikari:
+      username: root
+      password: mariadb
+
