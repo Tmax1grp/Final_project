@@ -186,8 +186,10 @@ public class AdminController {
         return user;
     }
 
+
     @DeleteMapping("/mypage/{userId}")
     public void deleteMypage(@PathVariable Long userId){
+		int i = 0;
         userRepository.deleteById(userId);
     }
 
