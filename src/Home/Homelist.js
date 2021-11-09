@@ -10,12 +10,12 @@ export default function Homelist() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const golecture = () => {
-    let data = {
-      "userName" : sessionStorage.userName
-    }
-    // window.postMessage ( data , 3001, '*')
-  }
+  // const golecture = () => {
+  //   let data = {
+  //     "userName" : sessionStorage.userName
+  //   }
+  //   // window.postMessage ( data , 3001, '*')
+  // }
 
   const [classes, setClasses] = useState([]);
 
@@ -30,17 +30,38 @@ export default function Homelist() {
     )
   },[])
 
+  // const makeclsroom = (e) => {
+  //   let url = '/classroom-service/lectures'
+  //   let data = {
+  //     'userId' : sessionStorage.userId,
+  //     // 'name' : values.name
+  //   }
+  //   var config={
+  //     header: {
+  //       'Content-Type' : 'application/json',
+  //     }
+  //   }
+  //   axios.post(url, data, config)
+  //   .then(res => {
+  //     console.log("makepost", res.data)
+  //     alert("성공")
+  //   }).catch(error => {
+  //     alert("실패")
+  //     console.log(error);
+  //   })
+  // }
+
   const classeslist = classes.map((clas) => {
     return (
       <div className="card-content col-xl-3 col-lg-4 col-md-6">
         <a className="card-card" href="/classroommain">
-          <div className="card-front">
+          <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
             <div>
-              <h1>{clas.name}</h1>
+              <h1 style={{color:"white"}}>{clas.name}</h1>
               <p>강사 {clas.userId}</p>
             </div>
           </div>
-          <div className="card-back row">
+          <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
               <h2>{clas.name}</h2>
               <p>{clas.content}</p>
               <button className="card-button"><a href="/classroomain/{clas.classId}">강의실 입장</a></button>
@@ -54,9 +75,11 @@ export default function Homelist() {
     <Fragment>
       {/* <button><a href='https://3.17.41.125:5000'>화상회의</a></button> */}
       {/* <button><a href='http://10.10.20.69:3002/classroom'>채팅</a></button> */}
-      <button onClick={golecture}><a href="http://localhost:3001">openvidu 강의실</a></button>
+      {/* <button onClick={golecture}><a href="/lecture">openvidu 강의실</a></button> */}
+      <br />
       <div className={styles.home_container}>
         <div className="" style={{height:"1000px", width: "80%", justifyContent: "center", alignItems: "center"}}>
+          <br />
           <div className="row">
             <h3 className="col-11">내 강의</h3> 
             <button className="col-1" variant="primary" onClick={handleShow}>
@@ -84,7 +107,8 @@ export default function Homelist() {
                 <Button variant="secondary" onClick={handleClose}>
                   취소
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                {/* <Button variant="primary" onClick={makeclsroom()}> */}
+                <Button variant="primary">
                   생성
                 </Button>
               </Modal.Footer>
@@ -95,10 +119,13 @@ export default function Homelist() {
             {classeslist}
           </div>
           
-
+          <br/>
           <div className="row">
             <h3 className="col-11">수강중인 강의</h3> 
             <button className="col-1">수강신청</button>
+          </div>
+          <div className="row">
+            {classeslist}
           </div>
           {/* <CardGroup className="col-2 m-1">
             <Card>
@@ -114,8 +141,11 @@ export default function Homelist() {
               </Card.Footer>
             </Card>
           </CardGroup> */}
-          
+          <br />
           <h3>종료된 강의</h3>
+          <div className="row">
+            {classeslist}
+          </div>
           {/* <CardGroup className="col-2 m-1">
             <Card>
               <Card.Img variant="top" src="holder.js/100px160" />

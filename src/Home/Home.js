@@ -11,7 +11,7 @@ export default function Home() {
     <Fragment>
       <Navmenu />
       <Homelist />
-      <Footbar />
+      {/* <Footbar /> */}
     </Fragment>
   );
 }
