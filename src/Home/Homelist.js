@@ -6,52 +6,62 @@ import axios from 'axios'
 export default function Homelist() {
 
   const [show, setShow] = useState(false);
+  const [cls, setCls] = useState([]);
+  const [makecls, setMakeclses] = useState({
+    clsName : '',
+    clscontent : ''
+  });
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const golecture = () => {
-  //   let data = {
-  //     "userName" : sessionStorage.userName
-  //   }
-  //   // window.postMessage ( data , 3001, '*')
-  // }
-
-  const [classes, setClasses] = useState([]);
 
   useEffect(() => {
     axios.get('/classroom-service/lectures/all')
     .then(res => {
       console.log(res.data)
-      setClasses(res.data);
+      setCls(res.data);
     })
     .catch((err) =>
     console.log(err)
     )
   },[])
 
-  // const makeclsroom = (e) => {
-  //   let url = '/classroom-service/lectures'
-  //   let data = {
-  //     'userId' : sessionStorage.userId,
-  //     // 'name' : values.name
-  //   }
-  //   var config={
-  //     header: {
-  //       'Content-Type' : 'application/json',
-  //     }
-  //   }
-  //   axios.post(url, data, config)
-  //   .then(res => {
-  //     console.log("makepost", res.data)
-  //     alert("성공")
-  //   }).catch(error => {
-  //     alert("실패")
-  //     console.log(error);
-  //   })
-  // }
 
-  const classeslist = classes.map((clas) => {
+
+    
+  const handleChangeForm = (e) => {
+    setMakeclses({
+      ...makecls,
+      [e.target.name]: e.target.makecls
+    })
+  }
+  
+  const makeclsroom = () => {
+    let url = '/classroom-service/lectures'
+    let data = {
+      'userId' : sessionStorage.userId,
+      'name' : makecls.clsName,
+      'content' : makecls.clscontent
+    }
+    var config={
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization': sessionStorage.token
+      }
+    }
+    axios.post(url, data, config)
+    .then(res => {
+      alert("강의실 생성 성공")
+      setShow(false)
+    }).catch(error => {
+      alert("실패")
+      console.log(error);
+    })
+  }
+
+  const clslist = cls.map((clas) => {
     return (
       <div className="card-content col-xl-3 col-lg-4 col-md-6">
         <a className="card-card" href="/classroommain">
@@ -71,6 +81,7 @@ export default function Homelist() {
     )
   })
 
+
   return (
     <Fragment>
       {/* <button><a href='https://3.17.41.125:5000'>화상회의</a></button> */}
@@ -86,80 +97,51 @@ export default function Homelist() {
               강의실 생성
             </button>
             <Modal show={show} onHide={handleClose} className={styles.modal}>
-              <Modal.Header closeButton>
-                <Modal.Title>강의실 생성</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <p>강의명</p>
-                <input placeholder="강의명을 작성해주세요"/> 
-                <p>강의실 이미지</p>
-                <Button>등록</Button>
-                <Button>삭제</Button>
-                <p>강의소개</p>
-                <input placeholder="강의소개를 작성해주세요"/> 
-                <p>최대 정원</p>
-              <Button><i className="fas fa-minus"></i></Button>
-              <input placeholder="10"/>
-              <Button><i className="fas fa-plus"></i></Button>
-                
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  취소
-                </Button>
-                {/* <Button variant="primary" onClick={makeclsroom()}> */}
-                <Button variant="primary">
-                  생성
-                </Button>
-              </Modal.Footer>
-            </Modal>
+              <form onSubmit={makeclsroom}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>강의실 생성</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    {/* <label>강의명</label> */}
+                      <p>강의명</p>
+                      <input type="text" name="clsName" placeholder="강의명을 작성해주세요" value={makecls.clsName} onChange={handleChangeForm}/>
+                      <p>강의실 이미지</p>
+                      <button>등록</button>
+                      <button>삭제</button>
+                      <p>강의소개</p>
+                      <input type="text" name="content" placeholder="강의소개를 작성해주세요" value={makecls.clscontent} onChange={handleChangeForm}/> 
+                      <p>최대 정원</p>
+                      <button><i className="fas fa-minus"></i></button>
+                      <input placeholder="10"/>
+                      <button><i className="fas fa-plus"></i></button>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <button onClick={handleClose}>
+                      취소
+                    </button>
+                    <button onClick={makeclsroom}>
+                      생성
+                    </button>
+                  </Modal.Footer>
+                </form>
+              </Modal>
           </div>
-
           <div className="row">
-            {classeslist}
+            {clslist}
           </div>
-          
           <br/>
           <div className="row">
             <h3 className="col-11">수강중인 강의</h3> 
             <button className="col-1">수강신청</button>
           </div>
           <div className="row">
-            {classeslist}
+            {clslist}
           </div>
-          {/* <CardGroup className="col-2 m-1">
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>Spring Boot</Card.Title>
-                <Card.Text>
-                  본 강의는 Spring Boot를 배우고 실습하는 강의입니다...
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">강사 OOO</small>
-              </Card.Footer>
-            </Card>
-          </CardGroup> */}
           <br />
           <h3>종료된 강의</h3>
           <div className="row">
-            {classeslist}
+            {clslist}
           </div>
-          {/* <CardGroup className="col-2 m-1">
-            <Card>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>SQL</Card.Title>
-                <Card.Text>
-                  본 강의는 SQL을 배우고 실습하는 강의입니다...
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">강사 OOO</small>
-              </Card.Footer>
-            </Card>
-          </CardGroup> */}
         </div>
       </div>
     </Fragment>
