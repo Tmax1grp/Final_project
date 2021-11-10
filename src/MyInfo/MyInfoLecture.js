@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
 
-import AdminClassItem from './AdminClassItem';
+import MyInfoClassItem from './MyInfoClassItem'
 
-export default function AdminMember() {
-    // const [classes, setClasses] = useState(null);
-    const classes = [
+export default function MyInfoLecture(props) {
+    // const [myClasses, setMyClasses] = useState(null);
+
+    const myClasses = [
         {
             "name": "강의1",
             "imgPath": "이미지1",
@@ -28,9 +29,9 @@ export default function AdminMember() {
     ]
 
     // useEffect(() => {
-    //     axios.get('/admin/classroom/all').then(res => {
+    //     axios.get('').then(res => {
     //         console.log(res.data)
-    //         setClasses(res.data);
+    //         setMembers(res.data);
     //     }).catch((err) =>
     //         console.log(err)
     //     )
@@ -43,15 +44,14 @@ export default function AdminMember() {
                     <tr>
                         <th>#</th>
                         <th>강의이름</th>
-                        <th>강의생성일</th>
-                        <th>강의정보수정</th>
-                        <th>강의삭제</th>
+                        <th>수강상태</th>
+                        <th>수강취소</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        classes.map(item => {
-                            return (<AdminClassItem item={item} />);
+                        myClasses.map(item => {
+                            return (<MyInfoClassItem item={item} />);
                         })
                     }
                 </tbody>
