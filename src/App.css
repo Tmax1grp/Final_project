@@ -923,8 +923,14 @@ body {
 .card-back h2 {
   color: #fff;
 }
+.card-back p {
+  font-size: 1.5rem;
+}
 .card-back .card-button {
-  background: linear-gradient(135deg, #1a9be6, #1a57e6);
+  background: linear-gradient(135deg, #0d6efd, #1a57e6);
+}
+.card-back .card-button a {
+  color: #fff;
 }
 .card-back .card-button:before {
   box-shadow: 0 0 10px 10px rgba(26, 87, 230, 0.25);
