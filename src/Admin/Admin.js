@@ -3,7 +3,6 @@ import { Row, Col, Nav, Tab } from 'react-bootstrap';
 
 import Navmenu from '../Home/Navmenu';
 import Footbar from '../Home/Footbar';
-import ClassHeader from '../layout/ClassHeader';
 import AdminLecture from './AdminLecture';
 import AdminMember from './AdminMember';
 

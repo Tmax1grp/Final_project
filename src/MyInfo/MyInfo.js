@@ -9,10 +9,10 @@ import MyInfoLecture from './MyInfoLecture';
 export default function MyInfo() {
 
     // 삭제요
-    sessionStorage.setItem('email', 'user1@study.com')
-    sessionStorage.setItem('userId', 'user1')
-    sessionStorage.setItem('userName', '사용자1')
-    sessionStorage.setItem('tel', '010-1111-1111')
+    // sessionStorage.setItem('email', 'user1@study.com')
+    // sessionStorage.setItem('userId', 24)
+    // sessionStorage.setItem('userName', '사용자1')
+    // sessionStorage.setItem('tel', '010-1111-1111')
 
     return (
         <>

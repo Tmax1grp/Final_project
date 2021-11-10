@@ -3,12 +3,7 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function AdminMemberItem({ member }) {
-    const [values, setValues] = useState({
-        userId: '',
-        name: '',
-        email: '',
-        tel: ''
-    });
+    const [values, setValues] = useState(null);
 
     const [editVisible, setEditVisible] = useState(false);
     const [quitVisible, setQuitVisible] = useState(false);
@@ -28,16 +23,23 @@ export default function AdminMemberItem({ member }) {
     const handleEditSubmit = () => {
         closeEditModal();
         console.log("[사용자 업데이트]: ", member.userId);
-        console.log(values);
-        // axios.post();
-        // window.location.reload(false);
+        // console.log(values);
+
+        axios.put(`http://localhost:8000/admin/user/${member.userId}`, null, {
+            params: {
+                password: "",
+                userName: values.name,
+                tel: values.tel
+            }
+        });
+        window.location.reload(false);
     }
 
     const handleQuitSubmit = () => {
-        closeQuitModal();
         console.log("[사용자 삭제]: ", member.userId);
-        // axios.delete();
-        // window.location.reload(false);
+        axios.delete(`http://localhost:8000/admin/user/${member.userId}`);
+        closeQuitModal();
+        window.location.reload(false);
     }
 
     useEffect(() => {
@@ -79,7 +81,7 @@ export default function AdminMemberItem({ member }) {
                             회원이메일
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="email" defaultValue={member.email} onChange={handleChange} />
+                            <Form.Control type="email" readOnly defaultValue={member.email} onChange={handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="tel">
