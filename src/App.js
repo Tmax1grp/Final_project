@@ -11,6 +11,8 @@ import Lecture from './Lecture/Lecture';
 import Signup from './Account/Signup';
 import Login from './Account/Login';
 import ClassroomMain from './Classroom/ClassroomMain';
+import Admin from './Admin/Admin';
+import ClassInfo from './ClassInfo/ClassInfo';
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/signup"><Signup /></Route>
           <Route exact path="/login"><Login /></Route>
           <Route exact path="/classroommain"><ClassroomMain/></Route>
+          <Route exact path="/admin"><Admin/></Route>
+          <Route exact path="/classinfo"><ClassInfo/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>

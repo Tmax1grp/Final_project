@@ -1,44 +1,70 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col, Container, Nav, Tab } from 'react-bootstrap';
 
 import Navmenu from '../Home/Navmenu';
-import ClassBoard from '../layout/ClassBoard';
-import ClassSidebar from '../layout/ClassSidebar';
-import ClassHeader from '../layout/ClassHeader';
 import Footbar from '../Home/Footbar';
+import ClassHeader from '../layout/ClassHeader';
+import ClassBoardHome from '../Board/ClassBoardHome'
+import ClassBoardNotice from '../Board/ClassBoardNotice'
+import ClassBoardIndex from '../Board/ClassBoardIndex'
+import ClassBoardHomework from '../Board/ClassBoardAssignment'
+import ClassBoardDiscuss from '../Board/ClassBoardDiscuss'
+import ClassBoardResource from '../Board/ClassBoardReference'
 
-export default function ClassroomMain(){
-
-  const [activeBoard, setActiveBoard] = useState(0);
-  const [classId, setClassId] = useState(-1);
-
-  useEffect(() => {
-    // TODO: 현재 url 혹은 sessionStorage에서 classroom_id를 불러온다.
-    // (1)
-    // let url = window.location.href
-    // let urlArr = url.split('/')
-    // let classID = parseInt(urlArr[urlArr.length-1])
-    // setClassID(classID) 
-    // 혹은 다른 구현 방법이 있으면 사용
-    setClassId(120);
-  }, [])
-
-  console.log(classId)
-
-  return(
-    <Fragment>
+export default function ClassroomMain({ classId }) {
+  return (
+    <>
       <Navmenu />
-      <ClassHeader />
-      <Row>
-        <Col>
-          <ClassSidebar setActiveBoard={setActiveBoard} />
-        </Col>
-        <Col>
-          <ClassBoard classId={classId} activeBoard={activeBoard} />
-        </Col>
-      </Row>
+      <ClassHeader classId={classId} />
+      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Row>
+          <Col sm={2}>
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link eventKey="first">홈</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="second">공지사항</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="third">강의커리큘럼</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="fourth">과제게시판</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="fifth">질문게시판</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="sixth">자료게시판</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={10}>
+            <Tab.Content>
+              <Tab.Pane eventKey="first">
+                <ClassBoardHome />
+              </Tab.Pane>
+              <Tab.Pane eventKey="second">
+                <ClassBoardNotice />
+              </Tab.Pane>
+              <Tab.Pane eventKey="third">
+                <ClassBoardIndex />
+              </Tab.Pane>
+              <Tab.Pane eventKey="fourth">
+                <ClassBoardHomework />
+              </Tab.Pane>
+              <Tab.Pane eventKey="fifth">
+                <ClassBoardDiscuss />
+              </Tab.Pane>
+              <Tab.Pane eventKey="sixth">
+                <ClassBoardResource />
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
       <Footbar />
-    </Fragment>
+    </>
   );
 }
-
