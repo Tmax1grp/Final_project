@@ -46,6 +46,7 @@ spring:
               - OPTIONS
               - DELETE
      routes:
+
        - id: notice-service
          uri: lb://NOTICE-SERVICE
          predicates:
@@ -53,7 +54,7 @@ spring:
            - Method=GET, POST, DELETE , PUT
          filters:
            - RewritePath=/notice-service/(?<segment>.*), /${segment}
-       #            - AuthorizationHeaderFilter
+       #  - AuthorizationHeaderFilter
 
        - id: classroom-service
          uri: lb://CLASSROOM-SERVICE
@@ -70,7 +71,7 @@ spring:
            - Path=/assignment-service/**
            - Method=GET, POST, DELETE, PUT
          filters:
-           - RewritePath=/assignment-service/(?<segment>.), /${segment}
+           - RewritePath=/assignment-service/(?<segment>.), /$\{segment}
        #            - AuthorizationHeaderFilter
 
        - id: discuss-service
@@ -79,7 +80,7 @@ spring:
            - Path=/discuss-service/
            - Method=GET, POST, DELETE, PUT
          filters:
-           - RewritePath=/discuss-service/(?<segment>.*), /${segment}
+           - RewritePath=/discuss-service/(?<segment>.*), /$\{segment}
        #            - AuthorizationHeaderFilter
 
        - id: reference-service
@@ -88,10 +89,10 @@ spring:
            - Path=/reference-service/
            - Method=GET, POST, DELETE, PUT
          filters:
-           - RewritePath=/reference-service/(?<segment>.*), /${segment}
+           - RewritePath=/reference-service/(?<segment>.*), /$\{segment}
        #            - AuthorizationHeaderFilter
 
-         
+
         - id: chat-service
           uri: lb://CHAT-SERVICE
           predicates:

@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="noticeReplies")
+@Table(name="notice_replies")
 public class ReplyEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reply_id")
     private Long replyId;
 
     @Column(nullable = false)
@@ -29,7 +31,7 @@ public class ReplyEntity {
 
     @ManyToOne
     @JoinColumn(name = "notice_id")
-    private NoticeEntity noticeEntity;
+    private NoticeEntity noticeId;
 
 
 

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="" />
+    <list default="true" id="fe4eb9cb-f1ff-4c1e-b880-fbfbb8b23a66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/dto/ReplyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/java/com/example/classroomservice/controller/ClassroomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/controller/ClassroomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../classroom-service/target/classes/com/example/classroomservice/controller/ClassroomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/controller/NoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/controller/ReplyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/entity/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/entity/NoticeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/entity/ReplyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/entity/ReplyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/jpa/ReplyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice-service/src/main/java/com/example/noticeservice/jpa/ReplyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notice-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../notice-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,17 +67,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NoticeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="notice-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.noticeservice.NoticeServiceApplication" />
@@ -94,6 +97,8 @@
       <workItem from="1636187154770" duration="2490000" />
       <workItem from="1636190518865" duration="2229000" />
       <workItem from="1636192958504" duration="10876000" />
+      <workItem from="1636270473532" duration="3000" />
+      <workItem from="1636520958427" duration="21000" />
     </task>
     <servers />
   </component>

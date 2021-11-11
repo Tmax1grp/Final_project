@@ -1,12 +1,10 @@
-package com.example.noticeservice.jpa;
+package com.example.assignmentservice.jpa;
 
-import com.example.noticeservice.entity.NoticeEntity;
-import com.example.noticeservice.entity.ReplyEntity;
+import com.example.assignmentservice.entity.ReplyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 @EnableJpaRepositories
 @Repository
 public interface ReplyRepository extends JpaRepository<ReplyEntity, Long> {

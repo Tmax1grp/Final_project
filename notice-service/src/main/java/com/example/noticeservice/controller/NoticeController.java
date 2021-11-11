@@ -2,23 +2,27 @@ package com.example.noticeservice.controller;
 
 
 import com.example.noticeservice.entity.NoticeEntity;
+import com.example.noticeservice.entity.ReplyEntity;
 import com.example.noticeservice.jpa.NoticeRepository;
 
+import com.example.noticeservice.jpa.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/{classId}")
+@RequestMapping("notice-service/{classId}")
 
 public class NoticeController {
 
     @Autowired
     private NoticeRepository noticeRepository;
+
 
 
 
@@ -92,6 +96,8 @@ public class NoticeController {
         noticeRepository.save(notice);
     }
 
+
+
     // 글 수정
     @PutMapping("/notice/{noticeId}")
     public NoticeEntity updateNotice(
@@ -114,10 +120,18 @@ public class NoticeController {
         noticeRepository.save(notice);
         return notice;
     }
+
+
+
 // 글 삭제
+
+
     @DeleteMapping("/notice/{noticeId}")
-    public void deleteNotice( @RequestBody NoticeEntity noticeEntity){
+    public void deleteNotice( @PathVariable Long noticeId, @RequestBody NoticeEntity noticeEntity){
         noticeRepository.deleteById(noticeEntity.getNoticeId());
     }
+
+
+
 
 }

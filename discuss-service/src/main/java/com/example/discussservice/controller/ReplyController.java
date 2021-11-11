@@ -1,10 +1,9 @@
-package com.example.noticeservice.controller;
+package com.example.discussservice.controller;
 
-
-import com.example.noticeservice.entity.NoticeEntity;
-import com.example.noticeservice.entity.ReplyEntity;
-import com.example.noticeservice.jpa.NoticeRepository;
-import com.example.noticeservice.jpa.ReplyRepository;
+import com.example.discussservice.entity.DiscussEntity;
+import com.example.discussservice.entity.ReplyEntity;
+import com.example.discussservice.jpa.DiscussRepository;
+import com.example.discussservice.jpa.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +12,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("notice-service/{classId}/notice/{noticeId}")
+@RequestMapping("discuss-service/{classId}/discuss/{discussId}")
 
 public class ReplyController {
 
     @Autowired
-    private NoticeRepository noticeRepository;
+    private DiscussRepository discussRepository;
 
 
 
@@ -29,11 +28,11 @@ public class ReplyController {
 
 //댓글 조회
 
-//
+    //
     @GetMapping("/reply")
-    public List<ReplyEntity> getNoticeEntityReply(@PathVariable Long noticeId, @PathVariable Long classId){
+    public List<ReplyEntity> getDiscussEntityReply(@PathVariable Long discussId, @PathVariable Long classId){
 
-        NoticeEntity noticeEntity = noticeRepository.findById(noticeId).get();
+        DiscussEntity discussEntity = discussRepository.findById(discussId).get();
 
         return replyRepository.findAll();
     }
@@ -42,10 +41,10 @@ public class ReplyController {
 //댓글 등록
 
     @PutMapping("/reply")
-    public ReplyEntity createReply(@PathVariable Long classId, @PathVariable Long noticeId,  @RequestBody ReplyEntity replyEntity) {
+    public ReplyEntity createReply(@PathVariable Long classId, @PathVariable Long discussId,  @RequestBody ReplyEntity replyEntity) {
 
-        Optional<NoticeEntity> notice = noticeRepository.findById(noticeId);
-        replyEntity.setNoticeId(notice.get());
+        Optional<DiscussEntity> discuss = discussRepository.findById(discussId);
+        replyEntity.setDiscussId(discuss.get());
         replyEntity.setCreateDate(LocalDateTime.now());
         replyRepository.save(replyEntity);
 

@@ -1,25 +1,20 @@
-package com.example.noticeservice.entity;
-
+package com.example.discussservice.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="notice")
-public class NoticeEntity implements Serializable {
+@Table(name="discuss_replies")
+public class ReplyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notice_id")
-    private Long noticeId;
-
-    @Column(nullable = false)
-    private Long classId;
+    @Column(name = "reply_id")
+    private Long replyId;
 
     @Column(nullable = false)
     private String title;
@@ -28,19 +23,15 @@ public class NoticeEntity implements Serializable {
     private String content;
 
     @Column(nullable = false)
-    private Long clickCnt;
-
-    @Column(nullable = false)
-    private String delYn;
+    private String author;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
-    @Column(nullable = false)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "discuss_id")
+    private DiscussEntity discussId;
 
-    @Column(nullable = false)
-    private String attach;
 
 
 }
