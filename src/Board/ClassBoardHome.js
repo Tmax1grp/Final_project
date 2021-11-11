@@ -11,7 +11,11 @@ export default function ClassBoardHome({classId, content}) {
           강의소개
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">{content}</li>
+          {
+            content == '' ? 
+            <p>강의소개가 없습니다.</p>
+          : <li className="list-group-item">{content}</li>
+          }
         </ul>
       </div>
       <div>

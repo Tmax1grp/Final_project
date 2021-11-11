@@ -12,12 +12,10 @@ export default function Homelist() {
   const [cls, setCls] = useState([]);
   const [makecls, setMakeclses] = useState({
     clsName : '',
-    clscontent : ''
+    clscontent : '',
+    clsparticipantNum: 0
   });
-  const [ incls, setIncls ] = useState([]);
-  // const [ user, setUsers ] = useState([]);
-
-  // let cnt = 10;
+  const [ incls, setIncls ] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -25,7 +23,8 @@ export default function Homelist() {
   const handleClose2 = () => setShow2(false);
 
   useEffect(() => {
-    axios.get('/classroom-service/lectures/all')
+    axios.get('/classroom-service/lectures/all', 
+      {params: {userId: sessionStorage.userId}})
     .then(res => {
       console.log(res.data)
       setCls(res.data);
@@ -34,14 +33,8 @@ export default function Homelist() {
     console.log(err)
     )
   },[])
-
-  // useEffect(() => {
-  //   axios.get('/admin-service/admin/user/all')
-  //   .then(res => {
-  //     console.log(res.data)
-  //   })
-  // }, [])
     
+
   const handleChangeForm = (e) => {
     setMakeclses({
       ...makecls,
@@ -50,10 +43,7 @@ export default function Homelist() {
   }
 
   const handleChangeForm2 = (e) => {
-    setIncls({
-      ...incls,
-      [e.target.name]: e.target.value
-    })
+    setIncls(e.target.value)
   }
   
   const makeclsroom = () => {
@@ -62,7 +52,8 @@ export default function Homelist() {
       'userId' : sessionStorage.userId,
       'userName' : sessionStorage.userName,
       'name' : makecls.clsName,
-      'content' : makecls.clscontent
+      'content' : makecls.clscontent,
+      'participantNum': makecls.clsparticipantNum
     }
     var config={
       headers: {
@@ -81,21 +72,16 @@ export default function Homelist() {
   }
 
   const enterCls = () => {
-    let url = '/lecture-service/students'
-    let data = {
-      'userId' : sessionStorage.userId,
-      'userName' : sessionStorage.userName,
-      'classroomId' : incls
-    }
-    var config={
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization': sessionStorage.token
-      }
-    }
-    axios.post(url, data, config)
+    axios.post('/lecture-service/students', 
+    null, {
+      params: {
+        userId: sessionStorage.userId,
+        userName: sessionStorage.userName,
+        classroomId: incls
+    }}
+    )
     .then(res => {
-      alert("강의실 생성 성공")
+      alert("수강신청 성공")
       setShow(false)
     }).catch(error => {
       alert("실패")
@@ -103,17 +89,8 @@ export default function Homelist() {
     })
   }
 
-  // const minusClick = () => {
-  //   if (cnt !== 1) {
-  //     cnt -= 1
-  //   }
-  // }
-
   return (
     <Fragment>
-      {/* <button><a href='https://3.17.41.125:5000'>화상회의</a></button> */}
-      {/* <button><a href='http://10.10.20.69:3002/classroom'>채팅</a></button> */}
-      {/* <button onClick={golecture}><a href="/lecture">openvidu 강의실</a></button> */}
       <br />
       <div className={styles.home_container}>
         <div className="" style={{height:"1000px", width: "80%", justifyContent: "center", alignItems: "center"}}>
@@ -137,13 +114,8 @@ export default function Homelist() {
                     <button>삭제</button> */}
                     <p>강의소개</p>
                     <input type="text" name="clscontent" placeholder="강의소개를 작성해주세요" value={makecls.clscontent} onChange={handleChangeForm}/> 
-                    
                     <p>최대 정원</p>
-                    {/* <div className="row"> */}
-                    <button className="col-1"><i className="fas fa-minus"></i></button>
-                    <input className="col-10" placeholder="10"/>
-                    <button className="col-1"><i className="fas fa-plus"></i></button>
-                    {/* </div> */}
+                    <input type="text" name="clsparticipantNum" placeholder="숫자만 작성해주세요" value={makecls.clsparticipantNum} onChange={handleChangeForm}/>
                 </Modal.Body>
                 <Modal.Footer>
                   <button onClick={handleClose}>
@@ -162,7 +134,7 @@ export default function Homelist() {
               cls.map(item => (
                 item.status == 5 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
-                  <Link className="card-card" to={`/classroommain/${item.classId}`} params={item.classId}>
+                  <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classId}>
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
@@ -193,7 +165,7 @@ export default function Homelist() {
                 </Modal.Header>
                 <Modal.Body>
                   <p>강의실 번호</p>
-                  <input type="text" name="classroomId" placeholder="수강신청할 강의실 번호를 작성해주세요." value={incls.clsId} onChange={handleChangeForm2}/>
+                  <input type="text" name="incls" placeholder="수강신청할 강의실 번호를 작성해주세요." value={incls} onChange={handleChangeForm2}/>
                 </Modal.Body>
                 <Modal.Footer>
                   <button onClick={handleClose2}>

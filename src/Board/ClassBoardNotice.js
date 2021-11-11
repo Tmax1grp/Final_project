@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import styles from './Board.module.css'
 // import ClassBoardList from '../widgets/ClassBoardList';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardNotice({classId}) {
@@ -22,7 +23,7 @@ export default function ClassBoardNotice({classId}) {
   },[classId])
     
   const classeslist = classes.map((clas) => {
-    const aaaa = () => {
+    const enternoticedetail = () => {
       let clickCnt = 1
       axios.get(`/notice-service/${classId}/notice/${clas.noticeId}`, {
         params: {
@@ -34,8 +35,7 @@ export default function ClassBoardNotice({classId}) {
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
-        <td><button onClick={aaaa}><a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td>
-        {/* <td><button onClick={aaaa}>{clas.title}</button></td> */}
+        <td><button onClick={enternoticedetail}><a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td>
         <td>{clas.author}</td>
         <td>{clas.createDate}</td>
         <td>{clas.clickCnt}</td>
@@ -68,10 +68,15 @@ export default function ClassBoardNotice({classId}) {
     console.log(e.target.value);
   }
 
+  console.log(classId)
   return (
     <div>
       <div className="row">
-        <div className="col-6"></div>
+        <div className="col-6">
+          <Link to={`/boardcreate/${classId}`} params={classId}>
+            <i class="fas fa-pen-square fa-2x" style={{color:"black"}}></i>
+          </Link>
+        </div>
         <div className="col-3">
           <table className="table col-3">
             <tr>

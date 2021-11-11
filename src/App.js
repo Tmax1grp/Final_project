@@ -14,6 +14,7 @@ import ClassroomMain from './Classroom/ClassroomMain';
 import Admin from './Admin/Admin';
 import ClassInfo from './ClassInfo/ClassInfo';
 import ClassDetailNotice from './Board/ClassDetailNotice';
+import BoardCreate from './Board/BoardCreate';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/admin"><Admin/></Route>
           <Route exact path="/classinfo"><ClassInfo/></Route>
           <Route exact path="/classdetailnotice"><ClassDetailNotice/></Route>
+          <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>
