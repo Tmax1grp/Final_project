@@ -1,16 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 export default function MypageClassItem({ item }) {
+    // console.log(item);
     const [quitVisible, setQuitVisible] = useState(false);
     const showDeleteModal = () => setQuitVisible(true);
     const closeDeleteModal = () => setQuitVisible(false);
 
-    const handleDeleteSubmit = () => {
+    const handleDeleteSubmit = e => {
+        e.preventDefault();
         closeDeleteModal();
-        console.log("[강의 삭제]: ", item.userId);
-        // axios.delete();
-        // window.location.reload(false);
+        console.log("[수강 취소]: ");
+        axios.put('/lecture-service/students', null, {
+            params: {
+                classroomId: item.classroomId,
+                userId: item.userId,
+                status: item.status
+            }
+        })
+            .then(res => {
+                console.log(res.status);
+            })
+            .catch((err) =>
+                console.log(err)
+            )
+
+        // document.location.href = '/mypage'
     }
 
     return (
@@ -19,7 +35,14 @@ export default function MypageClassItem({ item }) {
                 <td>{item.imgPath}</td>
                 <td>{item.name}</td>
                 <td>{item.status}</td>
-                <td><Button onClick={showDeleteModal}>취소신청</Button></td>
+                <td>
+                    {
+                        item.status != 5 ?
+                            <Button onClick={showDeleteModal}>취소신청</Button>
+                            :
+                            <></>
+                    }
+                </td>
             </tr>
             <Modal show={quitVisible} onHide={showDeleteModal}>
                 <Modal.Header>

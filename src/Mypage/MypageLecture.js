@@ -29,16 +29,16 @@ export default function MypageLecture(props) {
     // ]
 
     useEffect(() => {
-        axios.get('/classroom-service/lectures/all', 
-          {params: {userId: sessionStorage.userId}})
-        .then(res => {
-          console.log(res.data)
-          setMyClasses(res.data);
-        })
-        .catch((err) =>
-        console.log(err)
-        )
-      },[])
+        axios.get('/classroom-service/lectures/all',
+            { params: { userId: sessionStorage.userId } })
+            .then(res => {
+                console.log(res.data)
+                setMyClasses(res.data);
+            })
+            .catch((err) =>
+                console.log(err)
+            )
+    }, [])
 
     return (
         <>
@@ -53,9 +53,12 @@ export default function MypageLecture(props) {
                 </thead>
                 <tbody>
                     {
-                        myClasses.map(item => {
-                            return (<MypageClassItem key={item.name} item={item} />);
-                        })
+                        myClasses != null ?
+                            myClasses.map(item => {
+                                return (<MypageClassItem key={item.name} item={item} />);
+                            })
+                            :
+                            <>수강 중인 강의 정보를 불러올 수 없습니다!</>
                     }
                 </tbody>
             </Table>
