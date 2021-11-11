@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
 
-import AdminClassItem from './AdminClassItem';
-import AdminCreateClassForm from './AdminCreateClassForm';
+import MypageClassItem from './MypageClassItem'
 
-export default function AdminLecture() {
-    const [classes, setClasses] = useState(null);
-    // let classes = [
+export default function MypageLecture(props) {
+    const [myClasses, setMyClasses] = useState(null);
+
+    // const myClasses = [
     //     {
     //         "name": "강의1",
     //         "imgPath": "이미지1",
@@ -29,35 +29,33 @@ export default function AdminLecture() {
     // ]
 
     useEffect(() => {
-        axios.get('/admin-service/admin/classroom/all').then(res => {
-            console.log(res.data)
-            setClasses(res.data);
-        }).catch((err) =>
-            console.log(err)
+        axios.get('/classroom-service/lectures/all', 
+          {params: {userId: sessionStorage.userId}})
+        .then(res => {
+          console.log(res.data)
+          setMyClasses(res.data);
+        })
+        .catch((err) =>
+        console.log(err)
         )
-    }, [])
+      },[])
 
     return (
         <>
-            <AdminCreateClassForm />
             <Table responsive="sm">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>강의이름</th>
-                        <th>강의생성일</th>
-                        <th>강의정보수정</th>
-                        <th>강의삭제</th>
+                        <th>수강상태</th>
+                        <th>수강취소</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        classes != null ?
-                            classes.map(item => {
-                                return (<AdminClassItem key={item.name} item={item} />);
-                            })
-                            :
-                            <>강의 데이터를 불러올 수 없습니다.</>
+                        myClasses.map(item => {
+                            return (<MypageClassItem key={item.name} item={item} />);
+                        })
                     }
                 </tbody>
             </Table>

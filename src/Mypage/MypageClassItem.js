@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-export default function MyInfoClassItem({ item }) {
+export default function MypageClassItem({ item }) {
     const [quitVisible, setQuitVisible] = useState(false);
     const showDeleteModal = () => setQuitVisible(true);
     const closeDeleteModal = () => setQuitVisible(false);

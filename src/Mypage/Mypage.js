@@ -3,16 +3,10 @@ import { Row, Col, Nav, Tab } from 'react-bootstrap';
 
 import Navmenu from '../Home/Navmenu';
 import Footbar from '../Home/Footbar';
-import MyInfoDetail from './MyInfoDetail';
-import MyInfoLecture from './MyInfoLecture';
+import MypageDetail from './MypageDetail';
+import MypageLecture from './MypageLecture';
 
-export default function MyInfo() {
-
-    // 삭제요
-    // sessionStorage.setItem('email', 'user1@study.com')
-    // sessionStorage.setItem('userId', 24)
-    // sessionStorage.setItem('userName', '사용자1')
-    // sessionStorage.setItem('tel', '010-1111-1111')
+export default function Mypage() {
 
     return (
         <>
@@ -32,10 +26,10 @@ export default function MyInfo() {
                     <Col sm={9}>
                         <Tab.Content>
                             <Tab.Pane eventKey="first">
-                                <MyInfoDetail />
+                                <MypageDetail />
                             </Tab.Pane>
                             <Tab.Pane eventKey="second">
-                                <MyInfoLecture />
+                                <MypageLecture />
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>

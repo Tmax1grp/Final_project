@@ -3,7 +3,7 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function AdminMemberItem({ member }) {
-    const [values, setValues] = useState(null);
+    const [values, setValues] = useState();
 
     const [editVisible, setEditVisible] = useState(false);
     const [quitVisible, setQuitVisible] = useState(false);
@@ -17,34 +17,29 @@ export default function AdminMemberItem({ member }) {
             ...values,
             [event.target.id]: event.target.value
         })
-        console.log(values);
     }
 
     const handleEditSubmit = () => {
-        closeEditModal();
         console.log("[사용자 업데이트]: ", member.userId);
-        // console.log(values);
+        console.log(values);
 
-        axios.put(`http://localhost:8000/admin/user/${member.userId}`, null, {
-            params: {
-                password: "",
-                userName: values.name,
-                tel: values.tel
-            }
-        });
-        window.location.reload(false);
+        axios.put(`/user-service/users`, values);
+        closeEditModal();
+        document.location.href = '/admin'
     }
 
     const handleQuitSubmit = () => {
         console.log("[사용자 삭제]: ", member.userId);
-        axios.delete(`http://localhost:8000/admin/user/${member.userId}`);
+        axios.delete(`/admin-service/admin/user/${member.userId}`);
         closeQuitModal();
-        window.location.reload(false);
+        document.location.href = '/admin'
     }
 
     useEffect(() => {
-        setValues(member);
-        // console.log(values);
+        setValues({
+            ...member,
+            "password": ""
+        });
     }, [])
 
     return (
@@ -68,12 +63,12 @@ export default function AdminMemberItem({ member }) {
                             <Form.Control type="text" readOnly defaultValue={member.userId} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="name">
+                    <Form.Group as={Row} className="mb-3" controlId="userName">
                         <Form.Label column sm="4">
                             회원이름
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="text" defaultValue={member.name} onChange={handleChange} />
+                            <Form.Control type="text" defaultValue={member.userName} onChange={handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="email">
@@ -97,7 +92,7 @@ export default function AdminMemberItem({ member }) {
                             회원가입일
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="date" readOnly defaultValue={member.createDate} />
+                            <Form.Control type="text" readOnly defaultValue={member.createdAt != null ? member.createdAt.split("T")[0] : ""} />
                         </Col>
                     </Form.Group>
                 </Modal.Body>

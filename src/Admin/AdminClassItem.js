@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
+import axios from 'axios';
 
 export default function AdminClassItem({ item }) {
     const [values, setValues] = useState({
+        classId: '',
         name: '',
         imgPath: '',
         userId: '',
@@ -39,7 +41,7 @@ export default function AdminClassItem({ item }) {
     const handleDeleteSubmit = () => {
         closeDeleteModal();
         console.log("[강의 삭제]: ", item.userId);
-        // axios.delete();
+        axios.delete(`/admin/classroom/${item}`);
         // window.location.reload(false);
     }
 
@@ -53,13 +55,13 @@ export default function AdminClassItem({ item }) {
             <tr>
                 <td>{item.imgPath}</td>
                 <td>{item.name}</td>
-                <td>{item.createdDate}</td>
+                <td>{item.createdDate != null ? item.createdDate.split("T")[0] : ""}</td>
                 <td><Button onClick={showEditModal}>수정</Button></td>
                 <td><Button onClick={showDeleteModal}>삭제</Button></td>
             </tr>
             <Modal show={editVisible} onHide={showEditModal}>
                 <Modal.Header>
-                    <Modal.Title>회원 정보 수정</Modal.Title>
+                    <Modal.Title>강의 정보 수정</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group as={Row} className="mb-3" controlId="userId">
@@ -99,7 +101,7 @@ export default function AdminClassItem({ item }) {
                             강의생성일
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="date" readOnly defaultValue={item.createdDate} onChange={handleChange} />
+                            <Form.Control type="date" readOnly defaultValue={item.createdDate != null ? item.createdDate.split("T")[0] : ""} onChange={handleChange} />
                         </Col>
                     </Form.Group>
                 </Modal.Body>

@@ -8,7 +8,7 @@ export default function AdminMember() {
     const [members, setMembers] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/admin/user/all').then(res => {
+        axios.get('/admin-service/admin/user/all').then(res => {
             // console.log(res.data)
             setMembers(res.data);
         }).catch((err) =>
@@ -31,7 +31,7 @@ export default function AdminMember() {
                     {
                         members != null ?
                             members.map(member => {
-                                return (<AdminMemberItem member={member} />);
+                                return (<AdminMemberItem key={member.userId} member={member} />);
                             })
                             :
                             <>사용자 데이터를 불러올 수 없습니다.</>

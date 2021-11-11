@@ -13,12 +13,12 @@ import Login from './Account/Login';
 import ClassroomMain from './Classroom/ClassroomMain';
 import Admin from './Admin/Admin';
 import ClassInfo from './ClassInfo/ClassInfo';
-import MyInfo from './MyInfo/MyInfo';
+import Mypage from './Mypage/Mypage';
 
 function App() {
 
   // axios.defaults.baseURL = 'http://192.168.201.129:8000'
-  axios.defaults.baseURL = 'http://10.10.20.26:8000'
+  axios.defaults.baseURL = 'http://10.10.20.95:8000'
 
   return (
     <BrowserRouter>
@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/classroommain"><ClassroomMain/></Route>
           <Route exact path="/admin"><Admin/></Route>
           <Route exact path="/classinfo"><ClassInfo/></Route>
-          <Route exact path="/myinfo"><MyInfo/></Route>
+          <Route exact path="/mypage"><Mypage/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>
