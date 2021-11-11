@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
-export default function ClassBoardSummary({ classId }) {
+export default function ClassBoardSummary({classId}) {
 
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://192.168.201.129:8000/notice/${classId}/notice/all`)
+    axios.get(`/notice-service/${classId}/notice/all`)
     .then(res => {
-      console.log(res.data)
       setArticles(res.data);
     })
     .catch((err) =>
@@ -18,9 +17,8 @@ export default function ClassBoardSummary({ classId }) {
   },[])
 
   useEffect(() => {
-    axios.get(`http://192.168.201.129:8000/discuss/${classId}/discuss/all`)
+    axios.get(`/discuss-service/discuss/${classId}/discuss/all`)
     .then(res => {
-      console.log(res.data)
       setArticles(res.data);
     })
     .catch((err) =>
@@ -28,6 +26,7 @@ export default function ClassBoardSummary({ classId }) {
     )
   },[])
 
+  console.log(articles)
     
   const articlelist = articles.map((article) => {
     return (
@@ -45,6 +44,7 @@ export default function ClassBoardSummary({ classId }) {
       </div>
     )
   }).slice(-2)
+
   return (
     <div className="accordion" id="accordionExample">
       {articlelist}    

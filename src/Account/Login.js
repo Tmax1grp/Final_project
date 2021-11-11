@@ -72,8 +72,8 @@ export default function Signup() {
               <div className="button" onClick={onClickLogin}>
                 로그인
               </div>
-              <Link to="/">아이디찾기</Link> 
-              <Link to="/">비밀번호찾기</Link>
+              {/* <Link to="/">아이디찾기</Link> 
+              <Link to="/">비밀번호찾기</Link> */}
               <div className="signup-message">
                 <a href="/signup">회원이 아니신가요? 회원가입하기</a>
               </div>

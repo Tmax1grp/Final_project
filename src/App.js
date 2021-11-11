@@ -14,6 +14,8 @@ import ClassroomMain from './Classroom/ClassroomMain';
 import Admin from './Admin/Admin';
 import ClassInfo from './ClassInfo/ClassInfo';
 import Mypage from './Mypage/Mypage';
+import ClassDetailNotice from './Board/ClassDetailNotice';
+import BoardCreate from './Board/BoardCreate';
 
 function App() {
 
@@ -29,10 +31,12 @@ function App() {
           <Route exact path="/lecture"><Lecture /></Route>
           <Route exact path="/signup"><Signup /></Route>
           <Route exact path="/login"><Login /></Route>
-          <Route exact path="/classroommain"><ClassroomMain/></Route>
+          <Route exact path="/classroommain/:classId" ><ClassroomMain/></Route>
           <Route exact path="/admin"><Admin/></Route>
           <Route exact path="/classinfo"><ClassInfo/></Route>
           <Route exact path="/mypage"><Mypage/></Route>
+          <Route exact path="/classdetailnotice"><ClassDetailNotice/></Route>
+          <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>

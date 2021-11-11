@@ -1,16 +1,18 @@
 import React,{useEffect, useState} from 'react';
-import ClassBoardList from '../widgets/ClassBoardList';
+import styles from './Board.module.css'
+// import ClassBoardList from '../widgets/ClassBoardList';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
-export default function ClassBoardNotice({ classId }) {
+export default function ClassBoardNotice({classId}) {
 
   const [classes, setClasses] = useState([]);
   const [notice, setNotice] = useState([]);
   const [ss, setSs] = useState("");
 
   useEffect(() => {
-    axios.get(`http://192.168.201.129:8000/notice/${classId}/notice/all`)
+    axios.get(`/notice-service/${classId}/notice/all`)
     .then(res => {
       // console.log(res.data)
       setClasses(res.data);
@@ -21,9 +23,9 @@ export default function ClassBoardNotice({ classId }) {
   },[classId])
     
   const classeslist = classes.map((clas) => {
-    const aaaa = () => {
+    const enternoticedetail = () => {
       let clickCnt = 1
-      axios.get(`http://192.168.201.129:8000/notice/${classId}/notice/${clas.noticeId}`, {
+      axios.get(`/notice-service/${classId}/notice/${clas.noticeId}`, {
         params: {
           clickCnt : 0
         }
@@ -33,8 +35,7 @@ export default function ClassBoardNotice({ classId }) {
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
-        <td><button onClick={aaaa}><a href={`/notice/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td>
-        {/* <td><button onClick={aaaa}>{clas.title}</button></td> */}
+        <td><button onClick={enternoticedetail}><a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td>
         <td>{clas.author}</td>
         <td>{clas.createDate}</td>
         <td>{clas.clickCnt}</td>
@@ -44,7 +45,7 @@ export default function ClassBoardNotice({ classId }) {
   )
 
   useEffect(() => {
-    axios.get(`http://192.168.201.129:8000/notice/${classId}/notice/all`)
+    axios.get(`/notice-service/${classId}/notice/all`)
     .then(res => {
       // console.log(res.data)
       setNotice(res.data);
@@ -53,10 +54,10 @@ export default function ClassBoardNotice({ classId }) {
 
   function SearchBar(){
     return(
-      <table className={"talbe"}>
+      <table className="table">
         <tr>
           <td>
-            <input type={"text"} size={"25"} className={"input-sm"} placeholder={"search"}/>
+            <input type="text" size="25" className="input-sm" placeholder="search"/>
           </td>
         </tr>
       </table>
@@ -67,17 +68,35 @@ export default function ClassBoardNotice({ classId }) {
     console.log(e.target.value);
   }
 
+  console.log(classId)
   return (
     <div>
-      <table className= {"table"}>
-        <tr>
-          <td>  
-            <input type={"text"} className={"input-sm"} size={"10"} onChange={handleChange} placeholder={"search"}/>
-          </td>
-        </tr>
-      </table>
-      <table class="table table-sm">
-        <thead>
+      <div className="row">
+        <div className="col-6">
+          <Link to={`/boardcreate/${classId}`} params={classId}>
+            <i class="fas fa-pen-square fa-2x" style={{color:"black"}}></i>
+          </Link>
+        </div>
+        <div className="col-3">
+          <table className="table col-3">
+            <tr>
+              <td>
+                <input type="text" size="25" className="input-sm" placeholder="검색"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div className="col-3">
+          <select className="form-select col-3" aria-label="Default select example">
+            <option selected>전체선택</option>
+            <option value="1">제목</option>
+            <option value="2">작성자</option>
+          </select>
+        </div>
+      </div>
+
+      <table className="table">
+        <thead className="thead-dark">
           <tr>
             <th scope="col">번호</th>
             <th scope="col">제목</th>

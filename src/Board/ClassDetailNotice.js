@@ -1,52 +1,22 @@
-import React,{useEffect, useState} from 'react';
-import ClassBoardNotice from './ClassBoardNotice';
 import axios from 'axios';
+import React, {useEffect, useState} from 'react';
+// import Navmenu from '../Home/Navmenu';
+// import axios from 'axios';
 
-export default function ClassBoardNotice({ classId }) {
+export default function ClassDetailNotice() {
 
-  const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
-    axios.get(`http://192.168.201.129:8000/notice/${classId}/notice/{noticeId}`)
-      .then(res => {
-        // console.log(res.data)
-        setClasses(res.data);
-    })
-      .catch((err) =>
-      console.log(err)
-    )
-  },[classId])
-
-
-  const classeslist = classes.map((clas) => {
-    return (
-      <tr>
-        <th scope="row">{clas.noticeId}</th>
-        <td>{clas.title}</td>
-        <td>{clas.author}</td>
-        <td>{clas.createDate}</td>
-        <td>{clas.clickCnt}</td>
-      </tr>
-    )
-  })
+  // useEffect(() => {
+  //   axios.get(`/notice-service/{classId}/notice/{noticeId}`)
+  //   .then(res => {
+  //     console.log(res.data)
+  //   })
+  // },[])
 
   return (
     <div>
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">등록일</th>
-            <th scope="col">조회수</th>
-          </tr>
-        </thead>
-        <tbody>
-          {classeslist}
-        </tbody>
-      </table>
-      {/* <ClassBoardList name="notice" classId={classId} /> */}
+      <div>제목</div>
+      <div>내용</div>
+      <div>댓글</div>
     </div>
   );
 }
