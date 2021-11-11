@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import styles from './Home.module.css';
-import { CardGroup, Card, Modal, Button } from "react-bootstrap";
+// import { CardGroup, Card, Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import axios from 'axios'
-
+// import ClassroomMain from '../Classroom/ClassroomMain';
+import { Link } from 'react-router-dom';
 export default function Homelist() {
 
   const [show, setShow] = useState(false);
@@ -13,15 +15,15 @@ export default function Homelist() {
     clscontent : ''
   });
   const [ incls, setIncls ] = useState([]);
+  // const [ user, setUsers ] = useState([]);
 
-  let cnt = 10;
+  // let cnt = 10;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleShow2 = () => setShow2(true);
   const handleClose2 = () => setShow2(false);
 
-  // 내 강의 (내가 teacher)
   useEffect(() => {
     axios.get('/classroom-service/lectures/all')
     .then(res => {
@@ -33,12 +35,12 @@ export default function Homelist() {
     )
   },[])
 
-  // 수강중인 강의 (내가 student)
   // useEffect(() => {
-  //   axios.get('/classroom-service')
-  // })
-
-  // 종료된 강의 ()
+  //   axios.get('/admin-service/admin/user/all')
+  //   .then(res => {
+  //     console.log(res.data)
+  //   })
+  // }, [])
     
   const handleChangeForm = (e) => {
     setMakeclses({
@@ -58,6 +60,7 @@ export default function Homelist() {
     let url = '/classroom-service/lectures'
     let data = {
       'userId' : sessionStorage.userId,
+      'userName' : sessionStorage.userName,
       'name' : makecls.clsName,
       'content' : makecls.clscontent
     }
@@ -81,8 +84,8 @@ export default function Homelist() {
     let url = '/lecture-service/students'
     let data = {
       'userId' : sessionStorage.userId,
-      'classroomId' : incls,
-      'status' : 0
+      'userName' : sessionStorage.userName,
+      'classroomId' : incls
     }
     var config={
       headers: {
@@ -129,9 +132,9 @@ export default function Homelist() {
                   {/* <label>강의명</label> */}
                     <p>강의명</p>
                     <input type="text" name="clsName" placeholder="강의명을 작성해주세요" value={makecls.clsName} onChange={handleChangeForm}/>
-                    <p>강의실 이미지</p>
+                    {/* <p>강의실 이미지</p>
                     <button>등록</button>
-                    <button>삭제</button>
+                    <button>삭제</button> */}
                     <p>강의소개</p>
                     <input type="text" name="clscontent" placeholder="강의소개를 작성해주세요" value={makecls.clscontent} onChange={handleChangeForm}/> 
                     
@@ -157,21 +160,21 @@ export default function Homelist() {
             {/* {clslist} */}
             { 
               cls.map(item => (
-                item.status === 5 ?
+                item.status == 5 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
-                  <a className="card-card" href="/classroommain">
+                  <Link className="card-card" to={`/classroommain/${item.classId}`} params={item.classId}>
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
-                        <p>강사 {item.userId}</p>
+                        <p>[강사] {item.userName}</p>
                       </div>
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
                         <h2>{item.name}</h2>
-                        <p>{item.content}</p>
+                        <p>[소개] {item.content}</p>
                         <button className="card-button"><a href="/classroomain/{clas.classId}">강의실 입장</a></button>
                     </div>
-                  </a>
+                  </Link>
                 </div> 
               : null ) 
             )}
@@ -206,21 +209,21 @@ export default function Homelist() {
           <div className="row">
             { 
               cls.map(item => (
-                item.status !== 5 ?
+                item.status == 1 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
-                  <a className="card-card" href="/classroommain">
+                  <Link className="card-card" to={`/classroommain/${item.classId}`} params={item.classId}>
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
-                        <p>강사 {item.userId}</p>
+                        <p>[강사] {item.userId}</p>
                       </div>
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
                         <h2>{item.name}</h2>
-                        <p>{item.content}</p>
+                        <p>[소개] {item.content}</p>
                         <button className="card-button"><a href="/classroomain/{clas.classId}">강의실 입장</a></button>
                     </div>
-                  </a>
+                  </Link>
                 </div> 
               : null ) 
             )}

@@ -1,3 +1,57 @@
-.headerContainer {
-  background-color: cadetblue;
+.clsroomcontainer {
+  width: 1350px;
+  margin: 0 auto;
+  margin-top: 30px;
+  /* background-color: lightblue; */
+  /* display: content; */
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+.sun {
+  position:relative;
+  /* width:700px; */
+  margin:30px auto;
+  margin-bottom:40px;
+  -webkit-border-radius:6px;
+     -moz-border-radius:6px;
+          border-radius:6px;
+  padding:15px;
+  text-align:left;
+  background:#FFCA95;
+}
+
+.sun:checked {background:#F1C40F;}
+
+.sun li {
+  list-style:none;
+  color: #20314E;
+  font-weight:600;
+  display:inline-block;
+}
+
+.sun li > a, a:visited {
+  padding:15px;
+  color:#fff;
+  text-decoration:none;
+  transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.sun li > a:hover {
+  background:rgba(0, 0, 0, 0.1);
+  transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.sidemenu {
+  background: #FFCA95;
+  color: #20314E;
+}
+
+.Nav .variant:active {
+  background-color: #20314E;
 }

@@ -1,38 +1,44 @@
+// import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import styles from './Class.module.css';
 
 // TODO: chatContainer 컴포넌트 추가
-export default function ClassHeader() {
-
+export default function ClassHeader( {classId, clsname, teacher} ) {
+  
   // lecture: 강의 데이터 (강사 이름, 강의 제목)
-  const [lecture, setLecture] = useState({ lecturer: "홍길동", lectureName: "Spring으로 배우는 MSA, DEV OPS" });
+  // const [lecture, setLecture] = useState({ lecturer: "홍길동", lectureName: "Spring으로 배우는 MSA, DEV OPS" });
   const [onLive, setOnLive] = useState(false);
+  
+  // useEffect(() => {
+  //   axios.get('/classroom-service/lectures/all')
+  //   // TODO: window.location.href: 강의 id
+  //   // TODO: [be] 서버에 강의 정보 데이터 요청: setLecture()
+  //   // setLecture({lecturer: "", lectureName: ""})
+  //   setLecture({ lecturer: "홍길동", lectureName: "Spring으로 배우는 MSA, DEV OPS" })
 
-  useEffect(() => {
-    // TODO: window.location.href: 강의 id
-    // TODO: [be] 서버에 강의 정보 데이터 요청: setLecture()
-    // setLecture({lecturer: "", lectureName: ""})
-    setLecture({ lecturer: "홍길동", lectureName: "Spring으로 배우는 MSA, DEV OPS" })
-
-    // TODO: [be] 화상수업 진행중 여부 데이터 요청: setOnLive()
-    // let isLive = true;
-    // setOnLive(isLive);
-  }, [])
+  //   // TODO: [be] 화상수업 진행중 여부 데이터 요청: setOnLive()
+  //   // let isLive = true;
+  //   // setOnLive(isLive);
+  // }, [])
 
   return (
-    <div>
-      <div id="lectureInfo" className={styles.headerContainer}>
-        lecturer: {lecture.lecturer}
-        lecture name: {lecture.lectureName}
+    <div className="row">
+      <div className="col-8">
+        <nav className={styles.sun}>
+          <li>[강의명] : {clsname}</li>
+          <li>[강사] : {teacher}</li>
+        </nav>
       </div>
-      <div>
+      <div className="col-4">
         {
           onLive === true ?
-          <Button>실시간 강의 바로가기</Button> :
-          <Button>실시간 강의 준비중</Button>
+          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의 바로가기1</a></li> :
+          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의1</a></li>
         }
-        <Button>실시간 채팅</Button>
+        <li><a href="https://3.17.41.125:5000" style={{color:"black"}}>실시간 강의2</a></li>
+        <li style={{color:"black"}}>강의실 초대 번호 : {classId} </li>
+        {/* <Button>실시간 채팅</Button>   */}
       </div>
     </div>
   );
