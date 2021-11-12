@@ -46,6 +46,8 @@ export default function AdminMemberItem({ member }) {
         <>
             <tr>
                 <td>{member.userId}</td>
+                <td>{member.userName}</td>
+                <td>{member.email}</td>
                 <td>{member.createdAt !==null ? member.createdAt.split("T")[0] : ""}</td>
                 <td><Button onClick={showEditModal}>수정</Button></td>
                 <td><Button onClick={showQuitModal}>탈퇴</Button></td>
