@@ -13,6 +13,7 @@ export default function AdminClassItem({ item }) {
         status: '',
         createdDate: ''
     });
+    const [statusTxt, setStatusTxt] = useState();
 
     const [editVisible, setEditVisible] = useState(false);
     const [quitVisible, setQuitVisible] = useState(false);
@@ -57,13 +58,20 @@ export default function AdminClassItem({ item }) {
 
     useEffect(() => {
         setValues(item);
-    }, [])
+        if (item.status === 4)
+            setStatusTxt("종료됨");
+        else
+            setStatusTxt("진행중");
+    }, [item])
 
     return (
         <>
             <tr>
-                <td>{item.imgPath}</td>
+                <td>{item.classId}</td>
                 <td>{item.name}</td>
+                <td>{item.userId}</td>
+                <td>{item.participantNum}</td>
+                <td>{statusTxt}</td>
                 <td>{item.createdDate !== null ? item.createdDate.split("T")[0] : ""}</td>
                 <td><Button onClick={showEditModal}>수정</Button></td>
                 <td><Button onClick={showDeleteModal}>삭제</Button></td>
