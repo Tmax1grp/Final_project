@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Table from 'react-bootstrap/Table';
 
-export default function AdminLecture(props) {
-    const [members, setMembers] = useState(null);
+import AdminClassItem from './AdminClassItem';
+
+export default function AdminLecture() {
+    const [classes, setClasses] = useState(null);
 
     useEffect(() => {
-        axios.get('/admin/user/all').then(res => {
+        axios.get('/admin-service/admin/classroom/all').then(res => {
             console.log(res.data)
-            setMembers(res.data);
+            setClasses(res.data);
         }).catch((err) =>
             console.log(err)
         )
@@ -15,6 +18,27 @@ export default function AdminLecture(props) {
 
     return (
         <>
+            <Table responsive="sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>강의이름</th>
+                        <th>강의생성일</th>
+                        <th>강의정보수정</th>
+                        <th>강의삭제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        classes !==null ?
+                            classes.map(item => {
+                                return (<AdminClassItem key={item.classId} item={item} />);
+                            })
+                            :
+                            <>강의 데이터를 불러올 수 없습니다.</>
+                    }
+                </tbody>
+            </Table>
         </>
     );
 }
