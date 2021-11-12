@@ -4,29 +4,8 @@ import axios from 'axios';
 
 import MypageClassItem from './MypageClassItem'
 
-export default function MypageLecture(props) {
+export default function MypageLecture() {
     const [myClasses, setMyClasses] = useState(null);
-
-    // const myClasses = [
-    //     {
-    //         "name": "강의1",
-    //         "imgPath": "이미지1",
-    //         "userId": "강사1",
-    //         "content": "강의내용1",
-    //         "participantNum": "수강인원수1",
-    //         "status": "강의 상태1",
-    //         "createdDate": "2021-11-11"
-    //     },
-    //     {
-    //         "name": "강의2",
-    //         "imgPath": "이미지2",
-    //         "userId": "강사2",
-    //         "content": "강의내용2",
-    //         "participantNum": "수강인원수2",
-    //         "status": "강의 상태2",
-    //         "createdDate": "2021-12-22"
-    //     }
-    // ]
 
     useEffect(() => {
         axios.get('/classroom-service/lectures/all',
@@ -53,7 +32,7 @@ export default function MypageLecture(props) {
                 </thead>
                 <tbody>
                     {
-                        myClasses != null ?
+                        myClasses !== null ?
                             myClasses.map(item => {
                                 return (<MypageClassItem key={item.name} item={item} />);
                             })

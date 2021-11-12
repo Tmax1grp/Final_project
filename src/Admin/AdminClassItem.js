@@ -27,27 +27,36 @@ export default function AdminClassItem({ item }) {
             ...values,
             [event.target.id]: event.target.value
         })
-        console.log(values);
     }
 
     const handleEditSubmit = () => {
-        closeEditModal();
         console.log("[강의 업데이트]: ", item.name);
         console.log(values);
-        // axios.post();
-        // window.location.reload(false);
+        axios.put(`/admin-service/admin/classroom/${item.classId}`, null, {
+            params: {
+                name: values.name,
+                imgPath: values.imgPath,
+                content: values.content,
+                participantNum: values.participantNum,
+                status: values.status
+            }
+        })
+            .then(res => {
+                console.log(res.status);
+            });
+        closeEditModal();
+        document.location.href = '/admin'
     }
 
     const handleDeleteSubmit = () => {
-        closeDeleteModal();
         console.log("[강의 삭제]: ", item.userId);
-        axios.delete(`/admin/classroom/${item}`);
-        // window.location.reload(false);
+        axios.delete(`/admin-service/admin/classroom/${item.classId}`);
+        closeDeleteModal();
+        document.location.href = '/admin'
     }
 
     useEffect(() => {
         setValues(item);
-        // console.log(values);
     }, [])
 
     return (
@@ -55,24 +64,24 @@ export default function AdminClassItem({ item }) {
             <tr>
                 <td>{item.imgPath}</td>
                 <td>{item.name}</td>
-                <td>{item.createdDate != null ? item.createdDate.split("T")[0] : ""}</td>
+                <td>{item.createdDate !== null ? item.createdDate.split("T")[0] : ""}</td>
                 <td><Button onClick={showEditModal}>수정</Button></td>
                 <td><Button onClick={showDeleteModal}>삭제</Button></td>
             </tr>
-            <Modal show={editVisible} onHide={showEditModal}>
+            <Modal show={editVisible} onHide={closeEditModal}>
                 <Modal.Header>
                     <Modal.Title>강의 정보 수정</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Group as={Row} className="mb-3" controlId="userId">
+                    <Form.Group as={Row} className="mb-3" controlId="name">
                         <Form.Label column sm="4">
                             강의이름
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="text" readOnly defaultValue={item.name} onChange={handleChange} />
+                            <Form.Control type="text" defaultValue={item.name} onChange={handleChange} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="name">
+                    <Form.Group as={Row} className="mb-3" controlId="imgPath">
                         <Form.Label column sm="4">
                             강의이미지
                         </Form.Label>
@@ -80,12 +89,28 @@ export default function AdminClassItem({ item }) {
                             <Form.Control type="text" defaultValue={item.imgPath} onChange={handleChange} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="email">
+                    <Form.Group as={Row} className="mb-3" controlId="userId">
                         <Form.Label column sm="4">
                             강사ID
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="email" defaultValue={item.userId} onChange={handleChange} />
+                            <Form.Control type="text" readOnly defaultValue={item.userId} onChange={handleChange} />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} className="mb-3" controlId="content">
+                        <Form.Label column sm="4">
+                            강의설명
+                        </Form.Label>
+                        <Col sm="8">
+                            <Form.Control as="textarea" type="text" defaultValue={item.content} onChange={handleChange} />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} className="mb-3" controlId="participantNum">
+                        <Form.Label column sm="4">
+                            수강정원
+                        </Form.Label>
+                        <Col sm="8">
+                            <Form.Control type="number" defaultValue={item.participantNum} onChange={handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="tel">
@@ -93,7 +118,7 @@ export default function AdminClassItem({ item }) {
                             강의상태
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="tel" defaultValue={item.status} onChange={handleChange} />
+                            <Form.Control type="number" defaultValue={item.status} min="0" max="5" onChange={handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="tel">
@@ -101,7 +126,7 @@ export default function AdminClassItem({ item }) {
                             강의생성일
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="date" readOnly defaultValue={item.createdDate != null ? item.createdDate.split("T")[0] : ""} onChange={handleChange} />
+                            <Form.Control type="date" readOnly defaultValue={item.createdDate !== null ? item.createdDate.split("T")[0] : ""} onChange={handleChange} />
                         </Col>
                     </Form.Group>
                 </Modal.Body>
@@ -114,7 +139,7 @@ export default function AdminClassItem({ item }) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Modal show={quitVisible} onHide={showDeleteModal}>
+            <Modal show={quitVisible} onHide={closeDeleteModal}>
                 <Modal.Header>
                     <Modal.Title>강의 삭제 확인</Modal.Title>
                 </Modal.Header>

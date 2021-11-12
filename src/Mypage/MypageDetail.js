@@ -36,7 +36,7 @@ export default function MypageDetail() {
         // (1) passsword 입력하지 않은 경우
         if (info.password.length > 0 && info.passwordCheck.length > 0) {
             // (2) passsword와 passwordCheck 일치하지 않는 경우
-            if (info.password != info.passwordCheck) {
+            if (info.password !==info.passwordCheck) {
                 alert("입력하신 비밀번호가 일치하지 않습니다.");
                 return isValid;
             }
@@ -75,7 +75,7 @@ export default function MypageDetail() {
 
         axios.put(`/user-service/users`, info)
             .then(res => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                     alert("변경 완료되었습니다!");
                     document.location.href = '/mypage'
                 }
@@ -101,7 +101,7 @@ export default function MypageDetail() {
     }
 
     useEffect(() => {
-        if (userId != null) {
+        if (userId !==null) {
             axios.get(`/admin-service/mypage/${userId}`)
                 .then(res => {
                     // console.log(res.data);
@@ -118,7 +118,7 @@ export default function MypageDetail() {
             alert("서버와의 통신이 원활하지 않습니다!");
             document.location.href = '/home'
         }
-    }, [])
+    }, [userId])
 
     return (
         <>

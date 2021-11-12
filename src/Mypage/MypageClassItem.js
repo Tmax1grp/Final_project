@@ -3,7 +3,6 @@ import { Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function MypageClassItem({ item }) {
-    // console.log(item);
     const [quitVisible, setQuitVisible] = useState(false);
     const showDeleteModal = () => setQuitVisible(true);
     const closeDeleteModal = () => setQuitVisible(false);
@@ -25,8 +24,20 @@ export default function MypageClassItem({ item }) {
             .catch((err) =>
                 console.log(err)
             )
-
         // document.location.href = '/mypage'
+    }
+
+    function StatusBtn() {
+
+        switch (item.status) {
+            case 0: { return "수강승인대기중" }
+            case 1: { return "수강중" }
+            case 2: { return "수강취소대기중" }
+            case 3: { return "수강취소됨" }
+            case 4: { return "종료된강의" }
+            case 5: { return "강의중" }
+            default: ;
+        }
     }
 
     return (
@@ -34,11 +45,11 @@ export default function MypageClassItem({ item }) {
             <tr>
                 <td>{item.imgPath}</td>
                 <td>{item.name}</td>
-                <td>{item.status}</td>
+                <td><StatusBtn /></td>
                 <td>
                     {
-                        item.status != 5 ?
-                            <Button onClick={showDeleteModal}>취소신청</Button>
+                        item.status == 1 ?
+                            <Button onClick={handleDeleteSubmit}>수강취소신청</Button>
                             :
                             <></>
                     }

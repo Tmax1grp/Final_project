@@ -40,17 +40,17 @@ export default function AdminMemberItem({ member }) {
             ...member,
             "password": ""
         });
-    }, [])
+    }, [member])
 
     return (
         <>
             <tr>
                 <td>{member.userId}</td>
-                <td>{member.createDate}</td>
+                <td>{member.createdAt !==null ? member.createdAt.split("T")[0] : ""}</td>
                 <td><Button onClick={showEditModal}>수정</Button></td>
                 <td><Button onClick={showQuitModal}>탈퇴</Button></td>
             </tr>
-            <Modal show={editVisible} onHide={showEditModal}>
+            <Modal show={editVisible} onHide={closeEditModal}>
                 <Modal.Header>
                     <Modal.Title>회원 정보 수정</Modal.Title>
                 </Modal.Header>
@@ -92,20 +92,20 @@ export default function AdminMemberItem({ member }) {
                             회원가입일
                         </Form.Label>
                         <Col sm="8">
-                            <Form.Control type="text" readOnly defaultValue={member.createdAt != null ? member.createdAt.split("T")[0] : ""} />
+                            <Form.Control type="text" readOnly defaultValue={member.createdAt !==null ? member.createdAt.split("T")[0] : ""} />
                         </Col>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeEditModal}>
-                        닫기
+                        취소
                     </Button>
                     <Button variant="primary" onClick={handleEditSubmit}>
                         확인
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Modal show={quitVisible} onHide={showQuitModal}>
+            <Modal show={quitVisible} onHide={closeQuitModal}>
                 <Modal.Header>
                     <Modal.Title>사용자 탈퇴 확인</Modal.Title>
                 </Modal.Header>
@@ -114,7 +114,7 @@ export default function AdminMemberItem({ member }) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeQuitModal}>
-                        닫기
+                        취소
                     </Button>
                     <Button variant="primary" onClick={handleQuitSubmit}>
                         확인

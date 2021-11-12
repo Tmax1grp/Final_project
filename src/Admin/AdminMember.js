@@ -29,7 +29,7 @@ export default function AdminMember() {
                 </thead>
                 <tbody>
                     {
-                        members != null ?
+                        members !==null ?
                             members.map(member => {
                                 return (<AdminMemberItem key={member.userId} member={member} />);
                             })
