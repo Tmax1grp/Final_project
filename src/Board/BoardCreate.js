@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
+
+import axios from 'axios';
+
 import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import axios from 'axios';
 
 export default function BoardCreate() {
 

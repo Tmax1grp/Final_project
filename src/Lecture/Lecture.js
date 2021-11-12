@@ -1,12 +1,15 @@
 import Navmenu from "../Home/Navmenu";
-import Openvidu from './Openvidu';
+// import Openvidu from './Openvidu';
 
 export default function Lecture() {
   
   return(
     <div>
       <Navmenu />
-      <Openvidu />
+      {/* <Openvidu /> */}
+      <iframe className="openvidu-iframe" src="https://3.17.41.125:3000" width="100%" height="1200" scrolling="yes"
+        allow="camera; microphone"
+      ></iframe>
       {/* <iframe src="/openvidu" width="75%" height="900" frameBorder="1" scrolling="no"></iframe> */}
       {/* <iframe src="#/" width="25%" height="900" frameBorder="1" scrolling="no"></iframe> */}
       {/* <portal src="http://localhost:3001"></portal> */}

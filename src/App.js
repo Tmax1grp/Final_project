@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/admin"><Admin/></Route>
           <Route exact path="/classinfo"><ClassInfo/></Route>
           <Route exact path="/mypage"><Mypage/></Route>
-          <Route exact path="/classdetailnotice"><ClassDetailNotice/></Route>
+          <Route exact path="/classdetailnotice/:noticeId"><ClassDetailNotice/></Route>
           <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
         </Switch>
       {/* </ToTop> */}

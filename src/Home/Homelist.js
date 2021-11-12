@@ -26,7 +26,6 @@ export default function Homelist() {
     axios.get('/classroom-service/lectures/all', 
       {params: {userId: sessionStorage.userId}})
     .then(res => {
-      console.log(res.data)
       setCls(res.data);
     })
     .catch((err) =>
@@ -34,7 +33,6 @@ export default function Homelist() {
     )
   },[])
     
-
   const handleChangeForm = (e) => {
     setMakeclses({
       ...makecls,
@@ -88,7 +86,7 @@ export default function Homelist() {
       console.log(error);
     })
   }
-
+  console.log(cls)
   return (
     <Fragment>
       <br />

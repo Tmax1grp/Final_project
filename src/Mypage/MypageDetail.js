@@ -120,17 +120,18 @@ export default function MypageDetail() {
         }
     }, [userId])
 
+    console.log(info)
     return (
         <>
             <Form>
-                <Form.Group as={Row} className="mb-2" controlId="userId">
+                {/* <Form.Group as={Row} className="mb-2" controlId="userId">
                     <Form.Label column sm="4">
                         ID
                     </Form.Label>
                     <Col sm="8">
                         <Form.Control type="text" readOnly defaultValue={info.userId} />
                     </Col>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group as={Row} className="mb-2" controlId="userName">
                     <Form.Label column sm="4">
                         이름

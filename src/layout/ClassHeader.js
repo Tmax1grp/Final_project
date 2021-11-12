@@ -26,17 +26,18 @@ export default function ClassHeader( {classId, clsname, teacher} ) {
     <div className="row">
       <div className="col-8">
         <nav className={styles.sun}>
-          <li>[강의명] : {clsname}</li>
+          <li><a>[강의명] : {clsname}</a></li>
           <li>[강사] : {teacher}</li>
         </nav>
       </div>
       <div className="col-4">
         {
           onLive === true ?
-          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의 바로가기1</a></li> :
-          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의1</a></li>
+          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의 바로가기</a></li> :
+          <li><a href="http://localhost:3001" style={{color:"black"}}>실시간 강의test버전</a></li>
         }
-        <li><a href="https://3.17.41.125:5000" style={{color:"black"}}>실시간 강의2</a></li>
+        {/* <li><a href="/lecture">강의</a></li> */}
+        <li><a href="https://3.17.41.125:3000" style={{color:"black"}}>실시간 강의EC2</a></li>
         <li style={{color:"black"}}>강의실 초대 번호 : {classId} </li>
         {/* <Button>실시간 채팅</Button>   */}
       </div>
