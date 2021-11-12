@@ -32,14 +32,14 @@ export default function ClassBoardSummary({classId}) {
     
   const articlelist = articles.map((article) => {
     return (
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="headingOne">
+        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           {article.title}
         </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body" style={{backgroundColor:"#6495ED"}}>
+        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div className="accordion-body" style={{backgroundColor:"#6495ED"}}>
             {HtmlReactParser(article.content)}
           </div>
         </div>

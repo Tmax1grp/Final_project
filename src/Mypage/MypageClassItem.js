@@ -15,7 +15,7 @@ export default function MypageClassItem({ item }) {
             params: {
                 classroomId: item.classroomId,
                 userId: item.userId,
-                status: item.status
+                status: 2
             }
         })
             .then(res => {
@@ -24,7 +24,7 @@ export default function MypageClassItem({ item }) {
             .catch((err) =>
                 console.log(err)
             )
-        // document.location.href = '/mypage'
+        document.location.href = '/mypage'
     }
 
     function StatusBtn() {
@@ -32,7 +32,7 @@ export default function MypageClassItem({ item }) {
         switch (item.status) {
             case 0: { return "수강승인대기중" }
             case 1: { return "수강중" }
-            case 2: { return "수강취소대기중" }
+            case 2: { return "수강취소함" }
             case 3: { return "수강취소됨" }
             case 4: { return "종료된강의" }
             case 5: { return "강의중" }

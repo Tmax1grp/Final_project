@@ -35,7 +35,7 @@ export default function Mypage() {
                     </Col>
                 </Row>
             </Tab.Container>
-            <Footbar />
+            {/* <Footbar /> */}
         </>
     );
 }
