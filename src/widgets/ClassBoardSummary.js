@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
+import HtmlReactParser from 'html-react-parser';
+
 export default function ClassBoardSummary({classId}) {
 
   const [articles, setArticles] = useState([]);
@@ -37,8 +39,8 @@ export default function ClassBoardSummary({classId}) {
         </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            {article.content}
+          <div class="accordion-body" style={{backgroundColor:"#6495ED"}}>
+            {HtmlReactParser(article.content)}
           </div>
         </div>
       </div>

@@ -35,7 +35,8 @@ export default function ClassBoardNotice({classId}) {
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
-        <td><button onClick={enternoticedetail}><a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td>
+        {/* <td><button onClick={enternoticedetail}><a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a></button></td> */}
+        <td><a href="/classdetailnotice" style={{color:"black"}}>{clas.title}</a></td>
         <td>{clas.author}</td>
         <td>{clas.createDate}</td>
         <td>{clas.clickCnt}</td>
