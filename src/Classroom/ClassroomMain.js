@@ -13,6 +13,7 @@ import ClassBoardHomework from '../Board/ClassBoardAssignment'
 import ClassBoardDiscuss from '../Board/ClassBoardDiscuss'
 import ClassBoardResource from '../Board/ClassBoardReference'
 // import ClassBoardList from '../widgets/ClassBoardList';
+import ClassMemberManage from '../widgets/ClassMemberManage'
 import styles from '../layout/Class.module.css'
 
 export default function ClassroomMain() {
@@ -40,7 +41,7 @@ export default function ClassroomMain() {
       }
     }).catch(err => console.log(err))
   }, [])
-  
+
   return (
     <div>
       <Navmenu />
@@ -68,6 +69,9 @@ export default function ClassroomMain() {
                 <Nav.Item>
                   <Nav.Link eventKey="sixth" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="seventh" className={styles.sidemenu}>수강생관리</Nav.Link>
+                </Nav.Item>
               </Nav>
             </Col>
             <Col xl={10} sm={10}>
@@ -79,16 +83,19 @@ export default function ClassroomMain() {
                   <ClassBoardCurriculum content={clsname.content}/>
                 </Tab.Pane> */}
                 <Tab.Pane eventKey="third">
-                  <ClassBoardNotice classId={classId}/>
+                  <ClassBoardNotice classId={classId} />
                 </Tab.Pane>
                 <Tab.Pane eventKey="fourth">
-                  <ClassBoardHomework classId={classId}/>
+                  <ClassBoardHomework classId={classId} />
                 </Tab.Pane>
                 <Tab.Pane eventKey="fifth">
-                  <ClassBoardDiscuss classId={classId}/>
+                  <ClassBoardDiscuss classId={classId} />
                 </Tab.Pane>
                 <Tab.Pane eventKey="sixth">
-                  <ClassBoardResource classId={classId}/>
+                  <ClassBoardResource classId={classId} />
+                </Tab.Pane>
+                <Tab.Pane eventKey="seventh">
+                  <ClassMemberManage classId={classId} />
                 </Tab.Pane>
               </Tab.Content>
             </Col>

@@ -23,9 +23,12 @@ export default function AdminLecture() {
                     <tr>
                         <th>#</th>
                         <th>강의이름</th>
-                        <th>강의생성일</th>
-                        <th>강의정보수정</th>
-                        <th>강의삭제</th>
+                        <th>강사ID</th>
+                        <th>수강정원</th>
+                        <th>상태</th>
+                        <th>생성일</th>
+                        <th>정보수정</th>
+                        <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>

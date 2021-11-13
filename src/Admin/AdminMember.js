@@ -21,7 +21,9 @@ export default function AdminMember() {
             <Table responsive="sm">
                 <thead>
                     <tr>
-                        <th>회원ID</th>
+                        <th>#</th>
+                        <th>회원이름</th>
+                        <th>이메일</th>
                         <th>가입일</th>
                         <th>정보수정</th>
                         <th>탈퇴</th>
