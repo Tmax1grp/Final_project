@@ -42,7 +42,7 @@ export default function ClassBoardSearchMenu({ keyword, setKeyword }) {
                         <Form.Control type="text" />
                     </Form.Group>
                 </Col>
-                <Col md={1}>
+                <Col md={2}>
                     <Button onClick={handleSubmit}>검색</Button>
                 </Col>
             </Row>

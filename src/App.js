@@ -20,7 +20,7 @@ import BoardCreate from './Board/BoardCreate';
 function App() {
 
   // axios.defaults.baseURL = 'http://192.168.201.129:8000'
-  axios.defaults.baseURL = 'http://10.10.20.95:8000'
+  axios.defaults.baseURL = 'http://192.168.201.110:8000'
 
   return (
     <BrowserRouter>
