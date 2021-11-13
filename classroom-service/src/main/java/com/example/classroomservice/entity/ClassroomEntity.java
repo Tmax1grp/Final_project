@@ -24,6 +24,9 @@ public class ClassroomEntity {
     @Column(nullable = false)
     private Long userId;
 
+    @Column(nullable = false, length = 150)
+    private String userName;
+
     @Column(nullable = false, length = 500)
     private String content;
 

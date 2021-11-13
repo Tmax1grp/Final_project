@@ -4,6 +4,9 @@ package com.example.assignmentservice.controller;
 import com.example.assignmentservice.entity.AssignmentEntity;
 import com.example.assignmentservice.jpa.AssignmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -22,9 +25,8 @@ public class AssignmentController {
 // 전체조회
     @GetMapping("/assignment/all")
     @ResponseBody
-    public List<AssignmentEntity> allSearchAssignment(){
-
-        return assignmentRepository.findAll();
+    public Page<AssignmentEntity> allSearchAssignment(){
+        return assignmentRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"assignmentId"));
     }
 
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("assignment-service/{classId}/assignment/{assignmentId}")
+@RequestMapping("/{classId}/assignment/{assignmentId}")
 
 public class ReplyController {
 
@@ -45,7 +45,7 @@ public class ReplyController {
     public ReplyEntity createReply(@PathVariable Long classId, @PathVariable Long assignmentId,  @RequestBody ReplyEntity replyEntity) {
 
         Optional<AssignmentEntity> assignment = assignmentRepository.findById(assignmentId);
-        replyEntity.setAssignmentId(assignment.get());
+        replyEntity.setAssignmentEntity(assignment.get());
         replyEntity.setCreateDate(LocalDateTime.now());
         replyRepository.save(replyEntity);
 

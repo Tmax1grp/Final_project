@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("discuss-service/{classId}/discuss/{discussId}")
+@RequestMapping("{classId}/discuss/{discussId}")
 
 public class ReplyController {
 
@@ -30,11 +30,11 @@ public class ReplyController {
 
     //
     @GetMapping("/reply")
-    public List<ReplyEntity> getDiscussEntityReply(@PathVariable Long discussId, @PathVariable Long classId){
+    public List<ReplyEntity> getNoticeEntityReply(@PathVariable Long discussId, @PathVariable Long classId){
 
         DiscussEntity discussEntity = discussRepository.findById(discussId).get();
 
-        return replyRepository.findAll();
+        return replyRepository.findReplyEntityByDiscussEntity(discussEntity);
     }
 
 
@@ -44,7 +44,7 @@ public class ReplyController {
     public ReplyEntity createReply(@PathVariable Long classId, @PathVariable Long discussId,  @RequestBody ReplyEntity replyEntity) {
 
         Optional<DiscussEntity> discuss = discussRepository.findById(discussId);
-        replyEntity.setDiscussId(discuss.get());
+        replyEntity.setDiscussEntity(discuss.get());
         replyEntity.setCreateDate(LocalDateTime.now());
         replyRepository.save(replyEntity);
 

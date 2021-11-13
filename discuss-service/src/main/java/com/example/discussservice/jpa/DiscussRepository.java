@@ -1,6 +1,8 @@
 package com.example.discussservice.jpa;
 
 import com.example.discussservice.entity.DiscussEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +16,9 @@ public interface DiscussRepository extends JpaRepository<DiscussEntity, Long> {
 
 
     DiscussEntity findByDiscussId(Long discussId);
+
+    Page<DiscussEntity> findAll(Pageable pageable);
+
 
 //    @Query(
 //            value = "SELECT * FROM notice WHERE notice.title LIKE :notice.title OR notice.author LIKE :notice.author",

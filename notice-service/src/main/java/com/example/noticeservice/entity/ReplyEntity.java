@@ -31,7 +31,7 @@ public class ReplyEntity {
 
     @ManyToOne
     @JoinColumn(name = "notice_id")
-    private NoticeEntity noticeId;
+    private NoticeEntity noticeEntity;
 
 
 

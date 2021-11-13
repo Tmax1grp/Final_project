@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8cd105e-5fa5-413f-b12c-3698c8f4e5cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/controller/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/entity/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/entity/NoticeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/jpa/NoticeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/jpa/NoticeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/service/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../notice/src/main/java/com/example/notice/service/NoticeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openvidu-selfsigned.jks" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +13,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="false" />
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="209uaJzLqzZvjCghniTeZZIiNeC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -44,6 +58,20 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\211112final\user-service\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\211112final\user-service" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -81,10 +109,60 @@
       <workItem from="1635830299517" duration="62000" />
       <workItem from="1635987586701" duration="275000" />
       <workItem from="1635987903139" duration="1763000" />
+      <workItem from="1636610001930" duration="168000" />
+      <workItem from="1636610181486" duration="11508000" />
+      <workItem from="1636678690138" duration="4083000" />
+      <workItem from="1636786235343" duration="2576000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/userservice/controller/UsersController.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/userservice/controller/UsersController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/userservice/controller/UsersController.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/userservice/entity/UserEntity.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/userservice/controller/UsersController.java</url>
+          <line>147</line>
+          <properties class="com.example.userservice.controller.UsersController" method="updateUser">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

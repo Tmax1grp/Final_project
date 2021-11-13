@@ -77,7 +77,14 @@ public class UserServiceImpl implements UserService{
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         //todo 비밀번호는 매번 새롭게 들어가게됨, 현재 비밀번호 확인 X, 원래 비밀번호는 따로 현재비밀번호 새비밀번호를 통해 변경하게 만들어야함);
-        userDto.setEncryptedPwd(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        UserEntity tempUser = userRepository.findByUserId(userDto.getUserId());
+        if(userDto.getPassword().isBlank()){
+            userDto.setEncryptedPwd(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        }else{
+            userDto.setEncryptedPwd(tempUser.getEncryptedPwd());
+        }
+
+
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
 
         userRepository.save(userEntity);

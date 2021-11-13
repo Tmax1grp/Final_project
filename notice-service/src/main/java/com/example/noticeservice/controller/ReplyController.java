@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("notice-service/{classId}/notice/{noticeId}")
+@RequestMapping("/{classId}/notice/{noticeId}")
 
 public class ReplyController {
 
@@ -30,13 +30,13 @@ public class ReplyController {
 //댓글 조회
 
 //
-    @GetMapping("/reply")
-    public List<ReplyEntity> getNoticeEntityReply(@PathVariable Long noticeId, @PathVariable Long classId){
+@GetMapping("/reply")
+public List<ReplyEntity> getNoticeEntityReply(@PathVariable Long noticeId, @PathVariable Long classId){
 
-        NoticeEntity noticeEntity = noticeRepository.findById(noticeId).get();
+    NoticeEntity noticeEntity = noticeRepository.findById(noticeId).get();
 
-        return replyRepository.findAll();
-    }
+    return replyRepository.findReplyEntityByNoticeEntity(noticeEntity);
+}
 
 
 //댓글 등록
@@ -45,7 +45,7 @@ public class ReplyController {
     public ReplyEntity createReply(@PathVariable Long classId, @PathVariable Long noticeId,  @RequestBody ReplyEntity replyEntity) {
 
         Optional<NoticeEntity> notice = noticeRepository.findById(noticeId);
-        replyEntity.setNoticeId(notice.get());
+        replyEntity.setNoticeEntity(notice.get());
         replyEntity.setCreateDate(LocalDateTime.now());
         replyRepository.save(replyEntity);
 

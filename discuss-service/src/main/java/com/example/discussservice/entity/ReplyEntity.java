@@ -30,7 +30,7 @@ public class ReplyEntity {
 
     @ManyToOne
     @JoinColumn(name = "discuss_id")
-    private DiscussEntity discussId;
+    private DiscussEntity discussEntity;
 
 
 

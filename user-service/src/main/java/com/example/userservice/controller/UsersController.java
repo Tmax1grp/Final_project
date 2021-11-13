@@ -145,18 +145,18 @@ public class UsersController {
 
     @ApiOperation(value="내 정보 수정", notes = "자신의 정보 수정")
     @PutMapping("/users")
-    public ResponseEntity updateUser(@RequestBody @Valid RequestUser user, HttpServletRequest req){
+    public ResponseEntity updateUser(@RequestBody RequestUser user, HttpServletRequest req){
 
-        if(req.getHeader("userid") == null){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("userId가 토큰에 존재하지 않습니다.");
-        }
-
-        Long userId = Long.parseLong(req.getHeader("userid"));
-
-        //todo 관리자 추가하면 관리자가 아닌 경우 조건문 추가
-        if(userId != user.getUserId()){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(String.format("%d, %d 권한이 없습니다.", userId, user.getUserId()));
-        }
+//        if(req.getHeader("userid") == null){
+//            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("userId가 토큰에 존재하지 않습니다.");
+//        }
+//
+//        Long userId = Long.parseLong(req.getHeader("userid"));
+//
+//        //todo 관리자 추가하면 관리자가 아닌 경우 조건문 추가
+//        if(userId != user.getUserId()){
+//            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(String.format("%d, %d 권한이 없습니다.", userId, user.getUserId()));
+//        }
 
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);

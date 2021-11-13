@@ -20,6 +20,10 @@ public class RequestClassroom {
     @Size(min=2)
     private Long userId;
 
+    @NotNull(message = "userName cannot be null")
+    @Size(min=2)
+    private String userName;
+
     @NotNull(message = "content cannot be null")
     private String content;
 

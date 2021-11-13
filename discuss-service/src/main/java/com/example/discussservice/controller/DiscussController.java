@@ -4,6 +4,9 @@ package com.example.discussservice.controller;
 import com.example.discussservice.entity.DiscussEntity;
 import com.example.discussservice.jpa.DiscussRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -20,9 +23,10 @@ public class DiscussController {
 
     //전체 조회
     @GetMapping("/discuss/all")
-    public List<DiscussEntity> allSearchDiscuss() {
-        return discussRepository.findAll();
+    public Page<DiscussEntity> allSearchDiscuss(){
+        return discussRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"discussId"));
     }
+
 
 
     //조회수, 상세조회

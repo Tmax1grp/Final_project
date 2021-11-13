@@ -15,4 +15,6 @@ public interface ReplyRepository extends JpaRepository<ReplyEntity, Long> {
 
 
 
+    List<ReplyEntity> findReplyEntityByNoticeEntity(NoticeEntity noticeEntity);
+
 }

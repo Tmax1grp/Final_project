@@ -1,6 +1,8 @@
 package com.example.noticeservice.jpa;
 
 import com.example.noticeservice.entity.NoticeEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,6 +19,10 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
 
 
     NoticeEntity findByNoticeId(Long noticeId);
+
+
+    Page<NoticeEntity> findAll(Pageable pageable);
+
 
 //    @Query(
 //            value = "SELECT * FROM notice WHERE notice.title LIKE :notice.title OR notice.author LIKE :notice.author",

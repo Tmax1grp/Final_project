@@ -7,6 +7,9 @@ import com.example.noticeservice.jpa.NoticeRepository;
 
 import com.example.noticeservice.jpa.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,7 +19,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("notice-service/{classId}")
+@RequestMapping("/{classId}")
 
 public class NoticeController {
 
@@ -30,9 +33,9 @@ public class NoticeController {
 
 // 전체조회
     @GetMapping("/notice/all")
-    public List<NoticeEntity> allSearchNotice(){
-        return noticeRepository.findAll();
-    }
+public Page<NoticeEntity> allSearchNotice(){
+    return noticeRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"noticeId"));
+}
 
 
     // 조회수 , 상세조회
@@ -73,24 +76,18 @@ public class NoticeController {
         }
     }
 
-
-
-
-
-
-
-
 // 글 작성
     @PostMapping("/notice")
     public void createNotice(@RequestBody NoticeEntity noticeEntity){
         NoticeEntity notice = new NoticeEntity();
         notice.setClassId(noticeEntity.getClassId());
         notice.setTitle(noticeEntity.getTitle());
-        notice.setClickCnt(noticeEntity.getClickCnt());
-        notice.setDelYn(noticeEntity.getDelYn());
+        notice.setClickCnt(0L);
+        notice.setDelYn("0");
         notice.setContent(noticeEntity.getContent());
+//        notice.setContent("asdfsdfsdf");
         notice.setAuthor(noticeEntity.getAuthor());
-        notice.setAttach(noticeEntity.getAttach());
+        notice.setAttach("1");
         notice.setCreateDate(LocalDateTime.now());
 
         noticeRepository.save(notice);
@@ -101,6 +98,7 @@ public class NoticeController {
     // 글 수정
     @PutMapping("/notice/{noticeId}")
     public NoticeEntity updateNotice(
+            @PathVariable Long classId,
             @PathVariable Long noticeId,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "content", required = false) String content

@@ -1,5 +1,5 @@
 server:
-  port: 56000
+  port: 20000
 
 spring:
   application:
@@ -8,10 +8,10 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:13306/noticedb
+    url: jdbc:mariadb://localhost:3306/chat?
     hikari:
       username: root
-      password: 1357
+      password: mariadb
 
 
 
@@ -21,9 +21,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://10.10.20.26:8761/eureka
+      defaultZone: http://192.168.201.108:8761/eureka
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-#    ip-address: 10.10.20.36
-#
-#    hostname: 10.10.20.36
+    ip-address: 192.168.201.108
+
+    hostname: 192.168.201.108

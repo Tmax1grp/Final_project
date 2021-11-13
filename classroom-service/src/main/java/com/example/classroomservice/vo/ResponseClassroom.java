@@ -7,6 +7,7 @@ public class ResponseClassroom {
     private String name;
     private String imgPath;
     private Long userId;
+    private String userName;
     private String content;
     private Integer participantNum;
     private Integer status;
