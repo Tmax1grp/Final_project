@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Nav, Tab } from 'react-bootstrap';
-import reactDom from 'react-dom';
 
 import axios from 'axios';
 
@@ -19,20 +18,26 @@ import styles from '../layout/Class.module.css'
 export default function ClassroomMain() {
 
   const classId = window.location.pathname.split('/')[2];
-  const [ clsname, setClsname ] = useState([]);
+  const [ clsname, setClsnames ] = useState([]);
+  const [ teacher, setTeacher ] = useState([]);
+  const [ content, setContent ] = useState([]);
   
   useEffect(() => {
-    axios.get('/classroom-service/lectures/all')
+    axios.get('/classroom-service/lectures/all',
+    {params: {userId: sessionStorage.userId}})
     .then(res => {
       var cnt = 0
+       console.log(res.data)
       while (res.data.length !== 0) {
-        if (res.data[cnt].classId == classId){
+        if (res.data[cnt].classroomId == classId){
+          setClsnames(res.data[cnt].name)   
+          setTeacher(res.data[cnt].userName)   
+          setContent(res.data[cnt].content)   
           break;
         } else {
           cnt += 1
         }
       }
-      setClsname(res.data[cnt]);
     }).catch(err => console.log(err))
   }, [])
   
@@ -40,7 +45,7 @@ export default function ClassroomMain() {
     <div>
       <Navmenu />
       <div className={styles.clsroomcontainer}>
-        <ClassHeader classId={classId} clsname={clsname.name} teacher={clsname.userName} />
+        <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
             <Col xl={2} sm={2}>
@@ -68,7 +73,7 @@ export default function ClassroomMain() {
             <Col xl={10} sm={10}>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <ClassBoardHome classId={classId} content={clsname.content}/>
+                  <ClassBoardHome classId={classId} content={content}/>
                 </Tab.Pane>
                 {/* <Tab.Pane eventKey="second">
                   <ClassBoardCurriculum content={clsname.content}/>

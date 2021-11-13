@@ -1,51 +1,51 @@
-import React, { Fragment, useState } from 'react';
-
+import React, { Fragment, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function BoardCreate() {
+export default function ModifyBoard() {
+  
+  const location = useLocation()
+  const { classId } = location.state
+  const { noticeId } = location.state
+  
+  const [ modify, setModify ] = useState([]);
 
-  const classId = window.location.pathname.split('/')[2];
-
-  const [ board, setBoards ] = useState({
-    title: '',
-    content: ''
-  });
-
-  const [ boardcontent, setBoardContent ] = useState([]);
+  useEffect(() => {
+    axios.get(`/notice-service/${classId}/notice/${noticeId}`)
+    .then(res => {
+      setModify(res.data);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [noticeId])
 
   const handleChangeForm = (e) => {
-    setBoards({
-      ...board,
-      [e.target.name]: e.target.value
+    setModify({
+      ... modify,
+      [e.target.name] : e.target.value
     })
   }
-  console.log("1", board.content)
-  const create = () => {
-    let url = `/notice-service/${classId}/notice`
-    let data = {
-      'classId' : classId,
-      'title' : board.title,
-      'content' : board.content,
-      'author' : sessionStorage.userId
-    }
-    var config={
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization': sessionStorage.token
-      }
-    }
-    axios.post(url, data, config)
+  console.log(modify)
+  const modifysave = () => {
+    axios.put(`/notice-service/${classId}/notice/${noticeId}`, null,
+    {
+      params: {
+        title : modify.title,
+        content: modify.content
+    }})
     .then(res => {
-      alert("성공")
+      alert("게시글이 수정되었습니다.")
+      window.location.href = `/classroommain/${classId}`
     }).catch(err => {
-      alert("실패")
+      alert("게시글 수정 실패")
     })
-  };
-  
+  }
+
   return (
     <Fragment>
       <div className="pl-3 row">
@@ -58,13 +58,15 @@ export default function BoardCreate() {
           </select>
         </div>
         <div className="col-10">
-          <input className={styles.titleinput} type='text' name="title" placeholder='제목을 입력해주세요' value={board.title} onChange={handleChangeForm} />
+          <input className={styles.titleinput} type='text' name="title" defaultValue={modify.title} value={modify.title} onChange={handleChangeForm}/>
         </div>
       </div>
-      <div>
+      <div>      
         <CKEditor
+          name="content"
           editor={ClassicEditor}
-          data="<p><p>"
+          data={modify.content}
+          onChange={handleChangeForm}
           onReady={editor => {
             // You can store the "editor" and use when it is needed.
             console.log('Editor is ready to use!', editor);
@@ -72,8 +74,8 @@ export default function BoardCreate() {
           onChange={(event, editor) => {
             const data = editor.getData();
             console.log({ event, editor, data });
-            setBoards({
-              ...board,
+            setModify({
+              ...modify,
               content: data
             })
           }}
@@ -83,9 +85,10 @@ export default function BoardCreate() {
           onFocus={(event, editor) => {
             console.log('Focus.', editor);
           }}
-        />
+        />        
       </div>
-      <button onClick={create}>저장</button>
+      <button onClick={modifysave}>저장</button>
+      <button>목록</button>
     </Fragment>
-  )
-};
+  );
+}

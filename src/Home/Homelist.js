@@ -86,7 +86,7 @@ export default function Homelist() {
       console.log(error);
     })
   }
-  console.log(cls)
+  
   return (
     <Fragment>
       <br />

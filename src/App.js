@@ -16,11 +16,12 @@ import ClassInfo from './ClassInfo/ClassInfo';
 import Mypage from './Mypage/Mypage';
 import ClassDetailNotice from './Board/ClassDetailNotice';
 import BoardCreate from './Board/BoardCreate';
+import ModifyBoard from './Board/ModifyBoard';
 
 function App() {
 
   // axios.defaults.baseURL = 'http://192.168.201.129:8000'
-  axios.defaults.baseURL = 'http://10.10.20.95:8000'
+  axios.defaults.baseURL = 'http://192.168.201.108:8000'
 
   return (
     <BrowserRouter>
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/mypage"><Mypage/></Route>
           <Route exact path="/classdetailnotice/:noticeId"><ClassDetailNotice/></Route>
           <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
+          <Route exact path="/modifyboard/:classId/:noticeId"><ModifyBoard/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>

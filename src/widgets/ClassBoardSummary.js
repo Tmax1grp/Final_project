@@ -28,7 +28,6 @@ export default function ClassBoardSummary({classId}) {
     )
   },[])
 
-  console.log(articles)
     
   const articlelist = articles.map((article) => {
     return (

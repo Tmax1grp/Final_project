@@ -5,7 +5,7 @@ import styles from './Class.module.css';
 
 // TODO: chatContainer 컴포넌트 추가
 export default function ClassHeader( {classId, clsname, teacher} ) {
-  
+  // console.log(clsname)
   // lecture: 강의 데이터 (강사 이름, 강의 제목)
   // const [lecture, setLecture] = useState({ lecturer: "홍길동", lectureName: "Spring으로 배우는 MSA, DEV OPS" });
   const [onLive, setOnLive] = useState(false);
