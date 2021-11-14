@@ -21,37 +21,37 @@ export default function ClassBoardSummary({classId}) {
   useEffect(() => {
     axios.get(`/discuss-service/${classId}/discuss/all/1`)
     .then(res => {
-      setArticles(res.data);
+      setArticles(res.data.content);
     })
     .catch((err) =>
       console.log(err)
     )
   },[])
   
-  // const articlelist = articles.map((article) => {
-  //   return (
-  //     <Link to={{
-  //       pathname: `/classdetailnotice/${article.noticeId}`,
-  //       state: {
-  //         classId: classId
-  //       }
-  //     }}
-  //     >
-  //       <div className="card">
-  //         <div className="card-header">
-  //           {article.title}
-  //         </div>
-  //         <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
-  //           {HtmlReactParser(article.content)}
-  //         </div>
-  //       </div>
-  //     </Link>
-  //   )
-  // }).slice(0, 2)
+  const articlelist = articles.map((article) => {
+    return (
+      <Link to={{
+        pathname: `/classdetailnotice/${article.noticeId}`,
+        state: {
+          classId: classId
+        }
+      }}
+      >
+        <div className="card">
+          <div className="card-header">
+            {article.title}
+          </div>
+          <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
+            {HtmlReactParser(article.content)}
+          </div>
+        </div>
+      </Link>
+    )
+  }).slice(0, 2)
 
   return (
     <div>
-      {/* {articlelist}     */}
+      {articlelist}    
     </div>
   );
 }

@@ -9,6 +9,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function ModifyBoard({ classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
+  const location = useLocation();
   const { selects } = location.state
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
   const [ select, Setselect ] = useState(selects);
