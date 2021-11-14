@@ -26,7 +26,7 @@ export default function ClassroomMain() {
   const [ status, setStatus] = useState([]);
   const [activeKey, setActiveKey] = useState("home");
 
-   // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
   const [boardStatus, setBoardStatus] = useState(0);
   const [articleId, setArticleId] = useState(0);
 
@@ -34,26 +34,26 @@ export default function ClassroomMain() {
     setActiveKey(key);
     setBoardStatus(0);
   }
-  
+
   useEffect(() => {
     axios.get('/classroom-service/lectures/all',
-    {params: {userId: sessionStorage.userId}})
-    .then(res => {
-      var cnt = 0
-      while (res.data.length !== 0) {
-        if (res.data[cnt].classroomId == classId){
-          setClsnames(res.data[cnt].name)   
-          setTeacher(res.data[cnt].teacher)   
-          setContent(res.data[cnt].content)
-          setStatus(res.data[cnt].status)
-          break;
-        } else {
-          cnt += 1
+      {params: {userId: sessionStorage.userId}})
+      .then(res => {
+        var cnt = 0
+        while (res.data.length !== 0) {
+          if (res.data[cnt].classroomId == classId){
+            setClsnames(res.data[cnt].name)
+            setTeacher(res.data[cnt].teacher)
+            setContent(res.data[cnt].content)
+            setStatus(res.data[cnt].status)
+            break;
+          } else {
+            cnt += 1
           }
         }
       }).catch(err => console.log(err))
   }, [])
-  
+
   return (
     <div>
       <Navmenu />
@@ -85,11 +85,11 @@ export default function ClassroomMain() {
                   <Nav.Link eventKey="자료게시판" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
                 {
-                  status === 5 ? (
+                  status === 5 ?
                     <Nav.Item>
-                      <Nav.Link eventKey="seventh" className={styles.sidemenu}>수강생관리</Nav.Link>
+                      <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
                     </Nav.Item>
-                ) : null
+                    : <>권한이 없습니다.</>
                 }
               </Nav>
             </Col>
@@ -114,7 +114,7 @@ export default function ClassroomMain() {
                       <Tab.Pane eventKey="자료게시판">
                         <ClassBoardResource classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="members">
+                      <Tab.Pane eventKey="수강생관리">
                         <ClassMemberManage classId={classId} />
                       </Tab.Pane>
                     </>
