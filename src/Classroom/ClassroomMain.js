@@ -20,11 +20,20 @@ import BoardArticleView from '../Board/BoardArticleView'
 export default function ClassroomMain() {
 
   const classId = window.location.pathname.split('/')[2];
-  const [activeKey, setActiveKey] = useState("home");
   const [ clsname, setClsnames ] = useState([]);
   const [ teacher, setTeacher ] = useState([]);
   const [ content, setContent ] = useState([]);
   const [ status, setStatus] = useState([]);
+  const [activeKey, setActiveKey] = useState("home");
+
+  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+  const [boardStatus, setBoardStatus] = useState(0);
+  const [articleId, setArticleId] = useState(0);
+
+  const handleSelected = key => {
+    setActiveKey(key);
+    setBoardStatus(0);
+  }
   
   useEffect(() => {
     axios.get('/classroom-service/lectures/all',
@@ -40,15 +49,10 @@ export default function ClassroomMain() {
           break;
         } else {
           cnt += 1
-
-  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
-  const [boardStatus, setBoardStatus] = useState(0);
-  const [articleId, setArticleId] = useState(0);
-
-  const handleSelected = key => {
-    setActiveKey(key);
-    setBoardStatus(0);
-  }
+          }
+        }
+      }).catch(err => console.log(err))
+  }, [])
   
   return (
     <div>
