@@ -15,6 +15,7 @@ import ClassBoardResource from '../Board/ClassBoardReference'
 // import ClassBoardList from '../widgets/ClassBoardList';
 import ClassMemberManage from '../widgets/ClassMemberManage'
 import styles from '../layout/Class.module.css'
+import BoardArticleView from '../Board/BoardArticleView'
 
 export default function ClassroomMain() {
 
@@ -24,6 +25,15 @@ export default function ClassroomMain() {
   const [clsname, setClsnames] = useState([]);
   const [teacher, setTeacher] = useState([]);
   const [content, setContent] = useState([]);
+
+  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+  const [boardStatus, setBoardStatus] = useState(0);
+  const [articleId, setArticleId] = useState(0);
+
+  const handleSelected = key => {
+    setActiveKey(key);
+    setBoardStatus(0);
+  }
 
   useEffect(() => {
     axios.get('/classroom-service/lectures/all',
@@ -50,7 +60,7 @@ export default function ClassroomMain() {
         <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
         <Tab.Container
           defaultActiveKey={activeKey}
-          onSelect={(k) => setActiveKey(k)}
+          onSelect={handleSelected}
         >
           <Row>
             <Col xl={2} sm={2}>
@@ -80,27 +90,32 @@ export default function ClassroomMain() {
             </Col>
             <Col xl={10} sm={10}>
               <Tab.Content>
-                <Tab.Pane eventKey="home">
-                  <ClassBoardHome classId={classId} content={content} />
-                </Tab.Pane>
-                {/* <Tab.Pane eventKey="curr">
-                  <ClassBoardCurriculum content={clsname.content}/>
-                </Tab.Pane> */}
-                <Tab.Pane eventKey="notice">
-                  <ClassBoardNotice classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="homework">
-                  <ClassBoardHomework classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="qna">
-                  <ClassBoardDiscuss classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="material">
-                  <ClassBoardResource classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="members">
-                  <ClassMemberManage classId={classId} />
-                </Tab.Pane>
+                <BoardArticleView classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} />
+                {
+                  boardStatus == 0 ?
+                    <>
+                      <Tab.Pane eventKey="home">
+                        <ClassBoardHome setBoardStatus={setBoardStatus} classId={classId} content={content} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="notice">
+                        <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="homework">
+                        <ClassBoardHomework classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="qna">
+                        <ClassBoardDiscuss classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="material">
+                        <ClassBoardResource classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="members">
+                        <ClassMemberManage classId={classId} />
+                      </Tab.Pane>
+                    </>
+                    :
+                    <></>
+                }
               </Tab.Content>
             </Col >
           </Row >

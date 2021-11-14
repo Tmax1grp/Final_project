@@ -7,7 +7,7 @@ import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 import BoardCreate from './BoardCreate';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
-export default function ClassBoardNotice({ classId }) {
+export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId }) {
   const [totalPages, setTotalPages] = useState(10);
   const [pageNum, setPageNum] = useState(1);
   const [keyword, setKeyword] = useState({
@@ -83,6 +83,11 @@ export default function ClassBoardNotice({ classId }) {
       })
     }
 
+    const handleOpenArticle = () => {
+      setArticleId(clas.noticeId);
+      setBoardStatus(1);
+    }
+
     // 게시글 작성일 raw 데이터 편집  
     if (clas.createDate != null) {
       var dateRaw = clas.createDate;
@@ -92,21 +97,21 @@ export default function ClassBoardNotice({ classId }) {
       createTime = dateRaw.split("T")[1];
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
-    
+
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
         <td>
-          <Link to={{
-            pathname: `/classdetailnotice/${clas.noticeId}`,
-            state: {
-              classId: classId
-            }
-          }}
-            style={{color:"black"}}>
-              <button onClick={enternoticedetail}>
-            {clas.title}</button>
-          </Link>
+          <button style={{ color: "black" }} onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
+            {clas.title}
+          </button>
+          {/* <Link
+            to={{ pathname: `/classdetailnotice/${clas.noticeId}`, state: { classId: classId } }}
+            style={{ color: "black" }}>
+            <button onClick={enternoticedetail}>
+              {clas.title}
+            </button>
+          </Link> */}
         </td>
         <td>{clas.userName}</td>
         <td>{createDate + " " + createTime}</td>
@@ -116,19 +121,23 @@ export default function ClassBoardNotice({ classId }) {
   })
 
   return (
-    <div>
+    <>
+      {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          {/* <BoardCreate></BoardCreate> */}
-          <Link to={`/boardcreate/${classId}`} params={classId}>
+          <button onClick={() => { setBoardStatus(2) }}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
-          </Link>
+          </button>
+          {/* <Link to={`/boardcreate/${classId}`} params={classId}>
+            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
+          </Link> */}
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />
         </div>
       </div>
 
+      {/*게시글 목록*/}
       <table className="table">
         <thead className="thead-dark">
           <tr>
@@ -140,15 +149,16 @@ export default function ClassBoardNotice({ classId }) {
           </tr>
         </thead>
         <tbody>
-          {classes.length > 0 ?
-            classesList
-            :
-            <>검색된 게시글이 없습니다!</>
+          {
+            classes.length > 0 ?
+              classesList
+              :
+              <>검색된 게시글이 없습니다!</>
           }
         </tbody>
       </table>
       <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
       {/* <ClassBoardList name="notice" classId={classId} /> */}
-    </div>
+    </>
   );
 }

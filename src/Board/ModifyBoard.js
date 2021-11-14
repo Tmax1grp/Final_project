@@ -6,23 +6,19 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function ModifyBoard() {
-  
-  const location = useLocation()
-  const { classId } = location.state
-  const { noticeId } = location.state
+export default function ModifyBoard({ classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${noticeId}`)
+    axios.get(`/notice-service/${classId}/notice/${articleId}`)
     .then(res => {
       setModify(res.data);
     })
     .catch(error => {
       console.log(error)
     })
-  }, [noticeId])
+  }, [articleId])
 
   const handleChangeForm = (e) => {
     setModify({
@@ -30,9 +26,13 @@ export default function ModifyBoard() {
       [e.target.name] : e.target.value
     })
   }
-  console.log(modify)
+
+  const modifycancel = () =>{
+    setBoardStatus(0);
+  }
+  
   const modifysave = () => {
-    axios.put(`/notice-service/${classId}/notice/${noticeId}`, null,
+    axios.put(`/notice-service/${classId}/notice/${articleId}`, null,
     {
       params: {
         title : modify.title,
@@ -44,6 +44,10 @@ export default function ModifyBoard() {
     }).catch(err => {
       alert("게시글 수정 실패")
     })
+  }
+
+  const goList = () => {
+    setBoardStatus(0);
   }
 
   return (
@@ -87,8 +91,9 @@ export default function ModifyBoard() {
           }}
         />        
       </div>
+      <button onClick={modifycancel}>취소</button>
       <button onClick={modifysave}>저장</button>
-      <button>목록</button>
+      <button onClick={goList}>목록</button>
     </Fragment>
   );
 }
