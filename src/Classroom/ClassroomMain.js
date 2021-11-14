@@ -22,6 +22,7 @@ export default function ClassroomMain() {
   const [ clsname, setClsnames ] = useState([]);
   const [ teacher, setTeacher ] = useState([]);
   const [ content, setContent ] = useState([]);
+  const [ status, setStatus] = useState([]);
   
   useEffect(() => {
     axios.get('/classroom-service/lectures/all',
@@ -32,7 +33,8 @@ export default function ClassroomMain() {
         if (res.data[cnt].classroomId == classId){
           setClsnames(res.data[cnt].name)   
           setTeacher(res.data[cnt].teacher)   
-          setContent(res.data[cnt].content)   
+          setContent(res.data[cnt].content)
+          setStatus(res.data[cnt].status)
           break;
         } else {
           cnt += 1
@@ -40,7 +42,7 @@ export default function ClassroomMain() {
       }
     }).catch(err => console.log(err))
   }, [])
-
+  
   return (
     <div>
       <Navmenu />
@@ -68,9 +70,13 @@ export default function ClassroomMain() {
                 <Nav.Item>
                   <Nav.Link eventKey="sixth" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="seventh" className={styles.sidemenu}>수강생관리</Nav.Link>
-                </Nav.Item>
+                {
+                  status === 5 ? (
+                    <Nav.Item>
+                      <Nav.Link eventKey="seventh" className={styles.sidemenu}>수강생관리</Nav.Link>
+                    </Nav.Item>
+                ) : null
+                }
               </Nav>
             </Col>
             <Col xl={10} sm={10}>

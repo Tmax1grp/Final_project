@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './Board.module.css';
@@ -9,13 +9,14 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function BoardCreate() {
 
   const classId = window.location.pathname.split('/')[2];
-
   const [ board, setBoards ] = useState({
     title: '',
     content: ''
   });
-
-  const [ boardcontent, setBoardContent ] = useState([]);
+  const location = useLocation()
+  const { selects } = location.state
+  const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
+  const [ select, Setselect ] = useState(selects);
 
   const handleChangeForm = (e) => {
     setBoards({
@@ -23,9 +24,13 @@ export default function BoardCreate() {
       [e.target.name]: e.target.value
     })
   }
-  console.log("1", board.content)
+  
+  const handleChangeselect = (e) => {
+    Setselect(e.target.value)
+  }
+
   const create = () => {
-    let url = `/notice-service/${classId}/notice`
+    let url = "";
     let data = {
       'classId' : classId,
       'title' : board.title,
@@ -38,6 +43,15 @@ export default function BoardCreate() {
         'Content-Type' : 'application/json',
         'Authorization': sessionStorage.token
       }
+    }
+    if (select == selectlist[0]) {
+      url = `/notice-service/${classId}/notice`
+    } else if (select == selectlist[1]) {
+      url = `/assignment-service/${classId}/assignment`
+    } else if (select == selectlist[2]) {
+      url = `/discuss-service/${classId}/discuss`
+    } else {
+      url = `/reference-service/${classId}/reference`
     }
     axios.post(url, data, config)
     .then(res => {
@@ -52,11 +66,12 @@ export default function BoardCreate() {
     <Fragment>
       <div className="pl-3 row">
         <div className="d-flex p-0 mr-2 col-2">
-          <select className="form-select col-3" aria-label="Default select example">
-            <option value="1">공지사항</option>
-            <option value="2">과제게시판</option>
-            <option value="3">질문게시판</option>
-            <option value="4">자료게시판</option>
+          <select className="form-select col-3" aria-label="Default select example" onChange={handleChangeselect} value={select}>
+            {
+              selectlist.map((item) => (
+                <option value={item} key={item}>{item}</option>
+              ))
+            }
           </select>
         </div>
         <div className="col-10">

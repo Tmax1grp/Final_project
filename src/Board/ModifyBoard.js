@@ -11,8 +11,10 @@ export default function ModifyBoard() {
   const location = useLocation()
   const { classId } = location.state
   const { noticeId } = location.state
-  
   const [ modify, setModify ] = useState([]);
+  const { selects } = location.state
+  const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
+  const [ select, Setselect ] = useState(selects);
 
   useEffect(() => {
     axios.get(`/notice-service/${classId}/notice/${noticeId}`)
@@ -30,7 +32,11 @@ export default function ModifyBoard() {
       [e.target.name] : e.target.value
     })
   }
-  console.log(modify)
+
+  const handleChangeselect = (e) => {
+    Setselect(e.target.value)
+  }
+
   const modifysave = () => {
     axios.put(`/notice-service/${classId}/notice/${noticeId}`, null,
     {
@@ -50,11 +56,12 @@ export default function ModifyBoard() {
     <Fragment>
       <div className="pl-3 row">
         <div className="d-flex p-0 mr-2 col-2">
-          <select className="form-select col-3" aria-label="Default select example">
-            <option value="1">공지사항</option>
-            <option value="2">과제게시판</option>
-            <option value="3">질문게시판</option>
-            <option value="4">자료게시판</option>
+          <select className="form-select col-3" aria-label="Default select example" onChange={handleChangeselect} value={select}>
+            {
+              selectlist.map((item) => (
+                <option value={item} key={item}>{item}</option>
+              ))
+            }
           </select>
         </div>
         <div className="col-10">

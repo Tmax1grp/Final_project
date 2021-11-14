@@ -100,8 +100,12 @@ export default function ClassBoardNotice({ classId }) {
     <div>
       <div className="row">
         <div className="col-2">
-          {/* <BoardCreate></BoardCreate> */}
-          <Link to={`/boardcreate/${classId}`} params={classId}>
+          <Link to={{
+            pathname: `/boardcreate/${classId}`,
+            state: {
+              selects : "공지사항"
+            }
+          }}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
           </Link>
         </div>

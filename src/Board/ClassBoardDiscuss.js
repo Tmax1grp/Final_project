@@ -90,7 +90,12 @@ export default function ClassBoardDiscuss({ classId }) {
     <div>
       <div className="row">
         <div className="col-2">
-          <Link to={`/boardcreate/${classId}`} params={classId}>
+          <Link to={{
+            pathname: `/boardcreate/${classId}`,
+            state: {
+              selects : "질문게시판"
+            }
+          }}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
           </Link>
         </div>

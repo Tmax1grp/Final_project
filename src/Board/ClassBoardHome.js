@@ -21,11 +21,11 @@ export default function ClassBoardHome({classId, content}) {
       <div>
         <Row>
           <Col>
-            공지사항
+            <label>공지사항</label> 
             <ClassBoardSummary name="notice" classId={classId}/>
           </Col>
           <Col>
-            질문
+            <label>질문</label> 
             <ClassBoardSummary name="discuss" classId={classId}/>
           </Col>
         </Row>

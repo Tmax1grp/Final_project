@@ -4,27 +4,27 @@ import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
 
-export default function ClassDetailNotice() {
+export default function ClassDetailDiscuss() {
   
   const location = useLocation()
   const history = useHistory()
   const { classId } = location.state
 
-  const noticeId = window.location.pathname.split('/')[2];
+  const discussId = window.location.pathname.split('/')[2];
   
   const [ board, setBoards ] = useState({title:" ", content:" ", userName:" "});
   const [ reply, setReply ] = useState([]);
   const [ newreply, setNewreply ] = useState([]);
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${noticeId}`)
+    axios.get(`/discuss-service/${classId}/discuss/${discussId}`)
     .then(res => {
       setBoards(res.data)
     })
   },[])
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${noticeId}/reply`)
+    axios.get(`/discuss-service/${classId}/discuss/${discussId}/reply`)
     .then(res => {
       setReply(res.data)
     })
@@ -35,8 +35,8 @@ export default function ClassDetailNotice() {
     // window.history.goBack(-1)
   }
 
-  const noticedelete = () => {
-    axios.delete(`/notice-service/${classId}/notice/${noticeId}`)
+  const discussdelete = () => {
+    axios.delete(`/discuss-service/${classId}/discuss/${discussId}`)
     .then(
       alert("삭제되었습니다.")
     )
@@ -51,7 +51,7 @@ export default function ClassDetailNotice() {
   }
 
   const sendreply = () => {
-    let url = (`/notice-service/${classId}/notice/${noticeId}/reply`)
+    let url = (`/discuss-service/${classId}/discuss/${discussId}/reply`)
     let data = {
       'userId': sessionStorage.userId,
       'content' : newreply.content,
@@ -71,7 +71,7 @@ export default function ClassDetailNotice() {
 
   const replylist = reply.map((item) => {
     const replydelete = () => {
-      let url = (`/notice-service/${classId}/notice/${noticeId}/reply/${item.replyId}`)
+      let url = (`/discuss-service/${classId}/discuss/${discussId}/reply/${item.replyId}`)
       axios.delete(url)
       .then(res => {
         alert("삭제되었습니다.")
@@ -118,15 +118,15 @@ export default function ClassDetailNotice() {
           <div>
             <button onClick={golist}>목록</button>
             <button><Link to={{
-              pathname : `/modifyboard/${classId}/${noticeId}`,
+              pathname : `/modifyboard/${classId}/${discussId}`,
               state : {
                 classId : classId,
-                noticeId : noticeId,
-                selects: "공지사항"
+                discussId : discussId,
+                selects: "질문게시판"
               }
             }}>수정
             </Link></button>
-            <button onClick={noticedelete}>삭제</button>
+            <button onClick={discussdelete}>삭제</button>
           </div>
         ) : <button onClick={golist}>목록</button>
       }

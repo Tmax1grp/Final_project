@@ -90,7 +90,12 @@ export default function ClassBoardReference({ classId }) {
     <div>
       <div className="row">
         <div className="col-2">
-          <Link to={`/boardcreate/${classId}`} params={classId}>
+          <Link to={{
+            pathname: `/boardcreate/${classId}`,
+            state: {
+              selects : "자료게시판"
+            }
+          }}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
           </Link>
         </div>

@@ -128,19 +128,18 @@ export default function Homelist() {
             </Modal>
           </div>
           <div className="row">
-            {/* {clslist} */}
             { 
               cls.map(item => (
                 item.status == 5 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
                   <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classroomId}>
-                    <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
+                    <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
                         <p>[강사] {item.userName}</p>
                       </div>
                     </div>
-                    <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
+                    <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`}}>
                         <h2>{item.name}</h2>
                         <p>[소개] {item.content}</p>
                         <button className="card-button">강의실 입장</button>
@@ -149,6 +148,7 @@ export default function Homelist() {
                 </div> 
               : null ) 
             )}
+            {/* <h1 style={{color:"grey"}}>내 강의가 없습니다.</h1> */}
           </div>
 
           <br/>
@@ -179,7 +179,7 @@ export default function Homelist() {
           </div>
           <div className="row">
             { 
-              cls.map(item => (
+              cls.length > 0 && cls.map(item => (
                 item.status == 1 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
                   <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classId}>
@@ -197,13 +197,13 @@ export default function Homelist() {
                     </div>
                   </Link>
                 </div> 
-              : null ) 
+            : null ) 
             )}
+            {/* <h1 style={{color:"grey"}}>수강중인 강의가 없습니다.</h1> */}
           </div>
           <br />
           <h3>종료된 강의</h3>
           <div className="row">
-            {/* {clslist} */}
             <h1 style={{color:"grey"}}>종료된 강의가 없습니다.</h1>
           </div>
         </div>
