@@ -6,6 +6,7 @@ import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardDiscuss({ classId }) {
+
   const [keyword, setKeyword] = useState({
     keywordType: 0,
     keywordValue: null
@@ -14,11 +15,10 @@ export default function ClassBoardDiscuss({ classId }) {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    axios.get(`/discuss-service/${classId}/discuss/all`)
+    axios.get(`/discuss-service/${classId}/discuss/all/1`)
       .then(res => {
-        // console.log(res.data);
-        setClasses(res.data);
-        setFiltered(res.data);
+        setClasses(res.data.content);
+        setFiltered(res.data.content);
       })
       .catch((err) =>
         console.log(err)
@@ -35,7 +35,7 @@ export default function ClassBoardDiscuss({ classId }) {
 
       switch (searchType) {
         case 0: {
-          setFiltered(classes.filter(item => item.author.includes(searchValue)));
+          setFiltered(classes.filter(item => item.userName.includes(searchValue)));
           break;
         }
         case 1: {
@@ -75,11 +75,18 @@ export default function ClassBoardDiscuss({ classId }) {
       <tr>
         <th scope="row">{clas.discussId}</th>
         <td>
-          <button onClick={enterdiscussdetail}>
-            <a href={`/discuss-service/${classId}/discuss/${clas.discussId}`}>{clas.title}</a>
-          </button>
+          <Link to={{
+            pathname: `/classdetaildiscuss/${clas.discussId}`,
+            state: {
+              classId: classId
+            }
+          }}
+            style={{color:"black"}}>
+              <button onClick={enterdiscussdetail}>
+            {clas.title}</button>
+          </Link>
         </td>
-        <td>{clas.author}</td>
+        <td>{clas.userName}</td>
         <td>{createDate + " " + createTime}</td>
         <td>{clas.clickCnt}</td>
       </tr>

@@ -18,6 +18,9 @@ import ClassDetailNotice from './Board/ClassDetailNotice';
 import BoardCreate from './Board/BoardCreate';
 import ModifyBoard from './Board/ModifyBoard';
 import ClassBoardNotice from './Board/ClassBoardNotice';
+import ClassDetailDiscuss from './Board/ClassDetailDiscuss';
+import ClassDetailAssignment from './Board/ClassDetailAssignment';
+import ClassDetailReference from './Board/ClassDetailReference';
 
 function App() {
 
@@ -36,6 +39,9 @@ function App() {
           <Route exact path="/classroommain/:classId" ><ClassroomMain/></Route>
           <Route path='/classroommain/:classId/classboardnotice'><ClassBoardNotice /></Route>
           <Route exact path="/classdetailnotice/:noticeId"><ClassDetailNotice/></Route>
+          <Route exact path="/classdetaildiscuss/:discussId"><ClassDetailDiscuss /></Route>
+          <Route exact path="/classdetailassignment/:assignmentId"><ClassDetailAssignment /></Route>
+          <Route exact path="/classdetailreference/:referenceId"><ClassDetailReference /></Route>
           <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
           <Route exact path="/modifyboard/:classId/:noticeId"><ModifyBoard/></Route>
           <Route exact path="/admin"><Admin/></Route>

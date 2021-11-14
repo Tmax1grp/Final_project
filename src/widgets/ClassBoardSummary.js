@@ -9,7 +9,7 @@ export default function ClassBoardSummary({classId}) {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all/0`)
+    axios.get(`/notice-service/${classId}/notice/all/1`)
     .then(res => {
       setArticles(res.data.content);
     })
@@ -19,7 +19,7 @@ export default function ClassBoardSummary({classId}) {
   },[])
 
   useEffect(() => {
-    axios.get(`/discuss-service/discuss/${classId}/discuss/all`)
+    axios.get(`/discuss-service/${classId}/discuss/all/1`)
     .then(res => {
       setArticles(res.data);
     })
@@ -28,31 +28,30 @@ export default function ClassBoardSummary({classId}) {
     )
   },[])
   
-  // console.log(articles)
-  const articlelist = articles.map((article) => {
-    return (
-      <Link to={{
-        pathname: `/classdetailnotice/${article.noticeId}`,
-        state: {
-          classId: classId
-        }
-      }}
-      >
-        <div className="card">
-          <div className="card-header">
-            {article.title}
-          </div>
-          <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
-            {HtmlReactParser(article.content)}
-          </div>
-        </div>
-      </Link>
-    )
-  }).slice(0, 2)
+  // const articlelist = articles.map((article) => {
+  //   return (
+  //     <Link to={{
+  //       pathname: `/classdetailnotice/${article.noticeId}`,
+  //       state: {
+  //         classId: classId
+  //       }
+  //     }}
+  //     >
+  //       <div className="card">
+  //         <div className="card-header">
+  //           {article.title}
+  //         </div>
+  //         <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
+  //           {HtmlReactParser(article.content)}
+  //         </div>
+  //       </div>
+  //     </Link>
+  //   )
+  // }).slice(0, 2)
 
   return (
     <div>
-      {articlelist}    
+      {/* {articlelist}     */}
     </div>
   );
 }

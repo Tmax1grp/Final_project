@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
-import BoardCreate from './BoardCreate';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardNotice({ classId }) {
@@ -14,10 +13,9 @@ export default function ClassBoardNotice({ classId }) {
   });
   const [ filtered, setFiltered ] = useState([]);
   const [ classes, setClasses ] = useState([]);
-  const [ people, setPeople ] = useState("");
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all/0`)
+    axios.get(`/notice-service/${classId}/notice/all/1`)
       .then(res => {
         setClasses(res.data.content);
         setFiltered(res.data.content);
@@ -37,7 +35,7 @@ export default function ClassBoardNotice({ classId }) {
 
       switch (searchType) {
         case 0: {
-          setFiltered(classes.filter(item => item.author.includes(searchValue)));
+          setFiltered(classes.filter(item => item.userName.includes(searchValue)));
           break;
         }
         case 1: {

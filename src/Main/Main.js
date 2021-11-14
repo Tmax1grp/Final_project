@@ -5,7 +5,7 @@ export default function Main() {
   return (
     <div>
       <div className='left'>
-        <div className='maintitle-left' style={{float:"right", color:"#20314E", fontSize:"150px"}}>NICE T</div>
+        <div className='maintitle-left' style={{float:"right", color:"#20314E", fontSize:"8em"}}>NICE T</div>
         <div className='cat'>
           <div className='ears1'></div>
           <div className='head1'>
@@ -25,7 +25,7 @@ export default function Main() {
       </div>
       <div className='right'>
         <a href="/signup" className="btn-start">시작하기</a>
-        <div className='maintitle-right' style={{color:"#FFCA95", fontSize:"150px"}}>O MEET</div>
+        <div className='maintitle-right' style={{color:"#FFCA95", fontSize:"8em"}}>O MEET</div>
         <div className='dog'>
           <div className='ears2'></div>
           <div className='head2'>
@@ -43,8 +43,6 @@ export default function Main() {
           </div>
         </div>
       </div>
-
-      {/* <Footbar/> */}
     </div>
 
   );

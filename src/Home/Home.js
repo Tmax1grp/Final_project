@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 // import { CardGroup, Card, Modal, Button } from "react-bootstrap";
 
 import Navmenu from './Navmenu';
@@ -8,10 +8,10 @@ import Homelist from './Homelist';
 export default function Home() {
 
   return (
-    <Fragment>
+    <div className="wrapper">
       <Navmenu />
       <Homelist />
       {/* <Footbar /> */}
-    </Fragment>
+    </div>
   );
 }
