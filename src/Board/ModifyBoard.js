@@ -6,13 +6,13 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function ModifyBoard({ classId, articleId, setBoardStatus }) {
+export default function ModifyBoard({ activeKey, classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
-  const location = useLocation();
-  const { selects } = location.state
+  // const location = useLocation();
+  // const { selects } = location.state
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
-  const [ select, Setselect ] = useState(selects);
+  const [ select, Setselect ] = useState(activeKey);
 
   useEffect(() => {
     axios.get(`/notice-service/${classId}/notice/${articleId}`)

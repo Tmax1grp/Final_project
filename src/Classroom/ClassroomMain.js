@@ -26,7 +26,7 @@ export default function ClassroomMain() {
   const [ status, setStatus] = useState([]);
   const [activeKey, setActiveKey] = useState("home");
 
-  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+   // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
   const [boardStatus, setBoardStatus] = useState(0);
   const [articleId, setArticleId] = useState(0);
 
@@ -73,16 +73,16 @@ export default function ClassroomMain() {
                   <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
                 </Nav.Item> */}
                 <Nav.Item>
-                  <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
+                  <Nav.Link eventKey="공지사항" className={styles.sidemenu}>공지사항</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="homework" className={styles.sidemenu}>과제게시판</Nav.Link>
+                  <Nav.Link eventKey="과제게시판" className={styles.sidemenu}>과제게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="qna" className={styles.sidemenu}>질문게시판</Nav.Link>
+                  <Nav.Link eventKey="질문게시판" className={styles.sidemenu}>질문게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="material" className={styles.sidemenu}>자료게시판</Nav.Link>
+                  <Nav.Link eventKey="자료게시판" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
                 {
                   status === 5 ? (
@@ -95,23 +95,23 @@ export default function ClassroomMain() {
             </Col>
             <Col xl={10} sm={10}>
               <Tab.Content>
-                <BoardArticleView classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} />
+                <BoardArticleView activeKey={activeKey} classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} />
                 {
                   boardStatus == 0 ?
                     <>
                       <Tab.Pane eventKey="home">
                         <ClassBoardHome setBoardStatus={setBoardStatus} classId={classId} content={content} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="notice">
+                      <Tab.Pane eventKey="공지사항">
                         <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="homework">
+                      <Tab.Pane eventKey="과제게시판">
                         <ClassBoardHomework classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="qna">
+                      <Tab.Pane eventKey="질문게시판">
                         <ClassBoardDiscuss classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="material">
+                      <Tab.Pane eventKey="자료게시판">
                         <ClassBoardResource classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="members">

@@ -4,7 +4,7 @@ import ClassDetailNotice from '../Board/ClassDetailNotice'
 import BoardCreate from '../Board/BoardCreate'
 import ModifyBoard from '../Board/ModifyBoard'
 
-export default function BoardArticleView({ classId, articleId, boardStatus, setBoardStatus }) {
+export default function BoardArticleView({ activeKey, classId, articleId, boardStatus, setBoardStatus }) {
     const [view, setView] = useState(<></>);
 
     useEffect(() => {
@@ -13,10 +13,10 @@ export default function BoardArticleView({ classId, articleId, boardStatus, setB
                 setView(<ClassDetailNotice classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
             }
             case 2: {
-                setView(<BoardCreate classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
+                setView(<BoardCreate activeKey={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
             }
             case 3: {
-                setView(<ModifyBoard classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
+                setView(<ModifyBoard activeKey={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
             }
             default: {
                 setView(<></>)

@@ -6,7 +6,7 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function BoardCreate({ setBoardStatus, classId }) {
+export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
 
   // const classId = window.location.pathname.split('/')[2];
 
@@ -14,10 +14,10 @@ export default function BoardCreate({ setBoardStatus, classId }) {
     title: '',
     content: ''
   });
-  const location = useLocation()
-  const { selects } = location.state
+  // const location = useLocation()
+  // const { selects } = location.state
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
-  const [ select, Setselect ] = useState(selects);
+  const [ select, Setselect ] = useState(activeKey);
 
   const handleChangeForm = (e) => {
     setBoards({
