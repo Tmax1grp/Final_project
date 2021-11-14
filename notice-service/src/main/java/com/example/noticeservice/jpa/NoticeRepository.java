@@ -23,6 +23,9 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
 
     Page<NoticeEntity> findAll(Pageable pageable);
 
+//    @Query(value = "SELECT * FROM notice\n" +
+//            "WHERE class_id LIKE :classId ORDER BY notice_id desc;",nativeQuery = true)
+    Page<NoticeEntity> findByClassId(Long classId, Pageable pageable);
 
 //    @Query(
 //            value = "SELECT * FROM notice WHERE notice.title LIKE :notice.title OR notice.author LIKE :notice.author",
@@ -32,20 +35,22 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
 //
 
     @Query(
-            value = " SELECT * FROM notice " +
+            value = "SELECT * FROM notice " +
                     "WHERE class_id LIKE :ClassId " +
-                    "AND author LIKE %:Author%  "
+                    "AND user_name LIKE %:UserName%"
             , nativeQuery = true
     )
-    List<NoticeEntity> findByClassIdAndAuthor(@Param("ClassId") Long classId, @Param("Author") String author);
+    Page<NoticeEntity> findByClassIdUserName(@Param("ClassId") Long classId, @Param("UserName") String userName, Pageable pageable);
+//    Page<NoticeEntity> findByClassIdAndUserName(Long classId, String author, Pageable pageable);
 
     @Query(
-            value = " SELECT * FROM notice " +
+            value = "SELECT * FROM notice " +
                     "WHERE class_id LIKE :ClassId " +
-                    "AND title LIKE %:Title%  "
+                    "AND title LIKE %:Title%"
             , nativeQuery = true
     )
-    List<NoticeEntity> findByClassIdAndTitle(@Param("ClassId") Long classId, @Param("Title") String title);
+    Page<NoticeEntity> findByClassIdTitle(@Param("ClassId") Long classId, @Param("Title") String title, Pageable pageable);
+//    Page<NoticeEntity> findByClassIdAndTitle(Long classId, String title, Pageable pageable);
 
     List<NoticeEntity> findByClassId(long classId);
 

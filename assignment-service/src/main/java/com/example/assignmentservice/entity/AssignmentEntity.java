@@ -19,27 +19,28 @@ public class AssignmentEntity {
     @Column(nullable = false)
     private Long classId;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String title;
 
-
     @Column(nullable = false)
-    private String author;
-
+    private String content;
 
     @Column(nullable = false)
     private Long clickCnt;
 
     @Column(nullable = false)
-    private Long delYn;
-
-
-    @Column(nullable = false, length = 500)
-    private String content;
+    private String delYn;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdDate;
+    private LocalDateTime createDate;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
+    private String userName;
+
+    @Column(nullable = false)
     private String attach;
+
+    @Column(nullable = false)
+    private Long userId;
+
 }

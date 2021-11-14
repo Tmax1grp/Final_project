@@ -1,5 +1,4 @@
-package com.example.noticeservice.entity;
-
+package com.example.referenceservice.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="notice_replies")
+@Table(name="reference_replies")
 public class ReplyEntity {
 
     @Id
@@ -18,20 +17,20 @@ public class ReplyEntity {
     private Long replyId;
 
     @Column(nullable = false)
-    private Long userId;
+    private String title;
 
     @Column(nullable = false)
     private String content;
 
     @Column(nullable = false)
-    private String userName;
+    private String author;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(name = "notice_id")
-    private NoticeEntity noticeEntity;
+    @JoinColumn(name = "reference_id")
+    private ReferenceEntity referenceEntity;
 
 
 

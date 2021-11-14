@@ -20,6 +20,7 @@ public interface AssignmentRepository extends JpaRepository<AssignmentEntity, Lo
 
     AssignmentEntity findByAssignmentId(Long assignmentId);
 
+    Page<AssignmentEntity> findByClassId(Long classId, Pageable pageable);
 //    @Query(
 //            value = "SELECT * FROM notice WHERE notice.title LIKE :notice.title OR notice.author LIKE :notice.author",
 //            nativeQuery = true)
@@ -33,7 +34,7 @@ public interface AssignmentRepository extends JpaRepository<AssignmentEntity, Lo
                     "AND author LIKE %:Author%  "
             , nativeQuery = true
     )
-    List<AssignmentEntity> findByClassIdAndAuthor(@Param("ClassId") Long classId, @Param("Author") String author);
+    Page<AssignmentEntity> findByClassIdUserName(@Param("ClassId") Long classId, @Param("UserName") String userName, Pageable pageable);
 
     @Query(
             value = " SELECT * FROM assignment " +
@@ -41,7 +42,7 @@ public interface AssignmentRepository extends JpaRepository<AssignmentEntity, Lo
                     "AND title LIKE %:Title%  "
             , nativeQuery = true
     )
-    List<AssignmentEntity> findByClassIdAndTitle(@Param("ClassId") Long classId, @Param("Title") String title);
+    Page<AssignmentEntity> findByClassIdTitle(@Param("ClassId") Long classId, @Param("Title") String title, Pageable pageable);
 
     List<AssignmentEntity> findByClassId(long classId);
 

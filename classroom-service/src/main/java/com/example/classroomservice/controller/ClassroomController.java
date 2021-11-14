@@ -69,6 +69,7 @@ public class ClassroomController {
         lecture.setName(classRoom.getName());
         lecture.setRole("1");
         lecture.setStatus(5);
+        lecture.setTeacher(classRoom.getUserName());
 
         lectureRepository.save(lecture);
 ;

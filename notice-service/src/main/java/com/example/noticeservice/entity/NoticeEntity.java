@@ -37,10 +37,13 @@ public class NoticeEntity implements Serializable {
     private LocalDateTime createDate;
 
     @Column(nullable = false)
-    private String author;
+    private String userName;
 
     @Column(nullable = false)
     private String attach;
+
+    @Column(nullable = false)
+    private Long userId;
 
 
 }

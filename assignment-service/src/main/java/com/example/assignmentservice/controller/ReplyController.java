@@ -35,7 +35,7 @@ public class ReplyController {
 
         AssignmentEntity assignmentEntity = assignmentRepository.findById(assignmentId).get();
 
-        return replyRepository.findAll();
+        return replyRepository.findReplyEntityByAssignmentEntity(assignmentEntity);
     }
 
 

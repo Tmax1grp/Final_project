@@ -22,11 +22,14 @@ public class DiscussController {
     private DiscussRepository discussRepository;
 
     //전체 조회
-    @GetMapping("/discuss/all")
-    public Page<DiscussEntity> allSearchDiscuss(){
-        return discussRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"discussId"));
+    @GetMapping("/discuss/all/{page}")
+    public Page<DiscussEntity> allSearchDiscuss( @PathVariable Long classId, @PathVariable int page){
+        if(page <= 1)
+            page = 1;
+        PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("discussId") );
+//    return noticeRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"noticeId"));
+        return discussRepository.findByClassId(classId ,pageRequest);
     }
-
 
 
     //조회수, 상세조회
@@ -48,44 +51,56 @@ public class DiscussController {
         return discuss;
     }
 
+
+
     // 검색
-    @PutMapping("/discuss/search")
-    public List<DiscussEntity> allSearchDiscuss(@PathVariable Long classId,
-                                              @RequestBody DiscussEntity discussEntity
+    @PutMapping("/discuss/search/{page}")
+    public Page<DiscussEntity> allSearchDiscuss(@PathVariable Long classId,
+                                              @RequestParam(value = "title", required = false) String title,
+                                              @RequestParam(value = "userName", required = false) String userName,
+                                              //@RequestBody NoticeEntity noticeEntity,
+                                              @PathVariable int page
     ){
+        if(page <= 1)
+            page = 1;
+        PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("discussId") );
+        PageRequest pageRequestall = PageRequest.of(page-1, 10,Sort.Direction.DESC,("discussId") );
 
-
-        if(discussEntity.getTitle().length() > 0){
-            return discussRepository.findByClassIdAndTitle(classId, discussEntity.getTitle());
+//        if(noticeEntity.getTitle().length() > 0){
+        if(title != ""){
+            return discussRepository.findByClassIdTitle(classId, title, pageRequest);
         }
-        else if(discussEntity.getAuthor().length() > 0){
-            return discussRepository.findByClassIdAndAuthor(classId, discussEntity.getAuthor());
+        else if(userName != ""){
+//        else if(noticeEntity.getUserName().length() > 0){
+            return discussRepository.findByClassIdUserName(classId,userName, pageRequest);
         }
         else{
-            return discussRepository.findByClassId(classId);
+            return discussRepository.findByClassId(classId, pageRequestall);
         }
     }
-
 
 
 
 
 
     //글 작성
-    @PostMapping("/discuss")
-    public void createDiscuss(@RequestBody DiscussEntity discussEntity){
+    @PostMapping("/notice")
+    public void createNotice(@RequestBody DiscussEntity discussEntity){
         DiscussEntity discuss = new DiscussEntity();
         discuss.setClassId(discussEntity.getClassId());
         discuss.setTitle(discussEntity.getTitle());
-        discuss.setClickCnt(discussEntity.getClickCnt());
-        discuss.setDelYn(discussEntity.getDelYn());
+        discuss.setClickCnt(0L);
+        discuss.setDelYn("0");
         discuss.setContent(discussEntity.getContent());
-        discuss.setAuthor(discussEntity.getAuthor());
-        discuss.setAttach(discussEntity.getAttach());
+//        notice.setContent("asdfsdfsdf");
+        discuss.setUserName(discussEntity.getUserName());
+        discuss.setUserId(discussEntity.getUserId());
+        discuss.setAttach("1");
         discuss.setCreateDate(LocalDateTime.now());
 
         discussRepository.save(discuss);
     }
+
 
     //글 수정
     @PutMapping("/discuss/{discussId}")
@@ -113,9 +128,12 @@ public class DiscussController {
 
 
     //글 삭제
-    @DeleteMapping("/discuss")
-    public void deleteDiscuss(@RequestBody DiscussEntity discussEntity){
-        discussRepository.deleteById(discussEntity.getClassId());
+    @DeleteMapping("/discuss/{discussId}")
+    public void deleteDiscuss( @PathVariable Long discussId){
+//    public void deleteNotice( @PathVariable Long noticeId, @RequestBody NoticeEntity noticeEntity){
+//        noticeRepository.deleteById(noticeEntity.getNoticeId());
+        discussRepository.deleteById(discussId);
     }
+
 
 }

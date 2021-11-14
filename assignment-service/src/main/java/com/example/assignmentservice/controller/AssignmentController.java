@@ -23,13 +23,14 @@ public class AssignmentController {
 
 
 // 전체조회
-    @GetMapping("/assignment/all")
-    @ResponseBody
-    public Page<AssignmentEntity> allSearchAssignment(){
-        return assignmentRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"assignmentId"));
-    }
-
-
+@GetMapping("/assignment/all/{page}")
+public Page<AssignmentEntity> allSearchAssignment( @PathVariable Long classId, @PathVariable int page){
+    if(page <= 1)
+        page = 1;
+    PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("assignmentId") );
+//    return noticeRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"noticeId"));
+    return assignmentRepository.findByClassId(classId ,pageRequest);
+}
 // 조회수, 상세조회
 
     @GetMapping("/assignment/{assignmentId}")
@@ -51,24 +52,30 @@ public class AssignmentController {
     }
 
     //검색
-    @PutMapping("/assignment/search")
-    public List<AssignmentEntity> allSearchAssignment(@PathVariable Long classId,
-                                              @RequestBody AssignmentEntity assignmentEntity
+    @PutMapping("/assignment/search/{page}")
+    public Page<AssignmentEntity> allSearchAssignment(@PathVariable Long classId,
+                                              @RequestParam(value = "title", required = false) String title,
+                                              @RequestParam(value = "userName", required = false) String userName,
+                                              //@RequestBody NoticeEntity noticeEntity,
+                                              @PathVariable int page
     ){
+        if(page <= 1)
+            page = 1;
+        PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("assignmentId") );
+        PageRequest pageRequestall = PageRequest.of(page-1, 10,Sort.Direction.DESC,("assignmentId") );
 
-
-        if(assignmentEntity.getTitle().length() > 0){
-            return assignmentRepository.findByClassIdAndTitle(classId, assignmentEntity.getTitle());
+//        if(noticeEntity.getTitle().length() > 0){
+        if(title != ""){
+            return assignmentRepository.findByClassIdTitle(classId, title, pageRequest);
         }
-        else if(assignmentEntity.getAuthor().length() > 0){
-            return assignmentRepository.findByClassIdAndAuthor(classId, assignmentEntity.getAuthor());
+        else if(userName != ""){
+//        else if(noticeEntity.getUserName().length() > 0){
+            return assignmentRepository.findByClassIdUserName(classId,userName, pageRequest);
         }
         else{
-            return assignmentRepository.findByClassId(classId);
+            return assignmentRepository.findByClassId(classId, pageRequestall);
         }
     }
-
-
 
 
     //글 작성
@@ -77,15 +84,18 @@ public class AssignmentController {
         AssignmentEntity assignment = new AssignmentEntity();
         assignment.setClassId(assignmentEntity.getClassId());
         assignment.setTitle(assignmentEntity.getTitle());
-        assignment.setClickCnt(assignmentEntity.getClickCnt());
-        assignment.setDelYn(assignmentEntity.getDelYn());
+        assignment.setClickCnt(0L);
+        assignment.setDelYn("0");
         assignment.setContent(assignmentEntity.getContent());
-        assignment.setAuthor(assignmentEntity.getAuthor());
-        assignment.setAttach(assignmentEntity.getAttach());
-        assignment.setCreatedDate(LocalDateTime.now());
+//        assignment.setContent("asdfsdfsdf");
+        assignment.setUserName(assignmentEntity.getUserName());
+        assignment.setUserId(assignmentEntity.getUserId());
+        assignment.setAttach("1");
+        assignment.setCreateDate(LocalDateTime.now());
 
         assignmentRepository.save(assignment);
     }
+
 
     //글 수정
     @PutMapping("/assignment/{assignmentId}")
@@ -113,9 +123,12 @@ public class AssignmentController {
 
     //글 삭제
     @DeleteMapping("/assignment/{assignmentId}")
-    public void deleteAssignment(@RequestBody AssignmentEntity assignmentEntity){
-        assignmentRepository.deleteById(assignmentEntity.getClassId());
+    public void deleteAssignment( @PathVariable Long assignmentId){
+//    public void deleteNotice( @PathVariable Long noticeId, @RequestBody NoticeEntity noticeEntity){
+//        noticeRepository.deleteById(noticeEntity.getNoticeId());
+        assignmentRepository.deleteById(assignmentId);
     }
+
 
 
 }

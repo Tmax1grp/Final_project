@@ -1,4 +1,4 @@
-package com.example.discussservice.entity;
+package com.example.referenceservice.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,14 +7,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 @Data
 @Entity
-@Table(name="discuss")
-public class DiscussEntity implements Serializable {
+@Table(name="reference")
+public class ReferenceEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long discussId;
+    private Long referenceId;
 
     @Column(nullable = false)
     private Long classId;

@@ -17,9 +17,13 @@ public interface DiscussRepository extends JpaRepository<DiscussEntity, Long> {
 
     DiscussEntity findByDiscussId(Long discussId);
 
+    //Page<DiscussEntity> findAll(Pageable pageable);
+
+
     Page<DiscussEntity> findAll(Pageable pageable);
 
 
+    Page<DiscussEntity> findByClassId(Long classId, Pageable pageable);
 //    @Query(
 //            value = "SELECT * FROM notice WHERE notice.title LIKE :notice.title OR notice.author LIKE :notice.author",
 //            nativeQuery = true)
@@ -33,16 +37,14 @@ public interface DiscussRepository extends JpaRepository<DiscussEntity, Long> {
                     "AND author LIKE %:Author%  "
             , nativeQuery = true
     )
-    List<DiscussEntity> findByClassIdAndAuthor(@Param("ClassId") Long classId, @Param("Author") String author);
-
+    Page<DiscussEntity> findByClassIdUserName(@Param("ClassId") Long classId, @Param("UserName") String userName, Pageable pageable);
     @Query(
             value = " SELECT * FROM discuss " +
                     "WHERE class_id LIKE :ClassId " +
                     "AND title LIKE %:Title%  "
             , nativeQuery = true
     )
-    List<DiscussEntity> findByClassIdAndTitle(@Param("ClassId") Long classId, @Param("Title") String title);
-
+    Page<DiscussEntity> findByClassIdTitle(@Param("ClassId") Long classId, @Param("Title") String title, Pageable pageable);
     List<DiscussEntity> findByClassId(long classId);
 
 

@@ -20,5 +20,6 @@ public class LectureEntity {
     private String content;
     private String role;
     private Integer status;
+    private String teacher;
 
 }

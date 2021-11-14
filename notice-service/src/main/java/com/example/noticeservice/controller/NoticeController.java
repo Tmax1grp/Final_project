@@ -32,9 +32,13 @@ public class NoticeController {
 
 
 // 전체조회
-    @GetMapping("/notice/all")
-public Page<NoticeEntity> allSearchNotice(){
-    return noticeRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"noticeId"));
+    @GetMapping("/notice/all/{page}")
+public Page<NoticeEntity> allSearchNotice( @PathVariable Long classId, @PathVariable int page){
+        if(page <= 1)
+            page = 1;
+        PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("noticeId") );
+//    return noticeRepository.findAll(PageRequest.of(1,10, Sort.Direction.DESC,"noticeId"));
+        return noticeRepository.findByClassId(classId ,pageRequest);
 }
 
 
@@ -59,20 +63,28 @@ public Page<NoticeEntity> allSearchNotice(){
 
 
 // 검색
-    @PutMapping("/notice/search")
-    public List<NoticeEntity> allSearchNotice(@PathVariable Long classId,
-                                              @RequestBody NoticeEntity noticeEntity
+    @PutMapping("/notice/search/{page}")
+    public Page<NoticeEntity> allSearchNotice(@PathVariable Long classId,
+                                              @RequestParam(value = "title", required = false) String title,
+                                              @RequestParam(value = "userName", required = false) String userName,
+                                              //@RequestBody NoticeEntity noticeEntity,
+                                              @PathVariable int page
     ){
+        if(page <= 1)
+            page = 1;
+        PageRequest pageRequest = PageRequest.of(page-1, 10,Sort.Direction.DESC,("notice_id") );
+        PageRequest pageRequestall = PageRequest.of(page-1, 10,Sort.Direction.DESC,("noticeId") );
 
-
-        if(noticeEntity.getTitle().length() > 0){
-            return noticeRepository.findByClassIdAndTitle(classId, noticeEntity.getTitle());
+//        if(noticeEntity.getTitle().length() > 0){
+          if(title != ""){
+            return noticeRepository.findByClassIdTitle(classId, title, pageRequest);
         }
-        else if(noticeEntity.getAuthor().length() > 0){
-            return noticeRepository.findByClassIdAndAuthor(classId, noticeEntity.getAuthor());
+          else if(userName != ""){
+//        else if(noticeEntity.getUserName().length() > 0){
+            return noticeRepository.findByClassIdUserName(classId,userName, pageRequest);
         }
         else{
-            return noticeRepository.findByClassId(classId);
+            return noticeRepository.findByClassId(classId, pageRequestall);
         }
     }
 
@@ -86,7 +98,8 @@ public Page<NoticeEntity> allSearchNotice(){
         notice.setDelYn("0");
         notice.setContent(noticeEntity.getContent());
 //        notice.setContent("asdfsdfsdf");
-        notice.setAuthor(noticeEntity.getAuthor());
+        notice.setUserName(noticeEntity.getUserName());
+        notice.setUserId(noticeEntity.getUserId());
         notice.setAttach("1");
         notice.setCreateDate(LocalDateTime.now());
 
@@ -125,8 +138,10 @@ public Page<NoticeEntity> allSearchNotice(){
 
 
     @DeleteMapping("/notice/{noticeId}")
-    public void deleteNotice( @PathVariable Long noticeId, @RequestBody NoticeEntity noticeEntity){
-        noticeRepository.deleteById(noticeEntity.getNoticeId());
+    public void deleteNotice( @PathVariable Long noticeId){
+//    public void deleteNotice( @PathVariable Long noticeId, @RequestBody NoticeEntity noticeEntity){
+//        noticeRepository.deleteById(noticeEntity.getNoticeId());
+        noticeRepository.deleteById(noticeId);
     }
 
 
