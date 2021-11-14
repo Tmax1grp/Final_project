@@ -3,22 +3,24 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
+import BoardCreate from './BoardCreate';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardNotice({ classId }) {
-  const [keyword, setKeyword] = useState({
+
+  const [ keyword, setKeyword ] = useState({
     keywordType: 0,
     keywordValue: null
   });
-  const [filtered, setFiltered] = useState([]);
-  const [classes, setClasses] = useState([]);
+  const [ filtered, setFiltered ] = useState([]);
+  const [ classes, setClasses ] = useState([]);
+  const [ people, setPeople ] = useState("");
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all`)
+    axios.get(`/notice-service/${classId}/notice/all/0`)
       .then(res => {
-        // console.log(res.data);
-        setClasses(res.data);
-        setFiltered(res.data);
+        setClasses(res.data.content);
+        setFiltered(res.data.content);
       })
       .catch((err) =>
         console.log(err)
@@ -62,7 +64,7 @@ export default function ClassBoardNotice({ classId }) {
       })
     }
 
-    // 게시글 작성일 raw 데이터 편집
+    // 게시글 작성일 raw 데이터 편집  
     if (clas.createDate != null) {
       var dateRaw = clas.createDate;
       var createDate = '';
@@ -72,6 +74,7 @@ export default function ClassBoardNotice({ classId }) {
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
     
+    console.log("clas", clas)
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
@@ -86,7 +89,7 @@ export default function ClassBoardNotice({ classId }) {
             {clas.title}
           </Link>
         </td>
-        <td>{clas.author}</td>
+        <td>{clas.userName}</td>
         <td>{createDate + " " + createTime}</td>
         <td>{clas.clickCnt}</td>
       </tr>
@@ -97,6 +100,7 @@ export default function ClassBoardNotice({ classId }) {
     <div>
       <div className="row">
         <div className="col-2">
+          {/* <BoardCreate></BoardCreate> */}
           <Link to={`/boardcreate/${classId}`} params={classId}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
           </Link>

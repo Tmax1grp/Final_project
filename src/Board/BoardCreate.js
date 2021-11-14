@@ -30,7 +30,8 @@ export default function BoardCreate() {
       'classId' : classId,
       'title' : board.title,
       'content' : board.content,
-      'author' : sessionStorage.userId
+      'userId' : sessionStorage.userId,
+      'userName' : sessionStorage.userName
     }
     var config={
       headers: {
@@ -41,6 +42,7 @@ export default function BoardCreate() {
     axios.post(url, data, config)
     .then(res => {
       alert("성공")
+      window.location.href = `/classroommain/${classId}`
     }).catch(err => {
       alert("실패")
     })

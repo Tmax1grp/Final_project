@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Nav, Tab } from 'react-bootstrap';
-
+import { Link  } from 'react-router-dom';
 import axios from 'axios';
 
 import Navmenu from '../Home/Navmenu';
@@ -32,7 +32,7 @@ export default function ClassroomMain() {
       while (res.data.length !== 0) {
         if (res.data[cnt].classroomId == classId){
           setClsnames(res.data[cnt].name)   
-          setTeacher(res.data[cnt].userName)   
+          setTeacher(res.data[cnt].teacher)   
           setContent(res.data[cnt].content)   
           break;
         } else {
@@ -83,7 +83,14 @@ export default function ClassroomMain() {
                   <ClassBoardCurriculum content={clsname.content}/>
                 </Tab.Pane> */}
                 <Tab.Pane eventKey="third">
-                  <ClassBoardNotice classId={classId} />
+                  {/* <Link to={{
+                    pathname: `/classroommain/${classId}/classboardnotice`,
+                    state: {
+                      classId: classId
+                    }
+                  }}
+                  /> */}
+                  <ClassBoardNotice classId={classId}/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="fourth">
                   <ClassBoardHomework classId={classId} />
