@@ -1,30 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Pagination } from '@mui/material'
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
-export default function ClassBoardNotice({ classId }) {
-
-  const [ keyword, setKeyword ] = useState({
+export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId }) {
+  const [totalPages, setTotalPages] = useState(10);
+  const [pageNum, setPageNum] = useState(1);
+  const [keyword, setKeyword] = useState({
     keywordType: 0,
     keywordValue: null
   });
-  const [ filtered, setFiltered ] = useState([]);
-  const [ classes, setClasses ] = useState([]);
+  const [searchValues, setSearchValues] = useState({
+    userName: "",
+    title: ""
+  });
+  const [classes, setClasses] = useState([]);
+  const handlePageSelect = (e, value) => {
+    setPageNum(value);
+    // console.log(pageNum);
+  }
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all/1`)
+    // console.log("searchValues");
+    // console.log(searchValues);
+    // console.log("pageNum");
+    // console.log(pageNum);
+    axios.put(`/notice-service/${classId}/notice/search/${pageNum}`, null, {
+      params: {
+        userName: searchValues.userName,
+        title: searchValues.title,
+      }
+    })
       .then(res => {
+        // console.log(res.data);
         setClasses(res.data.content);
-        setFiltered(res.data.content);
+        setTotalPages(res.data.totalPages);
       })
       .catch((err) =>
         console.log(err)
       )
-    // setFiltered(classes);
-  }, [classId])
+  }, [classId, pageNum, searchValues])
 
   useEffect(() => {
     if (keyword.keywordValue != null) {
@@ -32,27 +50,29 @@ export default function ClassBoardNotice({ classId }) {
       let searchValue = keyword.keywordValue;
       // console.log("searchType: " + searchType);
       // console.log("searchValue: " + searchValue);
-
       switch (searchType) {
         case 0: {
-          setFiltered(classes.filter(item => item.userName.includes(searchValue)));
+          setSearchValues({
+            "userName": searchValue,
+            "title": ""
+          })
           break;
         }
         case 1: {
-          setFiltered(classes.filter(item => item.title.includes(searchValue)));
+          setSearchValues({
+            "userName": "",
+            "title": searchValue
+          })
           break;
         }
-        default: {
-          console.log("ERROR: Invalid Search Keyword Type");
-          // setFiltered(classes);
-          break;
-        }
+        default: console.log("ERROR: Invalid Search Keyword Type");
       }
+      setPageNum(1);
     }
   }, [keyword])
 
   // 게시글 목록
-  var classesList = filtered.map((clas) => {
+  var classesList = classes.map((clas) => {
     const enternoticedetail = () => {
       let clickCnt = 1
       axios.get(`/notice-service/${classId}/notice/${clas.noticeId}`, {
@@ -60,6 +80,11 @@ export default function ClassBoardNotice({ classId }) {
           clickCnt: 0
         }
       })
+    }
+
+    const handleOpenArticle = () => {
+      setArticleId(clas.noticeId);
+      setBoardStatus(1);
     }
 
     // 게시글 작성일 raw 데이터 편집  
@@ -71,21 +96,21 @@ export default function ClassBoardNotice({ classId }) {
       createTime = dateRaw.split("T")[1];
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
-    
+
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
         <td>
-          <Link to={{
-            pathname: `/classdetailnotice/${clas.noticeId}`,
-            state: {
-              classId: classId
-            }
-          }}
-            style={{color:"black"}}>
-              <button onClick={enternoticedetail}>
-            {clas.title}</button>
-          </Link>
+          <button style={{ color: "black" }} onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
+            {clas.title}
+          </button>
+          {/* <Link
+            to={{ pathname: `/classdetailnotice/${clas.noticeId}`, state: { classId: classId } }}
+            style={{ color: "black" }}>
+            <button onClick={enternoticedetail}>
+              {clas.title}
+            </button>
+          </Link> */}
         </td>
         <td>{clas.userName}</td>
         <td>{createDate + " " + createTime}</td>
@@ -95,23 +120,23 @@ export default function ClassBoardNotice({ classId }) {
   })
 
   return (
-    <div>
+    <>
+      {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          <Link to={{
-            pathname: `/boardcreate/${classId}`,
-            state: {
-              selects : "공지사항"
-            }
-          }}>
+          <button onClick={() => { setBoardStatus(2) }}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
-          </Link>
+          </button>
+          {/* <Link to={`/boardcreate/${classId}`} params={classId}>
+            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
+          </Link> */}
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />
         </div>
       </div>
 
+      {/*게시글 목록*/}
       <table className="table">
         <thead className="thead-dark">
           <tr>
@@ -123,14 +148,16 @@ export default function ClassBoardNotice({ classId }) {
           </tr>
         </thead>
         <tbody>
-          {filtered.length > 0 ?
-            classesList
-            :
-            <>검색된 게시글이 없습니다!</>
+          {
+            classes.length > 0 ?
+              classesList
+              :
+              <>검색된 게시글이 없습니다!</>
           }
         </tbody>
       </table>
+      <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
       {/* <ClassBoardList name="notice" classId={classId} /> */}
-    </div>
+    </>
   );
 }

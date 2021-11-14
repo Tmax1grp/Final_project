@@ -6,9 +6,10 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function BoardCreate() {
+export default function BoardCreate({ setBoardStatus, classId }) {
 
-  const classId = window.location.pathname.split('/')[2];
+  // const classId = window.location.pathname.split('/')[2];
+
   const [ board, setBoards ] = useState({
     title: '',
     content: ''
@@ -54,14 +55,14 @@ export default function BoardCreate() {
       url = `/reference-service/${classId}/reference`
     }
     axios.post(url, data, config)
-    .then(res => {
-      alert("성공")
-      window.location.href = `/classroommain/${classId}`
-    }).catch(err => {
-      alert("실패")
-    })
+      .then(res => {
+        alert("성공")
+        window.location.href = `/classroommain/${classId}`
+      }).catch(err => {
+        alert("실패")
+      })
   };
-  
+
   return (
     <Fragment>
       <div className="pl-3 row">
@@ -102,6 +103,7 @@ export default function BoardCreate() {
           }}
         />
       </div>
+      <button onClick={() => { setBoardStatus(0) }}>취소</button>
       <button onClick={create}>저장</button>
     </Fragment>
   )

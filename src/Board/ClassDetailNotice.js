@@ -4,43 +4,45 @@ import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
 
-export default function ClassDetailNotice() {
-  
-  const location = useLocation()
-  const history = useHistory()
-  const { classId } = location.state
+export default function ClassDetailNotice({ classId, articleId, setBoardStatus }) {
 
-  const noticeId = window.location.pathname.split('/')[2];
-  
+  // const articleId = window.location.pathname.split('/')[2];
+
   const [ board, setBoards ] = useState({title:" ", content:" ", userName:" "});
   const [ reply, setReply ] = useState([]);
   const [ newreply, setNewreply ] = useState([]);
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${noticeId}`)
-    .then(res => {
-      setBoards(res.data)
-    })
+    axios.get(`/notice-service/${classId}/notice/${articleId}`)
+      .then(res => {
+        setBoards(res.data)
+      })
   },[])
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${noticeId}/reply`)
-    .then(res => {
-      setReply(res.data)
-    })
+    axios.get(`/notice-service/${classId}/notice/${articleId}/reply`)
+      .then(res => {
+        setReply(res.data)
+      })
   },[])
 
+  const goModify = () =>{
+    setBoardStatus(3);
+  }
+
   const golist = () => {
-    window.location.href = `/classroommain/${classId}`
+    setBoardStatus(0);
+    // window.location.href = `/classroommain/${classId}`
     // window.history.goBack(-1)
   }
 
   const noticedelete = () => {
-    axios.delete(`/notice-service/${classId}/notice/${noticeId}`)
-    .then(
-      alert("삭제되었습니다.")
-    )
-    return history.goBack()
+    axios.delete(`/notice-service/${classId}/notice/${articleId}`)
+      .then(
+        alert("삭제되었습니다.")
+      )
+      window.location.href = `/classroommain/${classId}`
+    // return history.goBack()
   }
 
   const handleChangeForm = (e) => {
@@ -51,7 +53,7 @@ export default function ClassDetailNotice() {
   }
 
   const sendreply = () => {
-    let url = (`/notice-service/${classId}/notice/${noticeId}/reply`)
+    let url = (`/notice-service/${classId}/notice/${articleId}/reply`)
     let data = {
       'userId': sessionStorage.userId,
       'content' : newreply.content,
@@ -64,19 +66,19 @@ export default function ClassDetailNotice() {
       }
     }
     axios.put(url, data, config)
-    .then(res => {
-      window.location.reload()
-    })
+      .then(res => {
+        window.location.reload()
+      })
   }
 
   const replylist = reply.map((item) => {
     const replydelete = () => {
-      let url = (`/notice-service/${classId}/notice/${noticeId}/reply/${item.replyId}`)
+      let url = (`/notice-service/${classId}/notice/${articleId}/reply/${item.replyId}`)
       axios.delete(url)
-      .then(res => {
-        alert("삭제되었습니다.")
-        window.location.reload()
-      })
+        .then(res => {
+          alert("삭제되었습니다.")
+          window.location.reload()
+        })
     }
     return (
       <div className="card bg-light m-3" style={{maxWidth:"80%"}}>
@@ -117,15 +119,17 @@ export default function ClassDetailNotice() {
         sessionStorage.userId == board.userId ? (
           <div>
             <button onClick={golist}>목록</button>
-            <button><Link to={{
-              pathname : `/modifyboard/${classId}/${noticeId}`,
-              state : {
-                classId : classId,
-                noticeId : noticeId,
-                selects: "공지사항"
-              }
-            }}>수정
-            </Link></button>
+            <button onClick={goModify}>
+              {/* <Link to={{
+                pathname : `/modifyboard/${classId}/${articleId}`,
+                state : {
+                  classId : classId,
+                noticeId : noticeId
+                }
+              }}> */}
+                수정
+              {/* </Link> */}
+            </button>
             <button onClick={noticedelete}>삭제</button>
           </div>
         ) : <button onClick={golist}>목록</button>

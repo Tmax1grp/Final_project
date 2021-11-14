@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Nav, Tab } from 'react-bootstrap';
-import { Link  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Navmenu from '../Home/Navmenu';
@@ -15,10 +15,12 @@ import ClassBoardResource from '../Board/ClassBoardReference'
 // import ClassBoardList from '../widgets/ClassBoardList';
 import ClassMemberManage from '../widgets/ClassMemberManage'
 import styles from '../layout/Class.module.css'
+import BoardArticleView from '../Board/BoardArticleView'
 
 export default function ClassroomMain() {
 
   const classId = window.location.pathname.split('/')[2];
+  const [activeKey, setActiveKey] = useState("home");
   const [ clsname, setClsnames ] = useState([]);
   const [ teacher, setTeacher ] = useState([]);
   const [ content, setContent ] = useState([]);
@@ -38,37 +40,45 @@ export default function ClassroomMain() {
           break;
         } else {
           cnt += 1
-        }
-      }
-    }).catch(err => console.log(err))
-  }, [])
+
+  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+  const [boardStatus, setBoardStatus] = useState(0);
+  const [articleId, setArticleId] = useState(0);
+
+  const handleSelected = key => {
+    setActiveKey(key);
+    setBoardStatus(0);
+  }
   
   return (
     <div>
       <Navmenu />
       <div className={styles.clsroomcontainer}>
         <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container
+          defaultActiveKey={activeKey}
+          onSelect={handleSelected}
+        >
           <Row>
             <Col xl={2} sm={2}>
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
-                  <Nav.Link eventKey="first" className={styles.sidemenu}>홈</Nav.Link>
+                  <Nav.Link eventKey="home" className={styles.sidemenu}>홈</Nav.Link>
                 </Nav.Item>
                 {/* <Nav.Item>
-                  <Nav.Link eventKey="second" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
+                  <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
                 </Nav.Item> */}
                 <Nav.Item>
-                  <Nav.Link eventKey="third" className={styles.sidemenu}>공지사항</Nav.Link>
+                  <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="fourth" className={styles.sidemenu}>과제게시판</Nav.Link>
+                  <Nav.Link eventKey="homework" className={styles.sidemenu}>과제게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="fifth" className={styles.sidemenu}>질문게시판</Nav.Link>
+                  <Nav.Link eventKey="qna" className={styles.sidemenu}>질문게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="sixth" className={styles.sidemenu}>자료게시판</Nav.Link>
+                  <Nav.Link eventKey="material" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
                 {
                   status === 5 ? (
@@ -81,41 +91,39 @@ export default function ClassroomMain() {
             </Col>
             <Col xl={10} sm={10}>
               <Tab.Content>
-                <Tab.Pane eventKey="first">
-                  <ClassBoardHome classId={classId} content={content}/>
-                </Tab.Pane>
-                {/* <Tab.Pane eventKey="second">
-                  <ClassBoardCurriculum content={clsname.content}/>
-                </Tab.Pane> */}
-                <Tab.Pane eventKey="third">
-                  {/* <Link to={{
-                    pathname: `/classroommain/${classId}/classboardnotice`,
-                    state: {
-                      classId: classId
-                    }
-                  }}
-                  /> */}
-                  <ClassBoardNotice classId={classId}/>
-                </Tab.Pane>
-                <Tab.Pane eventKey="fourth">
-                  <ClassBoardHomework classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="fifth">
-                  <ClassBoardDiscuss classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="sixth">
-                  <ClassBoardResource classId={classId} />
-                </Tab.Pane>
-                <Tab.Pane eventKey="seventh">
-                  <ClassMemberManage classId={classId} />
-                </Tab.Pane>
+                <BoardArticleView classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} />
+                {
+                  boardStatus == 0 ?
+                    <>
+                      <Tab.Pane eventKey="home">
+                        <ClassBoardHome setBoardStatus={setBoardStatus} classId={classId} content={content} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="notice">
+                        <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="homework">
+                        <ClassBoardHomework classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="qna">
+                        <ClassBoardDiscuss classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="material">
+                        <ClassBoardResource classId={classId} />
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="members">
+                        <ClassMemberManage classId={classId} />
+                      </Tab.Pane>
+                    </>
+                    :
+                    <></>
+                }
               </Tab.Content>
-            </Col>
-          </Row>
+            </Col >
+          </Row >
           {/* <ClassBoardList /> */}
-        </Tab.Container>
-      </div>
+        </Tab.Container >
+      </div >
       {/* <Footbar /> */}
-    </div>
+    </div >
   );
 }
