@@ -74,7 +74,6 @@ export default function ClassBoardNotice({ classId }) {
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
     
-    console.log("clas", clas)
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
@@ -86,7 +85,8 @@ export default function ClassBoardNotice({ classId }) {
             }
           }}
             style={{color:"black"}}>
-            {clas.title}
+              <button onClick={enternoticedetail}>
+            {clas.title}</button>
           </Link>
         </td>
         <td>{clas.userName}</td>

@@ -28,7 +28,6 @@ export default function ClassroomMain() {
     {params: {userId: sessionStorage.userId}})
     .then(res => {
       var cnt = 0
-       console.log(res.data)
       while (res.data.length !== 0) {
         if (res.data[cnt].classroomId == classId){
           setClsnames(res.data[cnt].name)   

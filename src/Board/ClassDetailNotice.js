@@ -81,11 +81,11 @@ export default function ClassDetailNotice() {
     return (
       <div className="card bg-light m-3" style={{maxWidth:"80%"}}>
         <div className="row card-body">
-          <p className="col-2" style={{color:"black"}}>{item.author}</p>
+          <p className="col-2" style={{color:"black"}}>{item.userName}</p>
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
           <p className="card-text col-2" style={{color:"black", fontSize:"0.7rem"}}>{item.createDate}</p>
           {
-            sessionStorage.userId == item.title ? (
+            sessionStorage.userId == item.userId ? (
               <button className="col-1" onClick={replydelete}><i class="fas fa-times-circle"></i></button>
               // <i class="fas fa-times-circle"></i>
             ) : null
@@ -95,7 +95,6 @@ export default function ClassDetailNotice() {
     )
   })
 
-  console.log(board)
   return (
     <div>
       <div className="card bg-light m-3" style={{maxWidth: "80%"}}>
