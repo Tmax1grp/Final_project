@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Pagination } from '@mui/material'
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
+import BoardCreate from './BoardCreate';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardNotice({ classId }) {
@@ -20,12 +21,12 @@ export default function ClassBoardNotice({ classId }) {
   const [classes, setClasses] = useState([]);
   const handlePageSelect = (e, value) => {
     setPageNum(value);
-    console.log(pageNum);
+    // console.log(pageNum);
   }
 
   useEffect(() => {
-    console.log("searchValues");
-    console.log(searchValues);
+    // console.log("searchValues");
+    // console.log(searchValues);
     // console.log("pageNum");
     // console.log(pageNum);
     axios.put(`/notice-service/${classId}/notice/search/${pageNum}`, null, {
@@ -35,7 +36,7 @@ export default function ClassBoardNotice({ classId }) {
       }
     })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setClasses(res.data.content);
         setTotalPages(res.data.totalPages);
       })
@@ -81,7 +82,8 @@ export default function ClassBoardNotice({ classId }) {
         }
       })
     }
-    // 게시글 작성일 raw 데이터 편집
+
+    // 게시글 작성일 raw 데이터 편집  
     if (clas.createDate != null) {
       var dateRaw = clas.createDate;
       var createDate = '';
@@ -90,14 +92,21 @@ export default function ClassBoardNotice({ classId }) {
       createTime = dateRaw.split("T")[1];
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
-
+    
     return (
       <tr>
         <th scope="row">{clas.noticeId}</th>
         <td>
-          <button onClick={enternoticedetail}>
-            <a href={`/notice-service/${classId}/notice/${clas.noticeId}`}>{clas.title}</a>
-          </button>
+          <Link to={{
+            pathname: `/classdetailnotice/${clas.noticeId}`,
+            state: {
+              classId: classId
+            }
+          }}
+            style={{color:"black"}}>
+              <button onClick={enternoticedetail}>
+            {clas.title}</button>
+          </Link>
         </td>
         <td>{clas.userName}</td>
         <td>{createDate + " " + createTime}</td>
@@ -110,6 +119,7 @@ export default function ClassBoardNotice({ classId }) {
     <div>
       <div className="row">
         <div className="col-2">
+          {/* <BoardCreate></BoardCreate> */}
           <Link to={`/boardcreate/${classId}`} params={classId}>
             <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
           </Link>

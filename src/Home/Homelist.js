@@ -86,6 +86,7 @@ export default function Homelist() {
       console.log(error);
     })
   }
+  
   console.log(cls)
   return (
     <Fragment>
@@ -132,7 +133,7 @@ export default function Homelist() {
               cls.map(item => (
                 item.status == 5 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
-                  <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classId}>
+                  <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classroomId}>
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
@@ -142,7 +143,7 @@ export default function Homelist() {
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
                         <h2>{item.name}</h2>
                         <p>[소개] {item.content}</p>
-                        <button className="card-button"><a href="/classroomain/{clas.classId}">강의실 입장</a></button>
+                        <button className="card-button">강의실 입장</button>
                     </div>
                   </Link>
                 </div> 
@@ -181,17 +182,18 @@ export default function Homelist() {
               cls.map(item => (
                 item.status == 1 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
-                  <Link className="card-card" to={`/classroommain/${item.classId}`} params={item.classId}>
+                  <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classId}>
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
-                        <p>[강사] {item.userId}</p>
+                        <p>[강사] {item.teacher}</p>
                       </div>
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
                         <h2>{item.name}</h2>
                         <p>[소개] {item.content}</p>
-                        <button className="card-button"><a href="/classroomain/{clas.classId}">강의실 입장</a></button>
+                        {/* <button className="card-button"><a href={`/classroomain/${item.classId}`}>강의실 입장</a></button> */}
+                        <button className="card-button">강의실 입장</button>
                     </div>
                   </Link>
                 </div> 

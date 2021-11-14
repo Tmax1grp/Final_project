@@ -9,9 +9,9 @@ export default function ClassBoardSummary({classId}) {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all`)
+    axios.get(`/notice-service/${classId}/notice/all/0`)
     .then(res => {
-      setArticles(res.data);
+      setArticles(res.data.content);
     })
     .catch((err) =>
       console.log(err)
@@ -28,7 +28,6 @@ export default function ClassBoardSummary({classId}) {
     )
   },[])
 
-  console.log(articles)
     
   const articlelist = articles.map((article) => {
     return (
@@ -45,7 +44,7 @@ export default function ClassBoardSummary({classId}) {
         </div>
       </div>
     )
-  }).slice(-2)
+  }).slice(0, 2)
 
   return (
     <div className="accordion" id="accordionExample">

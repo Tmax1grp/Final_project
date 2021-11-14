@@ -16,6 +16,8 @@ import ClassInfo from './ClassInfo/ClassInfo';
 import Mypage from './Mypage/Mypage';
 import ClassDetailNotice from './Board/ClassDetailNotice';
 import BoardCreate from './Board/BoardCreate';
+import ModifyBoard from './Board/ModifyBoard';
+import ClassBoardNotice from './Board/ClassBoardNotice';
 
 function App() {
 
@@ -32,11 +34,13 @@ function App() {
           <Route exact path="/signup"><Signup /></Route>
           <Route exact path="/login"><Login /></Route>
           <Route exact path="/classroommain/:classId" ><ClassroomMain/></Route>
+          <Route path='/classroommain/:classId/classboardnotice'><ClassBoardNotice /></Route>
+          <Route exact path="/classdetailnotice/:noticeId"><ClassDetailNotice/></Route>
+          <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
+          <Route exact path="/modifyboard/:classId/:noticeId"><ModifyBoard/></Route>
           <Route exact path="/admin"><Admin/></Route>
           <Route exact path="/classinfo"><ClassInfo/></Route>
           <Route exact path="/mypage"><Mypage/></Route>
-          <Route exact path="/classdetailnotice/:noticeId"><ClassDetailNotice/></Route>
-          <Route exact path="/boardcreate/:classId"><BoardCreate/></Route>
         </Switch>
       {/* </ToTop> */}
     </BrowserRouter>

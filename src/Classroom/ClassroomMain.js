@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Nav, Tab } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Navmenu from '../Home/Navmenu';
@@ -18,21 +19,27 @@ import styles from '../layout/Class.module.css'
 export default function ClassroomMain() {
 
   const classId = window.location.pathname.split('/')[2];
-  const [clsname, setClsname] = useState([]);
   const [activeKey, setActiveKey] = useState("home");
 
+  const [clsname, setClsnames] = useState([]);
+  const [teacher, setTeacher] = useState([]);
+  const [content, setContent] = useState([]);
+
   useEffect(() => {
-    axios.get('/classroom-service/lectures/all')
+    axios.get('/classroom-service/lectures/all',
+      { params: { userId: sessionStorage.userId } })
       .then(res => {
         var cnt = 0
         while (res.data.length !== 0) {
-          if (res.data[cnt].classId == classId) {
+          if (res.data[cnt].classroomId == classId) {
+            setClsnames(res.data[cnt].name)
+            setTeacher(res.data[cnt].teacher)
+            setContent(res.data[cnt].content)
             break;
           } else {
             cnt += 1
           }
         }
-        setClsname(res.data[cnt]);
       }).catch(err => console.log(err))
   }, [])
 
@@ -40,7 +47,7 @@ export default function ClassroomMain() {
     <div>
       <Navmenu />
       <div className={styles.clsroomcontainer}>
-        <ClassHeader classId={classId} clsname={clsname.name} teacher={clsname.userName} />
+        <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
         <Tab.Container
           defaultActiveKey={activeKey}
           onSelect={(k) => setActiveKey(k)}
@@ -74,7 +81,7 @@ export default function ClassroomMain() {
             <Col xl={10} sm={10}>
               <Tab.Content>
                 <Tab.Pane eventKey="home">
-                  <ClassBoardHome classId={classId} content={clsname.content} />
+                  <ClassBoardHome classId={classId} content={content} />
                 </Tab.Pane>
                 {/* <Tab.Pane eventKey="curr">
                   <ClassBoardCurriculum content={clsname.content}/>
@@ -95,12 +102,12 @@ export default function ClassroomMain() {
                   <ClassMemberManage classId={classId} />
                 </Tab.Pane>
               </Tab.Content>
-            </Col>
-          </Row>
+            </Col >
+          </Row >
           {/* <ClassBoardList /> */}
-        </Tab.Container>
-      </div>
+        </Tab.Container >
+      </div >
       {/* <Footbar /> */}
-    </div>
+    </div >
   );
 }
