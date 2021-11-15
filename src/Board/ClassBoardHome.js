@@ -1,8 +1,10 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+// import ClassBoardSummary from '../widgets/ClassBoardSummary';
+import ClassBoardSummaryDiscuss from '../widgets/ClassBoardSummaryDiscuss';
+import ClassBoardSummaryNotice from '../widgets/ClassBoardSummaryNotice';
 
-import ClassBoardSummary from '../widgets/ClassBoardSummary';
-
-export default function ClassBoardHome({classId, content}) {
+export default function ClassBoardHome({setActiveKey, setArticleId, setBoardStatus, classId, content}) {
 
   return (
     <div>
@@ -18,7 +20,18 @@ export default function ClassBoardHome({classId, content}) {
           }
         </ul>
       </div>
-      <ClassBoardSummary classId={classId}/>
+      <div>
+        <Row>
+          <Col>
+            <label>공지사항</label> 
+            <ClassBoardSummaryNotice setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
+          </Col>
+          <Col>
+            <label>질문</label> 
+            <ClassBoardSummaryDiscuss setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }

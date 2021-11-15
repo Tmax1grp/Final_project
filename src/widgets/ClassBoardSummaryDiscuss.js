@@ -5,20 +5,10 @@ import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
 
-export default function ClassBoardSummary({classId}) {
+export default function ClassBoardSummaryDiscuss({setActiveKey, setArticleId, setBoardStatus, classId}) {
 
   const [notiarticles, setNotiArticles] = useState([]);
   const [discarticles, setDiscArticles] = useState([]);
-
-  useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/all/1`)
-    .then(res => {
-      setNotiArticles(res.data.content);
-    })
-    .catch((err) =>
-      console.log(err)
-    )
-  },[])
 
   useEffect(() => {
     axios.get(`/discuss-service/${classId}/discuss/all/1`)
@@ -30,27 +20,24 @@ export default function ClassBoardSummary({classId}) {
     )
   },[])
   
-  const notiarticlelist = notiarticles.map((article) => {
-    console.log(article)
-    return (
-      <Link to={{
-        pathname: `/classdetailnotice/${article.noticeId}`,
-        state: {
-          classId: classId
-        }
-      }}
-      >
-        <div className="card">
-          <div className="card-header">
-            {article.title}
-          </div>
-          <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
-            {HtmlReactParser(article.content)}
-          </div>
-        </div>
-      </Link>
-    )
-  }).slice(0, 2)
+  // const articlelist = articles.slice(0, 2).map((article) => {
+
+  //   const goDetail = () =>{
+  //     setActiveKey("질문게시판");
+  //     setArticleId(article.discussId);
+  //     setBoardStatus(1);
+  //   }
+  //   return (
+  //       <div className="card">
+  //         <button className="card-header" onClick={goDetail}>
+  //           {article.title}
+  //         </button>
+  //         <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
+  //           {HtmlReactParser(article.content)}
+  //         </div>
+  //       </div>
+  //   )
+  // })
 
   const discarticlelist = discarticles.map((article) => {
     return (
@@ -77,11 +64,6 @@ export default function ClassBoardSummary({classId}) {
     <div>
       <Row>
         <Col>
-          <label>공지사항</label> 
-          {notiarticlelist}
-        </Col>
-        <Col>
-          <label>질문</label> 
           {discarticlelist}
         </Col>
       </Row>

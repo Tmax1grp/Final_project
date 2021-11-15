@@ -18,7 +18,7 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
   // const { selects } = location.state
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
   const [ select, Setselect ] = useState(activeKey);
-
+  
   const handleChangeForm = (e) => {
     setBoards({
       ...board,
@@ -45,17 +45,20 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
         'Authorization': sessionStorage.token
       }
     }
-    if (select == selectlist[0]) {
+    if (select == "notice") {
       url = `/notice-service/${classId}/notice`
-    } else if (select == selectlist[1]) {
+    } else if (select == "assignment") {
       url = `/assignment-service/${classId}/assignment`
-    } else if (select == selectlist[2]) {
+    } else if (select == "discuss") {
       url = `/discuss-service/${classId}/discuss`
     } else {
       url = `/reference-service/${classId}/reference`
     }
     axios.post(url, data, config)
       .then(res => {
+        console.log(url)
+        console.log(data)
+        
         alert("성공")
         window.location.href = `/classroommain/${classId}`
       }).catch(err => {
