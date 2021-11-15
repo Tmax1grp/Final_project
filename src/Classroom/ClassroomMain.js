@@ -31,6 +31,7 @@ export default function ClassroomMain() {
   const [articleId, setArticleId] = useState(0);
 
   const handleSelected = key => {
+    console.log(key);
     setActiveKey(key);
     setBoardStatus(0);
   }
@@ -60,6 +61,7 @@ export default function ClassroomMain() {
       <div className={styles.clsroomcontainer}>
         <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
         <Tab.Container
+          activeKey={activeKey}
           defaultActiveKey={activeKey}
           onSelect={handleSelected}
         >
@@ -100,7 +102,7 @@ export default function ClassroomMain() {
                   boardStatus == 0 ?
                     <>
                       <Tab.Pane eventKey="home">
-                        <ClassBoardHome setBoardStatus={setBoardStatus} classId={classId} content={content} />
+                        <ClassBoardHome setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} content={content} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="공지사항">
                         <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
