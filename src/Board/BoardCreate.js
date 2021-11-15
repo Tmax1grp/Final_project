@@ -60,7 +60,8 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
         console.log(data)
         
         alert("성공")
-        window.location.href = `/classroommain/${classId}`
+        setBoardStatus(0);
+        // window.location.href = `/classroommain/${classId}`
       }).catch(err => {
         alert("실패")
       })

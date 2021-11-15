@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { TableBody, TableRow, TableCell } from '@mui/material';
 import axios from 'axios';
+import { useHistory, Link } from 'react-router-dom';
 
-export default function MypageClassItem({ item }) {
+export default function MypageClassItem({ setACat, item }) {
     const [quitVisible, setQuitVisible] = useState(false);
     const showDeleteModal = () => setQuitVisible(true);
     const closeDeleteModal = () => setQuitVisible(false);
@@ -24,10 +26,11 @@ export default function MypageClassItem({ item }) {
             .catch((err) =>
                 console.log(err)
             )
-        document.location.href = '/mypage'
+        // document.location.href = '/mypage'
+        setACat(true);
     }
 
-    function StatusBtn() {
+    function StatusTxt() {
 
         switch (item.status) {
             case 0: { return "수강승인대기중" }
@@ -42,19 +45,23 @@ export default function MypageClassItem({ item }) {
 
     return (
         <>
-            <tr>
-                <td>{item.imgPath}</td>
-                <td>{item.name}</td>
-                <td><StatusBtn /></td>
-                <td>
+            <TableRow>
+                <TableCell>{item.classroomId}</TableCell>
+                <TableCell>
+                    <Link to={`/classroommain/${item.classroomId}`} style={{ color: "black" }}>
+                        {item.name}
+                    </Link>
+                </TableCell>
+                <TableCell align='center'><StatusTxt /></TableCell>
+                <TableCell align='center'>
                     {
                         item.status == 1 ?
-                            <Button onClick={handleDeleteSubmit}>수강취소신청</Button>
+                            <button onClick={showDeleteModal}>수강취소신청</button>
                             :
                             <></>
                     }
-                </td>
-            </tr>
+                </TableCell>
+            </TableRow>
             <Modal show={quitVisible} onHide={showDeleteModal}>
                 <Modal.Header>
                     <Modal.Title>수강 취소 확인</Modal.Title>
