@@ -31,7 +31,7 @@ export default function ClassroomMain() {
   const [articleId, setArticleId] = useState(0);
 
   const handleSelected = key => {
-    console.log(key);
+    // console.log(key);
     setActiveKey(key);
     setBoardStatus(0);
   }
@@ -75,23 +75,23 @@ export default function ClassroomMain() {
                   <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
                 </Nav.Item> */}
                 <Nav.Item>
-                  <Nav.Link eventKey="공지사항" className={styles.sidemenu}>공지사항</Nav.Link>
+                  <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="과제게시판" className={styles.sidemenu}>과제게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="질문게시판" className={styles.sidemenu}>질문게시판</Nav.Link>
+                  <Nav.Link eventKey="discuss" className={styles.sidemenu}>질문게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="자료게시판" className={styles.sidemenu}>자료게시판</Nav.Link>
+                  <Nav.Link eventKey="referenec" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
                 {
                   status === 5 ?
                     <Nav.Item>
                       <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
                     </Nav.Item>
-                    : <>권한이 없습니다.</>
+                    : <></>
                 }
               </Nav>
             </Col>
@@ -104,16 +104,16 @@ export default function ClassroomMain() {
                       <Tab.Pane eventKey="home">
                         <ClassBoardHome setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} content={content} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="공지사항">
+                      <Tab.Pane eventKey="notice">
                         <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="과제게시판">
-                        <ClassBoardHomework classId={classId} />
+                        <ClassBoardHomework setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="질문게시판">
-                        <ClassBoardDiscuss classId={classId} />
+                      <Tab.Pane eventKey="discuss">
+                        <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="자료게시판">
+                      <Tab.Pane eventKey="referenec">
                         <ClassBoardResource classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="수강생관리">
