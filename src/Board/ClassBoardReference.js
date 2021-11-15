@@ -1,58 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Pagination } from '@mui/material'
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 
 // TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
-export default function ClassBoardReference({ classId }) {
+export default function ClassBoardReference({ setBoardStatus, setArticleId, classId }) {
+  const [totalPages, setTotalPages] = useState(10);
+  const [pageNum, setPageNum] = useState(1);
   const [keyword, setKeyword] = useState({
     keywordType: 0,
     keywordValue: null
   });
-  const [filtered, setFiltered] = useState([]);
+  const [searchValues, setSearchValues] = useState({
+    userName: "",
+    title: ""
+  });
   const [classes, setClasses] = useState([]);
+  const handlePageSelect = (e, value) => {
+    setPageNum(value);
+  }
 
   useEffect(() => {
-    axios.get(`/reference-service/${classId}/reference/all`)
+    axios.put(`/reference-service/${classId}/reference/search/${pageNum}`, null, {
+      params: {
+        userName: searchValues.userName,
+        title: searchValues.title,
+      }
+    })
       .then(res => {
-        // console.log(res.data);
-        setClasses(res.data);
-        setFiltered(res.data);
+        setClasses(res.data.content);
+        setTotalPages(res.data.totalPages);
       })
       .catch((err) =>
         console.log(err)
       )
-    // setFiltered(classes);
-  }, [classId])
+  }, [classId, pageNum, searchValues])
 
   useEffect(() => {
     if (keyword.keywordValue != null) {
       let searchType = parseInt(keyword.keywordType);
       let searchValue = keyword.keywordValue;
-      // console.log("searchType: " + searchType);
-      // console.log("searchValue: " + searchValue);
-
       switch (searchType) {
         case 0: {
-          setFiltered(classes.filter(item => item.author.includes(searchValue)));
+          setSearchValues({
+            "userName": searchValue,
+            "title": ""
+          })
           break;
         }
         case 1: {
-          setFiltered(classes.filter(item => item.title.includes(searchValue)));
+          setSearchValues({
+            "userName": "",
+            "title": searchValue
+          })
           break;
         }
-        default: {
-          console.log("ERROR: Invalid Search Keyword Type");
-          // setFiltered(classes);
-          break;
-        }
+        default: console.log("ERROR: Invalid Search Keyword Type");
       }
+      setPageNum(1);
     }
   }, [keyword])
 
   // 게시글 목록
-  var classesList = filtered.map((clas) => {
+  var classesList = classes.map((clas) => {
     const enterreferencedetail = () => {
       let clickCnt = 1
       axios.get(`/reference-service/${classId}/reference/${clas.referenceId}`, {
@@ -61,7 +72,13 @@ export default function ClassBoardReference({ classId }) {
         }
       })
     }
-    // 게시글 작성일 raw 데이터 편집
+
+    const handleOpenArticle = () => {
+      setArticleId(clas.referenceId);
+      setBoardStatus(1);
+    }
+
+    // 게시글 작성일 raw 데이터 편집  
     if (clas.createDate != null) {
       var dateRaw = clas.createDate;
       var createDate = '';
@@ -75,36 +92,34 @@ export default function ClassBoardReference({ classId }) {
       <tr>
         <th scope="row">{clas.referenceId}</th>
         <td>
-          <button onClick={enterreferencedetail}>
-            <a href={`/reference-service/${classId}/reference/${clas.referenceId}`}>{clas.title}</a>
+          <button className="boardlink" onClick={() => { enterreferencedetail(); handleOpenArticle(); }}>
+            {clas.title}
           </button>
         </td>
-        <td>{clas.author}</td>
-        <td>{createDate + " " + createTime}</td>
+        <td>{clas.userName}</td>
+        <td>{createDate}</td>
         <td>{clas.clickCnt}</td>
       </tr>
     )
   })
 
   return (
-    <div>
-      <h4>수업자료</h4>
+    <>
+      <h4>공지사항</h4>
+      {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          <Link to={{
-            pathname: `/boardcreate/${classId}`,
-            state: {
-              selects : "자료게시판"
-            }
-          }}>
-            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
-          </Link>
+          <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
+            {/* <i class="fas fa-pencil-alt"></i> */}
+            <i className="fas fa-pen-square fa-2x"></i>
+          </button>
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />
         </div>
       </div>
 
+      {/*게시글 목록*/}
       <table className="table">
         <thead className="thead-dark">
           <tr>
@@ -116,14 +131,15 @@ export default function ClassBoardReference({ classId }) {
           </tr>
         </thead>
         <tbody>
-          {filtered.length > 0 ?
-            classesList
-            :
-            <>검색된 게시글이 없습니다!</>
+          {
+            classes.length > 0 ?
+              classesList
+              :
+              <>검색된 게시글이 없습니다!</>
           }
         </tbody>
       </table>
-      {/* <ClassBoardList name="reference" classId={classId} /> */}
-    </div>
+      <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
+    </>
   );
 }

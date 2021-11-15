@@ -40,7 +40,8 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
       .then(
         alert("삭제되었습니다.")
       )
-      window.location.href = `/classroommain/${classId}`
+    setBoardStatus(0);
+    // window.location.href = `/classroommain/${classId}`
     // return history.goBack()
   }
 

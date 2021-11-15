@@ -19,14 +19,9 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
   const [classes, setClasses] = useState([]);
   const handlePageSelect = (e, value) => {
     setPageNum(value);
-    // console.log(pageNum);
   }
 
   useEffect(() => {
-    // console.log("searchValues");
-    // console.log(searchValues);
-    // console.log("pageNum");
-    // console.log(pageNum);
     axios.put(`/discuss-service/${classId}/discuss/search/${pageNum}`, null, {
       params: {
         userName: searchValues.userName,
@@ -34,7 +29,6 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
       }
     })
       .then(res => {
-        // console.log(res.data);
         setClasses(res.data.content);
         setTotalPages(res.data.totalPages);
       })
@@ -47,8 +41,6 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
     if (keyword.keywordValue != null) {
       let searchType = parseInt(keyword.keywordType);
       let searchValue = keyword.keywordValue;
-      // console.log("searchType: " + searchType);
-      // console.log("searchValue: " + searchValue);
       switch (searchType) {
         case 0: {
           setSearchValues({
@@ -100,35 +92,27 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
       <tr>
         <th scope="row">{clas.discussId}</th>
         <td>
-          <button style={{ color: "black" }} onClick={() => { enterdiscussdetail(); handleOpenArticle(); }}>
+          <button className="boardlink" onClick={() => { enterdiscussdetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
-          {/* <Link
-            to={{ pathname: `/classdetaildiscuss/${clas.discussId}`, state: { classId: classId } }}
-            style={{ color: "black" }}>
-            <button onClick={enterdiscussdetail}>
-              {clas.title}
-            </button>
-          </Link> */}
         </td>
         <td>{clas.userName}</td>
-        <td>{createDate + " " + createTime}</td>
+        <td>{createDate}</td>
         <td>{clas.clickCnt}</td>
       </tr>
     )
   })
 
   return (
-    <div>
-      <h4>Q&A</h4>
+    <>
+      <h4>공지사항</h4>
+      {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          <button onClick={() => { setBoardStatus(2) }}>
-            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
+          <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
+            {/* <i class="fas fa-pencil-alt"></i> */}
+            <i className="fas fa-pen-square fa-2x"></i>
           </button>
-          {/* <Link to={`/boardcreate/${classId}`} params={classId}>
-            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
-          </Link> */}
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />
@@ -156,7 +140,6 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
         </tbody>
       </table>
       <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
-      {/* <ClassBoardList name="discuss" classId={classId} /> */}
-    </div>
+    </>
   );
 }
