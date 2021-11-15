@@ -35,7 +35,6 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       }
     })
       .then(res => {
-        // console.log(res.data);
         setClasses(res.data.content);
         setTotalPages(res.data.totalPages);
       })
@@ -101,7 +100,7 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       <tr>
         <th scope="row">{clas.noticeId}</th>
         <td>
-          <button style={{ color: "black" }} onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
+          <button className="boardlink" onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
           {/* <Link
@@ -113,7 +112,7 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
           </Link> */}
         </td>
         <td>{clas.userName}</td>
-        <td>{createDate + " " + createTime}</td>
+        <td>{createDate}</td>
         <td>{clas.clickCnt}</td>
       </tr>
     )
@@ -121,15 +120,14 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
 
   return (
     <>
+      <h4>공지사항</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          <button onClick={() => { setBoardStatus(2) }}>
-            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
+          <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
+            {/* <i class="fas fa-pencil-alt"></i> */}
+            <i className="fas fa-pen-square fa-2x"></i>
           </button>
-          {/* <Link to={`/boardcreate/${classId}`} params={classId}>
-            <i class="fas fa-pen-square fa-2x" style={{ color: "black" }}></i>
-          </Link> */}
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />

@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import styles from './Home.module.css';
-// import { CardGroup, Card, Modal, Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import axios from 'axios'
-// import ClassroomMain from '../Classroom/ClassroomMain';
 import { Link } from 'react-router-dom';
+
 export default function Homelist() {
 
   const [show, setShow] = useState(false);
@@ -89,14 +88,14 @@ export default function Homelist() {
   
   console.log(cls)
   return (
-    <Fragment>
+    <div>
       <br />
       <div className={styles.home_container}>
         <div className="" style={{height:"1000px", width: "80%", justifyContent: "center", alignItems: "center"}}>
           <br />
           <div className="row">
             <h3 className="col-11">내 강의</h3> 
-            <button className="col-1" variant="primary" onClick={handleShow}>
+            <button className="mybutton col-1" variant="primary" onClick={handleShow}>
               강의실 생성
             </button>
             <Modal show={show} onHide={handleClose} className={styles.modal}>
@@ -136,12 +135,12 @@ export default function Homelist() {
                     <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
-                        <p>[강사] {item.userName}</p>
+                        <p style={{color:"#fff"}}>[강사] {item.userName}</p>
                       </div>
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`}}>
                         <h2>{item.name}</h2>
-                        <p>[소개] {item.content}</p>
+                        <p style={{color:"#fff"}}>[소개] {item.content}</p>
                         <button className="card-button">강의실 입장</button>
                     </div>
                   </Link>
@@ -154,7 +153,7 @@ export default function Homelist() {
           <br/>
           <div className="row">
             <h3 className="col-11">수강중인 강의</h3> 
-            <button className="col-1" variant="primary" onClick={handleShow2}>
+            <button className="mybutton col-1" variant="primary" onClick={handleShow2}>
             수강신청
             </button>
             <Modal show={show2} onHide={handleClose2} className={styles.modal}>
@@ -183,15 +182,15 @@ export default function Homelist() {
                 item.status == 1 ?
                 <div className="card-content col-xl-3 col-lg-4 col-md-6">
                   <Link className="card-card" to={`/classroommain/${item.classroomId}`} params={item.classId}>
-                    <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`, fontFamily:'OTWelcomeBA'}}>
+                    <div className="card-front" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                       <div>
                         <h1 style={{color:"white"}}>{item.name}</h1>
-                        <p>[강사] {item.teacher}</p>
+                        <p style={{color:"#fff"}}>[강사] {item.teacher}</p>
                       </div>
                     </div>
-                    <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/350/400"})`}}>
+                    <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                         <h2>{item.name}</h2>
-                        <p>[소개] {item.content}</p>
+                        <p style={{color:"#fff"}}>[소개] {item.content}</p>
                         {/* <button className="card-button"><a href={`/classroomain/${item.classId}`}>강의실 입장</a></button> */}
                         <button className="card-button">강의실 입장</button>
                     </div>
@@ -208,6 +207,6 @@ export default function Homelist() {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

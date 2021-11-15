@@ -39,11 +39,11 @@ export default function ClassBoardSearchMenu({ keyword, setKeyword }) {
                 </Col>
                 <Col md={2}>
                     <Form.Group controlId="keywordValue" onChange={handleChange}>
-                        <Form.Control type="text" />
+                        <Form.Control className="pr-0" type="text" />
                     </Form.Group>
                 </Col>
-                <Col md={2}>
-                    <Button onClick={handleSubmit}>검색</Button>
+                <Col md={1}>
+                    <button className="writebutton mt-1 p-0" onClick={handleSubmit}><i className="fas fa-search fa-lg"></i></button>
                 </Col>
             </Row>
         </>

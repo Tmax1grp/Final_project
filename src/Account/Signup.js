@@ -96,10 +96,10 @@ export default function Signup() {
   return (
     <div className="App">
       <header className="App-header">
-        <Link to="/"><h2>NICE TO MEET</h2></Link>
+        <Link to="/" style={{textDecorationLine:"none", fontWeight:"bold", marginTop:"1rem"}}><h1 style={{color:"#FFCA95"}}>NICE TO MEET</h1></Link>
         <div className="container">
           <form>
-            <h1>회원가입</h1>
+            <h2 style={{color:"#20314E"}}>회원가입</h2>
             <div className="form-content">
               <input id="email" name="email" placeholder="email" type="email" value={values.email} onChange={handleChangeForm}/>
               <div className="button2" onClick={checkEmail}>중복확인</div>
@@ -109,7 +109,7 @@ export default function Signup() {
               <input id="phone" name="tel" placeholder="phone" type="tel"  value={values.tel} onChange={handleChangeForm} maxLength="13"/>
               <div className="button" type="submit" onClick={join}>등록</div>
               <div className="signup-message">
-                <a href="/login">이미 회원이신가요? 로그인하기</a>
+                <a href="/login" style={{color:"#20314E", textDecorationLine:"none"}}>이미 회원이신가요? 로그인하기</a>
               </div>
             </div>
           </form>

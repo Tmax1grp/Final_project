@@ -81,17 +81,19 @@ export default function ClassDetailNotice({ classId, articleId, setBoardStatus }
         })
     }
     return (
-      <div className="card bg-light m-3" style={{maxWidth:"80%"}}>
-        <div className="row card-body">
+      <div className="m-1">
+        <div className="row m-1">
+          <hr/>
           <p className="col-2" style={{color:"black"}}>{item.userName}</p>
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
-          <p className="card-text col-2" style={{color:"black", fontSize:"0.7rem"}}>{item.createDate}</p>
+          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"0.7rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate}</p>
           {
             sessionStorage.userId == item.userId ? (
-              <button className="col-1" onClick={replydelete}><i class="fas fa-times-circle"></i></button>
+              <button className="col-1 replybutton" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>
               // <i class="fas fa-times-circle"></i>
-            ) : null
-          }
+              ) : null
+            }
+          
         </div>
       </div>
     )
@@ -99,27 +101,29 @@ export default function ClassDetailNotice({ classId, articleId, setBoardStatus }
 
   return (
     <div>
-      <div className="card bg-light m-3" style={{maxWidth: "80%"}}>
-        <div className="card-header">{board.title}</div>
+      <div className="card m-3">
+        <div className="card-body">
+          <h5 class="card-title"><span style={{fontWeight:"bold"}}>[공지사항] </span>{board.title}</h5>
+          <h6 class="card-subtitle m-1 text-muted">{board.userName} {board.createDate}</h6>
+        </div>
       </div>
-      <div className="card bg-light m-3" style={{maxWidth: "80%"}}>
-        <div className="card-body" style={{backgroundColor:"#6495ED"}}>
+      <div className="card m-3">
+        <div className="card-body">
           {HtmlReactParser(board.content)}
         </div>
-      </div>
-      {replylist}
-      <div className="card bg-light m-3" style={{maxWidth: "80%"}}>
-        <div className="row">
-          <p className="col-2" style={{color:"black"}}>{sessionStorage.userName}</p>
-          <input className="col-9" type="text" placeholder="댓글을 입력해주세요" name="content" onChange={handleChangeForm}></input>
-          <button className="col-1" onClick={sendreply}>입력</button>
+        <hr className="m-3"/>
+        <div className="card-body">
+          <p className="card-title" style={{color:"black"}}>{sessionStorage.userName}</p>
+          <input className="card-subtitle col-11" style={{border:"none"}} type="text" placeholder="댓글을 남겨보세요" name="content" onChange={handleChangeForm}></input>
+          <button align="right" className="col-1 replybutton" onClick={sendreply}>등록</button>
         </div>
+        {replylist}
       </div>
       {
         sessionStorage.userId == board.userId ? (
-          <div>
-            <button onClick={golist}>목록</button>
-            <button onClick={goModify}>
+          <div align="right" className="m-2">
+            <button className="clsbutton" onClick={golist}>목록</button>
+            <button className="clsbutton" onClick={goModify}>
               {/* <Link to={{
                 pathname : `/modifyboard/${classId}/${articleId}`,
                 state : {
@@ -130,9 +134,9 @@ export default function ClassDetailNotice({ classId, articleId, setBoardStatus }
                 수정
               {/* </Link> */}
             </button>
-            <button onClick={noticedelete}>삭제</button>
+            <button className="clsbutton" onClick={noticedelete}>삭제</button>
           </div>
-        ) : <button onClick={golist}>목록</button>
+        ) : <button className="clsbutton" onClick={golist}>목록</button>
       }
     </div>
   );

@@ -88,6 +88,7 @@ export default function ClassBoardReference({ classId }) {
 
   return (
     <div>
+      <h4>수업자료</h4>
       <div className="row">
         <div className="col-2">
           <Link to={{

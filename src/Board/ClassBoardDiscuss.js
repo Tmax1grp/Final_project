@@ -95,6 +95,7 @@ export default function ClassBoardDiscuss({ classId }) {
 
   return (
     <div>
+      <h4>Q&A</h4>
       <div className="row">
         <div className="col-2">
           <Link to={{

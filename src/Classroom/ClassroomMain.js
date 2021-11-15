@@ -65,7 +65,7 @@ export default function ClassroomMain() {
         >
           <Row>
             <Col xl={2} sm={2}>
-              <Nav variant="pills" className="flex-column">
+              <Nav variant="tabs" className="flex-column">
                 <Nav.Item>
                   <Nav.Link eventKey="home" className={styles.sidemenu}>홈</Nav.Link>
                 </Nav.Item>
@@ -89,7 +89,7 @@ export default function ClassroomMain() {
                     <Nav.Item>
                       <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
                     </Nav.Item>
-                    : <>권한이 없습니다.</>
+                    : null
                 }
               </Nav>
             </Col>

@@ -22,6 +22,8 @@ export default function ClassMemberManage({ classId }) {
 
   return (
     <>
+      <h4>수강생 관리</h4>
+      <li style={{color:"black"}}>강의실 초대 번호 : {classId} </li>
       <Table responsive="sm">
         <thead>
           <tr>

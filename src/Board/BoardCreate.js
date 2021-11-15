@@ -66,7 +66,7 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
   return (
     <Fragment>
       <div className="pl-3 row">
-        <div className="d-flex p-0 mr-2 col-2">
+        <div className="d-flex p-3 mr-2 col-2">
           <select className="form-select col-3" aria-label="Default select example" onChange={handleChangeselect} value={select}>
             {
               selectlist.map((item) => (
@@ -75,7 +75,7 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
             }
           </select>
         </div>
-        <div className="col-10">
+        <div className="col-10" style={{padding:0}}>
           <input className={styles.titleinput} type='text' name="title" placeholder='제목을 입력해주세요' value={board.title} onChange={handleChangeForm} />
         </div>
       </div>
@@ -103,8 +103,11 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
           }}
         />
       </div>
-      <button onClick={() => { setBoardStatus(0) }}>취소</button>
-      <button onClick={create}>저장</button>
+      <div align="right" className="m-2">
+        <button className="clsbutton" onClick={() => { setBoardStatus(0) }}>취소</button>
+        <button className="clsbutton" onClick={create}>저장</button>
+      </div>
+        
     </Fragment>
   )
 };

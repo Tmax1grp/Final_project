@@ -19,7 +19,22 @@
           border-radius:6px;
   padding:15px;
   text-align:left;
-  background:#FFCA95;
+  /* background:#FFCA95; */
+  background:#FFEBCD;
+}
+
+.sun_button {
+  border : none;
+  padding: 0 0.5rem;
+  height: 2rem;
+  background-color: #3d4a64;
+  border-radius: 1rem;
+  color: #fff;
+}
+
+.sun .title {
+  font-size: 1.5rem;
+  padding-right: 1rem;
 }
 
 .sun:checked {background:#F1C40F;}
@@ -34,7 +49,7 @@
 .sun li > a, a:visited {
   padding:15px;
   color:#fff;
-  text-decoration:none;
+  text-decoration: none;
   transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
@@ -48,10 +63,5 @@
 }
 
 .sidemenu {
-  background: #FFCA95;
   color: #20314E;
-}
-
-.Nav .variant:active {
-  background-color: #20314E;
 }
