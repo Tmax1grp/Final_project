@@ -9,7 +9,7 @@ import ClassHeader from '../layout/ClassHeader';
 import ClassBoardHome from '../Board/ClassBoardHome'
 import ClassBoardNotice from '../Board/ClassBoardNotice'
 import ClassBoardCurriculum from '../Board/ClassBoardCurriculum'
-import ClassBoardHomework from '../Board/ClassBoardAssignment'
+import ClassBoardAssignment from '../Board/ClassBoardAssignment'
 import ClassBoardDiscuss from '../Board/ClassBoardDiscuss'
 import ClassBoardResource from '../Board/ClassBoardReference'
 // import ClassBoardList from '../widgets/ClassBoardList';
@@ -78,13 +78,13 @@ export default function ClassroomMain() {
                   <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="과제게시판" className={styles.sidemenu}>과제게시판</Nav.Link>
+                  <Nav.Link eventKey="assignment" className={styles.sidemenu}>과제게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="discuss" className={styles.sidemenu}>질문게시판</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="referenec" className={styles.sidemenu}>자료게시판</Nav.Link>
+                  <Nav.Link eventKey="reference" className={styles.sidemenu}>자료게시판</Nav.Link>
                 </Nav.Item>
                 {
                   status === 5 ?
@@ -102,18 +102,18 @@ export default function ClassroomMain() {
                   boardStatus == 0 ?
                     <>
                       <Tab.Pane eventKey="home">
-                        <ClassBoardHome setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} content={content} />
+                        <ClassBoardHome setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} content={content}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="notice">
                         <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="과제게시판">
-                        <ClassBoardHomework setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                      <Tab.Pane eventKey="assignment">
+                        <ClassBoardAssignment setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="discuss">
                         <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
-                      <Tab.Pane eventKey="referenec">
+                      <Tab.Pane eventKey="reference">
                         <ClassBoardResource classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="수강생관리">

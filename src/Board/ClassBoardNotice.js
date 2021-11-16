@@ -110,7 +110,6 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       <div className="row">
         <div className="col-2">
           <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
-            {/* <i class="fas fa-pencil-alt"></i> */}
             <i className="fas fa-pen-square fa-2x"></i>
           </button>
         </div>

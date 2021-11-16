@@ -23,7 +23,7 @@ export default function ClassMemberManage({ classId }) {
   return (
     <>
       <h4>수강생 관리</h4>
-      <li style={{color:"black"}}>강의실 초대 번호 : {classId} </li>
+      <span style={{color:"black"}}>강의실 초대 번호 : {classId} </span>
       <Table responsive="sm">
         <thead>
           <tr>
@@ -46,7 +46,6 @@ export default function ClassMemberManage({ classId }) {
           }
         </tbody>
       </Table>
-
     </>
   );
 }

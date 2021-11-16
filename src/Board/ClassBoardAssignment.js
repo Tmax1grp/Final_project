@@ -21,6 +21,7 @@ export default function ClassBoardAssignment({ setBoardStatus, setArticleId, cla
     setPageNum(value);
   }
 
+
   useEffect(() => {
     axios.put(`/assignment-service/${classId}/assignment/search/${pageNum}`, null, {
       params: {
@@ -105,12 +106,11 @@ export default function ClassBoardAssignment({ setBoardStatus, setArticleId, cla
 
   return (
     <>
-      <h4>공지사항</h4>
+      <h4>과제게시판</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
           <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
-            {/* <i class="fas fa-pencil-alt"></i> */}
             <i className="fas fa-pen-square fa-2x"></i>
           </button>
         </div>

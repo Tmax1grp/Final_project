@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './Board.module.css';
@@ -9,8 +8,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function ModifyBoard({ activeKey, classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
-  // const location = useLocation();
-  // const { selects } = location.state
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
   const [ select, Setselect ] = useState(activeKey);
 
@@ -48,7 +45,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
     }})
     .then(res => {
       alert("게시글이 수정되었습니다.")
-      window.location.href = `/classroommain/${classId}`
+      setBoardStatus(0);
     }).catch(err => {
       alert("게시글 수정 실패")
     })
@@ -61,7 +58,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   return (
     <Fragment>
       <div className="pl-3 row">
-        <div className="d-flex p-0 mr-2 col-2">
+        <div className="d-flex p-3 mr-2 col-2">
           <select className="form-select col-3" aria-label="Default select example" onChange={handleChangeselect} value={select}>
             {
               selectlist.map((item) => (
@@ -100,9 +97,11 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
           }}
         />        
       </div>
-      <button onClick={modifycancel}>취소</button>
-      <button onClick={modifysave}>저장</button>
-      <button onClick={goList}>목록</button>
+      <div align="right" className="m-2">
+        <button className="clsbutton" onClick={modifycancel}>취소</button>
+        <button className="clsbutton" onClick={modifysave}>저장</button>
+        <button className="clsbutton" onClick={goList}>목록</button>
+      </div>
     </Fragment>
   );
 }

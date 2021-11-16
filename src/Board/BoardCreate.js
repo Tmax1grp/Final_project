@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import styles from './Board.module.css';
@@ -8,14 +7,11 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
 
-  // const classId = window.location.pathname.split('/')[2];
-
   const [ board, setBoards ] = useState({
     title: '',
     content: ''
   });
-  // const location = useLocation()
-  // const { selects } = location.state
+
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
   const [ select, Setselect ] = useState(activeKey);
   
@@ -45,11 +41,11 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
         'Authorization': sessionStorage.token
       }
     }
-    if (select == "notice") {
+    if (select == "공지사항") {
       url = `/notice-service/${classId}/notice`
-    } else if (select == "assignment") {
+    } else if (select == "과제게시판") {
       url = `/assignment-service/${classId}/assignment`
-    } else if (select == "discuss") {
+    } else if (select == "질문게시판") {
       url = `/discuss-service/${classId}/discuss`
     } else {
       url = `/reference-service/${classId}/reference`
@@ -61,12 +57,11 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
         
         alert("성공")
         setBoardStatus(0);
-        // window.location.href = `/classroommain/${classId}`
       }).catch(err => {
         alert("실패")
       })
   };
-
+  console.log(select)
   return (
     <Fragment>
       <div className="pl-3 row">

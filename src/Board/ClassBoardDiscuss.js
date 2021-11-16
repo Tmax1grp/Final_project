@@ -105,7 +105,7 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
 
   return (
     <>
-      <h4>공지사항</h4>
+      <h4>질문게시판</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">

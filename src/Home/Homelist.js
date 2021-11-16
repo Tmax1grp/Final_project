@@ -107,19 +107,16 @@ export default function Homelist() {
                   {/* <label>강의명</label> */}
                     <p>강의명</p>
                     <input type="text" name="clsName" placeholder="강의명을 작성해주세요" value={makecls.clsName} onChange={handleChangeForm}/>
-                    {/* <p>강의실 이미지</p>
-                    <button>등록</button>
-                    <button>삭제</button> */}
                     <p>강의소개</p>
                     <input type="text" name="clscontent" placeholder="강의소개를 작성해주세요" value={makecls.clscontent} onChange={handleChangeForm}/> 
                     <p>최대 정원</p>
                     <input type="text" name="clsparticipantNum" placeholder="숫자만 작성해주세요" value={makecls.clsparticipantNum} onChange={handleChangeForm}/>
                 </Modal.Body>
                 <Modal.Footer>
-                  <button onClick={handleClose}>
+                  <button className="clsbutton" onClick={handleClose}>
                     취소
                   </button>
-                  <button onClick={makeclsroom}>
+                  <button className="clsbutton" onClick={makeclsroom}>
                     생성
                   </button>
                 </Modal.Footer>
@@ -166,10 +163,10 @@ export default function Homelist() {
                   <input type="text" name="incls" placeholder="수강신청할 강의실 번호를 작성해주세요." value={incls} onChange={handleChangeForm2}/>
                 </Modal.Body>
                 <Modal.Footer>
-                  <button onClick={handleClose2}>
+                  <button className="clsbutton" onClick={handleClose2}>
                     취소
                   </button>
-                  <button onClick={enterCls}>
+                  <button className="clsbutton" onClick={enterCls}>
                     신청
                   </button>
                 </Modal.Footer>

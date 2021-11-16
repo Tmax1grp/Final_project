@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
@@ -20,21 +19,21 @@ export default function ClassBoardSummaryNotice({setActiveKey, setArticleId, set
   
   const articlelist = articles.slice(0, 2).map((article) => {
 
-    const goDetail = () =>{
-      setActiveKey("공지사항");
+    const goDetail = () => {
+      setActiveKey("notice");
       setArticleId(article.noticeId);
       setBoardStatus(1);
     }
 
     return (
-        <div className="card">
-          <button className="card-header" onClick={goDetail}>
-            {article.title}
-          </button>
-          <div className="list-group-item" style={{backgroundColor:"#6495ED"}}>
-            {HtmlReactParser(article.content)}
-          </div>
+      <div className="card">
+        <div className="card-header" onClick={goDetail}>
+          {article.title}
         </div>
+        <div className="list-group-item" style={{minHeight:"100px", maxHeight:"100px"}}>
+          {HtmlReactParser(article.content)}
+        </div>
+      </div>
     )
   })
 

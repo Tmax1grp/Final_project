@@ -5,12 +5,11 @@ import HtmlReactParser from 'html-react-parser';
 
 export default function ClassDetailNotice({ name, classId, articleId, setBoardStatus }) {
 
-  // const articleId = window.location.pathname.split('/')[2];
-
   const [ board, setBoards ] = useState({title:" ", content:" ", userName:" "});
   const [ reply, setReply ] = useState([]);
   const [ newreply, setNewreply ] = useState([]);
 
+  console.log("name", name)
   useEffect(() => {
     axios.get(`/${name}-service/${classId}/${name}/${articleId}`)
       .then(res => {
@@ -67,7 +66,7 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
     }
     axios.put(url, data, config)
       .then(res => {
-        window.location.reload()
+        setBoardStatus(0);
       })
   }
 
@@ -77,7 +76,7 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
       axios.delete(url)
         .then(res => {
           alert("삭제되었습니다.")
-          window.location.reload()
+          setBoardStatus(0);
         })
     }
     return (
@@ -103,7 +102,8 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
     <div>
       <div className="card m-3">
         <div className="card-body">
-          <h5 class="card-title"><span style={{fontWeight:"bold"}}>[공지사항] </span>{board.title}</h5>
+          {/* <h5 class="card-title"><span style={{fontWeight:"bold"}}>[공지사항] </span>{board.title}</h5> */}
+          <h5 class="card-title">{board.title}</h5>
           <h6 class="card-subtitle m-1 text-muted">{board.userName} {board.createDate}</h6>
         </div>
       </div>
@@ -114,8 +114,8 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
         <hr className="m-3"/>
         <div className="card-body">
           <p className="card-title" style={{color:"black"}}>{sessionStorage.userName}</p>
-          <input className="card-subtitle col-11" style={{border:"none"}} type="text" placeholder="댓글을 남겨보세요" name="content" onChange={handleChangeForm}></input>
-          <button align="right" className="col-1 replybutton" onClick={sendreply}>등록</button>
+          <input className="card-subtitle col-11" type="text" placeholder="댓글을 남겨보세요" name="content" onChange={handleChangeForm} style={{borderBlockColor:"#3d4a64", borderRadius:"0.3rem 0 0 0.3rem"}} />
+          <button align="right" className="col-1 clsbutton" onClick={sendreply} style={{margin:"0", borderRadius:"0 0.3rem 0.3rem 0", height:"33px"}} >등록</button>
         </div>
         {replylist}
       </div>

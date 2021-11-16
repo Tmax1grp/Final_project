@@ -55,10 +55,10 @@ export default function ClassMemberItem({ classId, member }) {
                 <td>{statusTxt}</td>
                 {
                     member.status == 0 ?
-                        <td><Button onClick={showAccModal}>승인</Button></td>
+                        <td><button className="clsbutton" onClick={showAccModal}>승인</button></td>
                         : <td></td>
                 }
-                <td><Button onClick={showQuitModal}>변경</Button></td>
+                <td><button className="clsbutton" onClick={showQuitModal}>변경</button></td>
             </tr>
             {
                 member.status == 0 ?
@@ -70,12 +70,12 @@ export default function ClassMemberItem({ classId, member }) {
                             '{member.userName}' 회원님을 수강 승인 처리하시겠습니까?
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={closeAccModal}>
+                            <button className="clsbutton" onClick={closeAccModal}>
                                 취소
-                            </Button>
-                            <Button variant="primary" onClick={handleAccSubmit}>
+                            </button>
+                            <button className="clsbutton" onClick={handleAccSubmit}>
                                 확인
-                            </Button>
+                            </button>
                         </Modal.Footer>
                     </Modal>
                     : <></>
@@ -88,12 +88,12 @@ export default function ClassMemberItem({ classId, member }) {
                     '{member.userName}' 회원님을 수강 취소 처리하시겠습니까?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeQuitModal}>
+                    <button className="clsbutton" onClick={closeQuitModal}>
                         취소
-                    </Button>
-                    <Button variant="primary" onClick={handleCancelSubmit}>
+                    </button>
+                    <button className="clsbutton" onClick={handleCancelSubmit}>
                         확인
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>
