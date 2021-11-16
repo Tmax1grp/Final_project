@@ -1,6 +1,16 @@
+@font-face {
+  font-family: 'OTWelcomeBA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+input[type=password] {font-family: dotum, sans-serif;}
+
 .App {
   text-align: center;
   height: 100%;
+  font-family: 'OTWelcomeBA';
 }
 
 .App-header {
@@ -13,12 +23,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-#container {width : 600px;}
-/* #header {background-color : yellow; height : 100px;} */
-/* #content {background-color : magenta; width : 390px; height : 400px; float : left;} */
-/* #sidebar {background-color : gray; width : 190px; height : 200px; float : right;} */
-#footer {background-color : pink; height : 50px; clear : left;}
 
 .mybutton {
   border : none;
@@ -82,6 +86,11 @@
 
 .right .maintitle-right {
   font-family: 'Black Han Sans', sans-serif;
+}
+
+.left .intro {
+  font-family: 'OTWelcomeBA';
+  color: 'red';
 }
 
 body {

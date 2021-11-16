@@ -21,6 +21,13 @@ export default function Main() {
             <div className='PRscreen'></div>
             <div className='PRkeyboard'></div>
           </div>
+          {/* <div>Nice to meet과 함께하세요.</div> */}
+          {/* <div>NOM은 화상채팅을 통해 공부하는 재택학습 플랫폼입니다.</div>
+          <div>때로는 집에서! 때로는 카페에서!</div>
+          <div>오프라인에 구애받지 않는 공부를 이어가세요.</div>
+          <div></div>
+          <div></div>
+          <div></div> */}
         </div>
       </div>
       <div className='right'>
@@ -44,6 +51,5 @@ export default function Main() {
         </div>
       </div>
     </div>
-
   );
 }

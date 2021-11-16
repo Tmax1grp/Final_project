@@ -118,17 +118,19 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
         </div>
         {replylist}
       </div>
-      {
-        sessionStorage.userId == board.userId ? (
-          <div>
-            <button onClick={golist}>목록</button>
-            <button onClick={goModify}>
-                수정
-            </button>
-            <button onClick={deleteArticle}>삭제</button>
-          </div>
-        ) : <button className="clsbutton" onClick={golist}>목록</button>
-      }
+      <div align="right" className="m-3">
+        {
+          sessionStorage.userId == board.userId ? (
+            <div>
+              <button className="clsbutton" onClick={golist}>목록</button>
+              <button className="clsbutton" onClick={goModify}>
+                  수정
+              </button>
+              <button className="clsbutton" onClick={deleteArticle}>삭제</button>
+            </div>
+          ) : <button className="clsbutton" onClick={golist}>목록</button>
+        }
+      </div>
     </div>
   );
 }
