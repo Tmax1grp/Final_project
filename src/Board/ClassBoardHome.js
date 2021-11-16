@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-// import ClassBoardSummary from '../widgets/ClassBoardSummary';
 import ClassBoardSummaryDiscuss from '../widgets/ClassBoardSummaryDiscuss';
 import ClassBoardSummaryNotice from '../widgets/ClassBoardSummaryNotice';
 

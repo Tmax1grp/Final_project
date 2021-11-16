@@ -11,25 +11,25 @@ import ClassBoardNotice from '../Board/ClassBoardNotice'
 import ClassBoardCurriculum from '../Board/ClassBoardCurriculum'
 import ClassBoardAssignment from '../Board/ClassBoardAssignment'
 import ClassBoardDiscuss from '../Board/ClassBoardDiscuss'
-import ClassBoardResource from '../Board/ClassBoardReference'
-// import ClassBoardList from '../widgets/ClassBoardList';
+import ClassBoardReference from '../Board/ClassBoardReference'
 import ClassMemberManage from '../widgets/ClassMemberManage'
 import styles from '../layout/Class.module.css'
 import BoardArticleView from '../Board/BoardArticleView'
 
 export default function ClassroomMain() {
 
+  // url에서 현재 classId 가져옴
   const classId = window.location.pathname.split('/')[2];
   const [ clsname, setClsnames ] = useState([]);
   const [ teacher, setTeacher ] = useState([]);
   const [ content, setContent ] = useState([]);
   const [ status, setStatus] = useState([]);
-  const [activeKey, setActiveKey] = useState("home");
+  const [activeKey, setActiveKey] = useState("home"); // activeKey: sidebar(tab)에서 현재 선택된 key value
 
-  // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
-  const [boardStatus, setBoardStatus] = useState(0);
-  const [articleId, setArticleId] = useState(0);
+  const [boardStatus, setBoardStatus] = useState(0); // boardStatus: 0.리스트, 1.글 내용, 2.글 작성, 3. 글 수정
+  const [articleId, setArticleId] = useState(0); // articleId: 조회할 게시글의 번호 (noticeId, assignmentId, discussId, referenceId)
 
+  // sidebar(tab) 선택 handler
   const handleSelected = key => {
     // console.log(key);
     setActiveKey(key);
@@ -114,7 +114,7 @@ export default function ClassroomMain() {
                         <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="reference">
-                        <ClassBoardResource classId={classId} />
+                        <ClassBoardReference setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="수강생관리">
                         <ClassMemberManage classId={classId} />

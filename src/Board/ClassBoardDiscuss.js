@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Pagination } from '@mui/material'
+import { Pagination, Table, TableContainer, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 
-// TODO: 한 페이지 게시글 최대 개수 지정 혹은 스크롤링
 export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classId }) {
   const [totalPages, setTotalPages] = useState(10);
   const [pageNum, setPageNum] = useState(1);
@@ -89,28 +88,27 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
     }
 
     return (
-      <tr>
-        <th scope="row">{clas.discussId}</th>
-        <td>
+      <TableRow>
+        <TableCell scope="row">{clas.discussId}</TableCell>
+        <TableCell>
           <button className="boardlink" onClick={() => { enterdiscussdetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
-        </td>
-        <td>{clas.userName}</td>
-        <td>{createDate}</td>
-        <td>{clas.clickCnt}</td>
-      </tr>
+        </TableCell>
+        <TableCell>{clas.userName}</TableCell>
+        <TableCell>{createDate}</TableCell>
+        <TableCell>{clas.clickCnt}</TableCell>
+      </TableRow>
     )
   })
 
   return (
     <>
-      <h4>질문게시판</h4>
+    <h4>질문게시판</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
           <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
-            {/* <i class="fas fa-pencil-alt"></i> */}
             <i className="fas fa-pen-square fa-2x"></i>
           </button>
         </div>
@@ -120,25 +118,27 @@ export default function ClassBoardDiscuss({ setBoardStatus, setArticleId, classI
       </div>
 
       {/*게시글 목록*/}
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">등록일</th>
-            <th scope="col">조회수</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            classes.length > 0 ?
-              classesList
-              :
-              <>검색된 게시글이 없습니다!</>
-          }
-        </tbody>
-      </table>
+      <TableContainer>
+        <Table className="table">
+          <TableHead className="thead-dark">
+            <TableRow>
+              <TableCell scope="col">번호</TableCell>
+              <TableCell scope="col">제목</TableCell>
+              <TableCell scope="col">작성자</TableCell>
+              <TableCell scope="col">등록일</TableCell>
+              <TableCell scope="col">조회수</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {
+              classes.length > 0 ?
+                classesList
+                :
+                <>검색된 게시글이 없습니다!</>
+            }
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
     </>
   );
