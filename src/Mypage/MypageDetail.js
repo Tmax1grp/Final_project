@@ -9,7 +9,8 @@ export default function MypageDetail() {
         userName: '',
         tel: '',
         password: '',
-        passwordCheck: ''
+        passwordCheck: '',
+        createdAt: ''
     });
     const [quitVisible, setQuitVisible] = useState(false);
     const showQuitModal = () => setQuitVisible(true);
@@ -120,18 +121,9 @@ export default function MypageDetail() {
         }
     }, [userId])
 
-    console.log(info)
     return (
         <>
             <Form>
-                {/* <Form.Group as={Row} className="mb-2" controlId="userId">
-                    <Form.Label column sm="4">
-                        ID
-                    </Form.Label>
-                    <Col sm="8">
-                        <Form.Control type="text" readOnly defaultValue={info.userId} />
-                    </Col>
-                </Form.Group> */}
                 <Form.Group as={Row} className="mb-2" controlId="userName">
                     <Form.Label column sm="4">
                         이름
@@ -161,7 +153,7 @@ export default function MypageDetail() {
                         가입일
                     </Form.Label>
                     <Col sm="8">
-                        <Form.Control type="date" readOnly defaultValue={info.createDate} />
+                        <Form.Control type="date" readOnly defaultValue={info.createdAt !== null ? info.createdAt.split("T")[0] : ""} />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-2" controlId="password">

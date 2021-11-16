@@ -19,14 +19,9 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
   const [classes, setClasses] = useState([]);
   const handlePageSelect = (e, value) => {
     setPageNum(value);
-    // console.log(pageNum);
   }
 
   useEffect(() => {
-    // console.log("searchValues");
-    // console.log(searchValues);
-    // console.log("pageNum");
-    // console.log(pageNum);
     axios.put(`/notice-service/${classId}/notice/search/${pageNum}`, null, {
       params: {
         userName: searchValues.userName,
@@ -46,8 +41,6 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
     if (keyword.keywordValue != null) {
       let searchType = parseInt(keyword.keywordType);
       let searchValue = keyword.keywordValue;
-      // console.log("searchType: " + searchType);
-      // console.log("searchValue: " + searchValue);
       switch (searchType) {
         case 0: {
           setSearchValues({
@@ -102,13 +95,6 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
           <button className="boardlink" onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
-          {/* <Link
-            to={{ pathname: `/classdetailnotice/${clas.noticeId}`, state: { classId: classId } }}
-            style={{ color: "black" }}>
-            <button onClick={enternoticedetail}>
-              {clas.title}
-            </button>
-          </Link> */}
         </td>
         <td>{clas.userName}</td>
         <td>{createDate}</td>
@@ -154,7 +140,6 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
         </tbody>
       </table>
       <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
-      {/* <ClassBoardList name="notice" classId={classId} /> */}
     </>
   );
 }
