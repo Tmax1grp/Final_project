@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 export default function AdminClassItem({ item }) {
     const [values, setValues] = useState({
@@ -68,7 +69,11 @@ export default function AdminClassItem({ item }) {
         <>
             <tr>
                 <td>{item.classId}</td>
-                <td>{item.name}</td>
+                <td>
+                    <Link className="clsbutton" to={`/classroommain/${item.classId}`} style={{ textDecoration: 'none' } }>
+                        {item.name}
+                    </Link>
+                </td>
                 <td>{item.userId}</td>
                 <td>{item.participantNum}</td>
                 <td>{statusTxt}</td>
