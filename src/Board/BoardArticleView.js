@@ -6,11 +6,12 @@ import ModifyBoard from '../Board/ModifyBoard'
 
 export default function BoardArticleView({ activeKey, classId, articleId, boardStatus, setBoardStatus }) {
   const [view, setView] = useState(<></>);
+  const [aCat, setACat] = useState(true);
 
   useEffect(() => {
     switch (boardStatus) {
       case 1: {
-        setView(<ClassDetailNotice name={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
+        setView(<ClassDetailNotice aCat={aCat} setACat={setACat} name={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
       }
       case 2: {
         setView(<BoardCreate activeKey={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
@@ -22,7 +23,7 @@ export default function BoardArticleView({ activeKey, classId, articleId, boardS
         setView(<></>)
       };
     }
-  }, [boardStatus])
+  }, [boardStatus, aCat])
 
   return (
     <>
