@@ -5,7 +5,7 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function ModifyBoard({ activeKey, name, classId, articleId, setBoardStatus }) {
+export default function ModifyBoard({ activeKey, classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
@@ -13,7 +13,7 @@ export default function ModifyBoard({ activeKey, name, classId, articleId, setBo
 
   useEffect(() => {
     switch (activeKey){
-      case "notice": { Setselect("공지사항"); break; }
+      case "${activeKey}": { Setselect("공지사항"); break; }
       case "assignment": { Setselect("과제게시판"); break; }
       case "discuss": { Setselect("질문게시판"); break; }
       case "reference": { Setselect("자료게시판"); break; }
@@ -22,7 +22,7 @@ export default function ModifyBoard({ activeKey, name, classId, articleId, setBo
   }, [activeKey])
 
   useEffect(() => {
-    axios.get(`/${name}-service/${classId}/${name}/${articleId}`)
+    axios.get(`/${activeKey}-service/${classId}/${activeKey}/${articleId}`)
     .then(res => {
       setModify(res.data);
     })
@@ -43,11 +43,11 @@ export default function ModifyBoard({ activeKey, name, classId, articleId, setBo
   }
 
   const modifycancel = () =>{
-    setBoardStatus(0);
+    setBoardStatus(1);
   }
   
   const modifysave = () => {
-    axios.put(`/${name}-service/${classId}/${name}/${articleId}`, null,
+    axios.put(`/${activeKey}-service/${classId}/${activeKey}/${articleId}`, null,
     {
       params: {
         title : modify.title,
