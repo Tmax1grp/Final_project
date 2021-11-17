@@ -13,7 +13,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
 
   useEffect(() => {
     switch (activeKey){
-      case "notice": { Setselect("공지사항"); break; }
+      case "${activeKey}": { Setselect("공지사항"); break; }
       case "assignment": { Setselect("과제게시판"); break; }
       case "discuss": { Setselect("질문게시판"); break; }
       case "reference": { Setselect("자료게시판"); break; }
@@ -22,7 +22,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   }, [activeKey])
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${articleId}`)
+    axios.get(`/${activeKey}-service/${classId}/${activeKey}/${articleId}`)
     .then(res => {
       setModify(res.data);
     })
@@ -47,7 +47,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   }
   
   const modifysave = () => {
-    axios.put(`/notice-service/${classId}/notice/${articleId}`, null,
+    axios.put(`/${activeKey}-service/${classId}/${activeKey}/${articleId}`, null,
     {
       params: {
         title : modify.title,
