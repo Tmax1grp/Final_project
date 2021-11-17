@@ -43,7 +43,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   }
 
   const modifycancel = () =>{
-    setBoardStatus(0);
+    setBoardStatus(1);
   }
   
   const modifysave = () => {
