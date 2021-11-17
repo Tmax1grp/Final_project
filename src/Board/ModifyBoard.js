@@ -5,7 +5,7 @@ import styles from './Board.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function ModifyBoard({ activeKey, classId, articleId, setBoardStatus }) {
+export default function ModifyBoard({ activeKey, name, classId, articleId, setBoardStatus }) {
   
   const [ modify, setModify ] = useState([]);
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
@@ -22,7 +22,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   }, [activeKey])
 
   useEffect(() => {
-    axios.get(`/notice-service/${classId}/notice/${articleId}`)
+    axios.get(`/${name}-service/${classId}/${name}/${articleId}`)
     .then(res => {
       setModify(res.data);
     })
@@ -47,7 +47,7 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   }
   
   const modifysave = () => {
-    axios.put(`/notice-service/${classId}/notice/${articleId}`, null,
+    axios.put(`/${name}-service/${classId}/${name}/${articleId}`, null,
     {
       params: {
         title : modify.title,

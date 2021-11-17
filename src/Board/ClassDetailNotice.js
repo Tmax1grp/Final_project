@@ -9,7 +9,6 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
   const [ reply, setReply ] = useState([]);
   const [ newreply, setNewreply ] = useState([]);
 
-  console.log("name", name)
   useEffect(() => {
     axios.get(`/${name}-service/${classId}/${name}/${articleId}`)
       .then(res => {

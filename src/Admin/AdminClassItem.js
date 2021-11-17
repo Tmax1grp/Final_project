@@ -29,14 +29,13 @@ export default function AdminClassItem({ item }) {
             [event.target.id]: event.target.value
         })
     }
-
+    
     const handleEditSubmit = () => {
         console.log("[강의 업데이트]: ", item.name);
         console.log(values);
         axios.put(`/admin-service/admin/classroom/${item.classId}`, null, {
             params: {
                 name: values.name,
-                imgPath: values.imgPath,
                 content: values.content,
                 participantNum: values.participantNum,
                 status: values.status
@@ -89,14 +88,6 @@ export default function AdminClassItem({ item }) {
                             <Form.Control type="text" defaultValue={item.name} onChange={handleChange} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="imgPath">
-                        <Form.Label column sm="4">
-                            강의이미지
-                        </Form.Label>
-                        <Col sm="8">
-                            <Form.Control type="text" defaultValue={item.imgPath} onChange={handleChange} />
-                        </Col>
-                    </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="userId">
                         <Form.Label column sm="4">
                             강사ID
@@ -121,7 +112,7 @@ export default function AdminClassItem({ item }) {
                             <Form.Control type="number" defaultValue={item.participantNum} onChange={handleChange} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="tel">
+                    <Form.Group as={Row} className="mb-3" controlId="status">
                         <Form.Label column sm="4">
                             강의상태
                         </Form.Label>
@@ -129,7 +120,7 @@ export default function AdminClassItem({ item }) {
                             <Form.Control type="number" defaultValue={item.status} min="0" max="5" onChange={handleChange} />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="tel">
+                    <Form.Group as={Row} className="mb-3">
                         <Form.Label column sm="4">
                             강의생성일
                         </Form.Label>

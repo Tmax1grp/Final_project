@@ -14,10 +14,10 @@ export default function BoardArticleView({ activeKey, classId, articleId, boardS
         setView(<ClassDetailNotice aCat={aCat} setACat={setACat} name={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
       }
       case 2: {
-        setView(<BoardCreate activeKey={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
+        setView(<BoardCreate activeKey={activeKey} name={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
       }
       case 3: {
-        setView(<ModifyBoard activeKey={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
+        setView(<ModifyBoard activeKey={activeKey} name={activeKey} classId={classId} articleId={articleId} setBoardStatus={setBoardStatus} />); break;
       }
       default: {
         setView(<></>)

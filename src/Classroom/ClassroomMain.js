@@ -114,7 +114,7 @@ export default function ClassroomMain() {
                         <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="reference">
-                        <ClassBoardResource setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                        <ClassBoardReference setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
                       </Tab.Pane>
                       <Tab.Pane eventKey="수강생관리">
                         <ClassMemberManage classId={classId} />

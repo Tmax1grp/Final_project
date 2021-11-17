@@ -68,7 +68,7 @@ export default function Signup() {
             </h2>
             <div className="form-content">
               <input id="email" name="email" placeholder="email" type="email" value={values.email} onChange={handleChangeForm}/>
-              <input id="password" name="password" placeholder="password" type="password" value={values.password} onChange={handleChangeForm}/>
+              <input id="password" name="password" placeholder="password" type="password" style={{fontWeight:"bold"}} value={values.password} onChange={handleChangeForm}/>
               <div className="button" onClick={onClickLogin}>
                 로그인
               </div>

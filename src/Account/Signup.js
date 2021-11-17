@@ -104,8 +104,8 @@ export default function Signup() {
               <input id="email" name="email" placeholder="email" type="email" value={values.email} onChange={handleChangeForm}/>
               <div className="button2" onClick={checkEmail}>중복확인</div>
               <input id="username" name="username" placeholder="username" type="text"  value={values.username} onChange={handleChangeForm}/>
-              <input id="password" name="password" placeholder="password" type="password"  value={values.password} onChange={handleChangeForm}/>
-              <input id="confirmpwd" name="confirmpwd" placeholder="password check" type="password"  value={values.confirmpwd} onChange={handleChangeForm}/>
+              <input id="password" name="password" placeholder="password" type="password" style={{fontWeight:"bold"}} value={values.password} onChange={handleChangeForm}/>
+              <input id="confirmpwd" name="confirmpwd" placeholder="password check" type="password" style={{fontWeight:"bold"}} value={values.confirmpwd} onChange={handleChangeForm}/>
               <input id="phone" name="tel" placeholder="phone" type="tel"  value={values.tel} onChange={handleChangeForm} maxLength="13"/>
               <div className="button" type="submit" onClick={join}>등록</div>
               <div className="signup-message">
