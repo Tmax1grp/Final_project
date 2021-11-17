@@ -12,6 +12,16 @@ export default function ModifyBoard({ activeKey, classId, articleId, setBoardSta
   const [ select, Setselect ] = useState(activeKey);
 
   useEffect(() => {
+    switch (activeKey){
+      case "notice": { Setselect("공지사항"); break; }
+      case "assignment": { Setselect("과제게시판"); break; }
+      case "discuss": { Setselect("질문게시판"); break; }
+      case "reference": { Setselect("자료게시판"); break; }
+      default: break;
+    }
+  }, [activeKey])
+
+  useEffect(() => {
     axios.get(`/notice-service/${classId}/notice/${articleId}`)
     .then(res => {
       setModify(res.data);

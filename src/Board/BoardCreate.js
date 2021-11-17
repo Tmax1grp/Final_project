@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 
 import styles from './Board.module.css';
@@ -14,6 +14,16 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
 
   const selectlist = ["공지사항", "과제게시판", "질문게시판", "자료게시판"]
   const [ select, Setselect ] = useState(activeKey);
+  
+  useEffect(() => {
+    switch (activeKey){
+      case "notice": { Setselect("공지사항"); break; }
+      case "assignment": { Setselect("과제게시판"); break; }
+      case "discuss": { Setselect("질문게시판"); break; }
+      case "reference": { Setselect("자료게시판"); break; }
+      default: break;
+    }
+  }, [activeKey])
   
   const handleChangeForm = (e) => {
     setBoards({

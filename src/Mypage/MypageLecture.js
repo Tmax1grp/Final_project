@@ -23,7 +23,7 @@ export default function MypageLecture() {
 
     return (
         <TableContainer>
-            <Table size="small" responsive="sm">
+            <Table responsive="sm">
                 <TableHead>
                     <TableRow>
                         <TableCell>#</TableCell>

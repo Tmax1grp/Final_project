@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Class.module.css';
 
-// TODO: chatContainer 컴포넌트 추가
 export default function ClassHeader( {clsname, teacher} ) {
 
   const goopenvidu = () => {

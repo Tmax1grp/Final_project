@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
 
-export default function ClassDetailNotice({ name, classId, articleId, setBoardStatus }) {
+export default function ClassDetailNotice({ aCat, setACat, name, classId, articleId, setBoardStatus }) {
 
   const [ board, setBoards ] = useState({title:" ", content:" ", userName:" "});
   const [ reply, setReply ] = useState([]);
@@ -14,15 +14,17 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
     axios.get(`/${name}-service/${classId}/${name}/${articleId}`)
       .then(res => {
         setBoards(res.data)
+        setACat(true);
       })
-  },[])
+  },[aCat])
 
   useEffect(() => {
     axios.get(`/${name}-service/${classId}/${name}/${articleId}/reply`)
       .then(res => {
         setReply(res.data)
+        setACat(true);
       })
-  },[])
+  },[aCat])
 
   const goModify = () =>{
     setBoardStatus(3);
@@ -66,7 +68,8 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
     }
     axios.put(url, data, config)
       .then(res => {
-        setBoardStatus(0);
+        setACat(false);
+        // setBoardStatus(0);
       })
   }
 
@@ -76,7 +79,8 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
       axios.delete(url)
         .then(res => {
           alert("삭제되었습니다.")
-          setBoardStatus(0);
+          setACat(false);
+          // setBoardStatus(0);
         })
     }
     return (
