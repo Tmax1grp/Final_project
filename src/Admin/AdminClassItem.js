@@ -73,8 +73,8 @@ export default function AdminClassItem({ item }) {
                 <td>{item.participantNum}</td>
                 <td>{statusTxt}</td>
                 <td>{item.createdDate !== null ? item.createdDate.split("T")[0] : ""}</td>
-                <td><Button onClick={showEditModal}>수정</Button></td>
-                <td><Button onClick={showDeleteModal}>삭제</Button></td>
+                <td><button className="clsbutton" onClick={showEditModal}>수정</button></td>
+                <td><button className="clsbutton" onClick={showDeleteModal}>삭제</button></td>
             </tr>
             <Modal show={editVisible} onHide={closeEditModal}>
                 <Modal.Header>

@@ -72,7 +72,7 @@ export default function ClassBoardReference({ setBoardStatus, setArticleId, clas
         }
       })
     }
-
+    
     const handleOpenArticle = () => {
       setArticleId(clas.referenceId);
       setBoardStatus(1);

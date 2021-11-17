@@ -34,7 +34,7 @@ export default function ClassroomMain({ classId }) {
                     </Col>
                 </Row>
             </Tab.Container>
-            <Footbar />
+            {/* <Footbar /> */}
         </>
     );
 }

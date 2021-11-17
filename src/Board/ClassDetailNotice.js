@@ -85,7 +85,7 @@ export default function ClassDetailNotice({ name, classId, articleId, setBoardSt
           <hr/>
           <p className="col-2" style={{color:"black"}}>{item.userName}</p>
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
-          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"0.7rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate}</p>
+          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"0.7rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
           {
             sessionStorage.userId == item.userId ? (
               <button className="col-1 replybutton" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>

@@ -41,20 +41,17 @@ export default function BoardCreate({ activeKey, setBoardStatus, classId }) {
         'Authorization': sessionStorage.token
       }
     }
-    if (select == "공지사항") {
+    if (select == "notice" | select == "공지사항") {
       url = `/notice-service/${classId}/notice`
-    } else if (select == "과제게시판") {
+    } else if (select == "assignment" | select == "과제게시판") {
       url = `/assignment-service/${classId}/assignment`
-    } else if (select == "질문게시판") {
+    } else if (select == "discuss" | select == "질문게시판") {
       url = `/discuss-service/${classId}/discuss`
     } else {
       url = `/reference-service/${classId}/reference`
     }
     axios.post(url, data, config)
-      .then(res => {
-        console.log(url)
-        console.log(data)
-        
+      .then(res => {        
         alert("성공")
         setBoardStatus(0);
       }).catch(err => {

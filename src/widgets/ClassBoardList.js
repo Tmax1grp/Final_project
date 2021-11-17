@@ -13,7 +13,7 @@ export default function ClassBoardList({ name, classId }) {
       setArticles(res.data);
     });
   }, [classId])
-
+  
   return (
     <div>
       <ListGroup>
