@@ -51,7 +51,7 @@ export default function Mypage({ propKey }) {
           </Row>
         </Tab.Container>
       </div>
-      {/* <Footbar /> */}
+      <Footbar />
     </>
   );
 }
