@@ -6,14 +6,17 @@ import Footbar from '../Home/Footbar';
 import AdminLecture from './AdminLecture';
 import AdminMember from './AdminMember';
 
-export default function ClassroomMain({ classId }) {
+import styles from './Admin.module.css'
+
+export default function Admin({ classId }) {
     return (
         <>
             <Navmenu />
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <div className={styles.AdminContainer}>
+            <Tab.Container defaultActiveKey="first">
                 <Row>
                     <Col sm={3}>
-                        <Nav variant="pills" className="flex-column">
+                        <Nav variant="tabs" className="flex-column">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">회원 관리</Nav.Link>
                             </Nav.Item>
@@ -34,6 +37,7 @@ export default function ClassroomMain({ classId }) {
                     </Col>
                 </Row>
             </Tab.Container>
+            </div>
             {/* <Footbar /> */}
         </>
     );

@@ -1028,3 +1028,26 @@ body {
   min-height: 500px;
 }
 
+/* Modal button color */
+.ModalBtn{
+  color: white;
+  border : none;
+  border-radius: 0.3rem;
+  background-color: #3d4a64;
+  border-color: #3d4a64;
+}
+.ModalBtn:hover{
+  background-color: #384047;
+  border-color: #384047;
+}
+.ModalCancelBtn{
+  color: white;
+  border : none;
+  border-radius: 0.3rem;
+  background-color: gray;
+  border-color: gray;
+}
+.ModalCancelBtn:hover{
+  background-color: #696969;
+  border-color: #696969;
+}

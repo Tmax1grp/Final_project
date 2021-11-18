@@ -4,6 +4,8 @@ import Table from 'react-bootstrap/Table';
 
 import AdminMemberItem from './AdminMemberItem';
 
+import styles from './Admin.module.css'
+
 export default function AdminMember() {
     const [members, setMembers] = useState(null);
 
@@ -18,15 +20,15 @@ export default function AdminMember() {
 
     return (
         <>
-            <Table responsive="sm">
+            <Table bordered hover responsive="sm">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>회원이름</th>
-                        <th>이메일</th>
-                        <th>가입일</th>
-                        <th>정보수정</th>
-                        <th>탈퇴</th>
+                        <th className={styles.MemberCell}>#</th>
+                        <th className={styles.MemberCell}>회원이름</th>
+                        <th className={styles.MemberCell}>이메일</th>
+                        <th className={styles.MemberCell}>가입일</th>
+                        <th className={styles.MemberCell}>정보수정</th>
+                        <th className={styles.MemberCell}>탈퇴</th>
                     </tr>
                 </thead>
                 <tbody>

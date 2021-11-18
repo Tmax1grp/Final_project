@@ -1,0 +1,24 @@
+.AdminContainer{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.MemberCell{
+    text-align: center;
+}
+
+.ClassLink{
+    text-decoration: none;
+    color: black;
+}
+
+.ClassLink:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.ClassLink:hover{
+    text-decoration: none;
+    color: black;
+}

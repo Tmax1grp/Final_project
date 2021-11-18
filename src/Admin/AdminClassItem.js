@@ -3,6 +3,8 @@ import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
+import styles from './Admin.module.css';
+
 export default function AdminClassItem({ item }) {
     const [values, setValues] = useState({
         classId: '',
@@ -30,7 +32,7 @@ export default function AdminClassItem({ item }) {
             [event.target.id]: event.target.value
         })
     }
-    
+
     const handleEditSubmit = () => {
         console.log("[강의 업데이트]: ", item.name);
         console.log(values);
@@ -67,18 +69,18 @@ export default function AdminClassItem({ item }) {
     return (
         <>
             <tr>
-                <td>{item.classId}</td>
+                <td className={styles.MemberCell}>{item.classId}</td>
                 <td>
-                    <Link className="clsbutton" to={`/classroommain/${item.classId}`} style={{ textDecoration: 'none' } }>
+                    <Link className={styles.ClassLink} to={`/classroommain/${item.classId}`}>
                         {item.name}
                     </Link>
                 </td>
-                <td>{item.userId}</td>
-                <td>{item.participantNum}</td>
-                <td>{statusTxt}</td>
-                <td>{item.createdDate !== null ? item.createdDate.split("T")[0] : ""}</td>
-                <td><button className="clsbutton" onClick={showEditModal}>수정</button></td>
-                <td><button className="clsbutton" onClick={showDeleteModal}>삭제</button></td>
+                <td className={styles.MemberCell}>{item.userId}</td>
+                <td className={styles.MemberCell}>{item.participantNum}</td>
+                <td className={styles.MemberCell}>{statusTxt}</td>
+                <td className={styles.MemberCell}>{item.createdDate !== null ? item.createdDate.split("T")[0] : ""}</td>
+                <td className={styles.MemberCell}><button className="clsbutton" onClick={showEditModal}>수정</button></td>
+                <td className={styles.MemberCell}><button className="clsbutton" onClick={showDeleteModal}>삭제</button></td>
             </tr>
             <Modal show={editVisible} onHide={closeEditModal}>
                 <Modal.Header>
@@ -135,12 +137,12 @@ export default function AdminClassItem({ item }) {
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeEditModal}>
+                    <button className="ModalCancelBtn" onClick={closeEditModal}>
                         닫기
-                    </Button>
-                    <Button variant="primary" onClick={handleEditSubmit}>
+                    </button>
+                    <button className="ModalBtn" onClick={handleEditSubmit}>
                         확인
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
             <Modal show={quitVisible} onHide={closeDeleteModal}>
@@ -149,12 +151,12 @@ export default function AdminClassItem({ item }) {
                 </Modal.Header>
                 <Modal.Body>다음 강의의 삭제 처리를 진행하시겠습니까?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeDeleteModal}>
+                    <button className="ModalCancelBtn" onClick={closeDeleteModal}>
                         닫기
-                    </Button>
-                    <Button variant="primary" onClick={handleDeleteSubmit}>
+                    </button>
+                    <button className="ModalBtn" onClick={handleDeleteSubmit}>
                         확인
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Modal>
         </>

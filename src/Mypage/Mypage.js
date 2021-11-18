@@ -22,7 +22,6 @@ export default function Mypage({ propKey }) {
       <Navmenu />
       <Tab.Container
         activeKey={activeKey}
-        id="left-tabs-example"
         defaultActiveKey="first"
         onSelect={handleTabSelect}
       >

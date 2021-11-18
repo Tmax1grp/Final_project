@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
+import styles from './Admin.module.css'
+
 export default function AdminMemberItem({ member }) {
   const [values, setValues] = useState();
 
@@ -45,18 +47,18 @@ export default function AdminMemberItem({ member }) {
   return (
     <>
       <tr>
-        <td>{member.userId}</td>
+        <td className={styles.MemberCell}>{member.userId}</td>
         <td>{member.userName}</td>
         <td>{member.email}</td>
-        <td>
+        <td className={styles.MemberCell}>
           {member.createdAt !== null ? member.createdAt.split("T")[0] : ""}
         </td>
-        <td>
+        <td className={styles.MemberCell}>
           <button className="clsbutton" onClick={showEditModal}>
             수정
           </button>
         </td>
-        <td>
+        <td className={styles.MemberCell}>
           <button className="clsbutton" onClick={showQuitModal}>
             탈퇴
           </button>
@@ -130,12 +132,12 @@ export default function AdminMemberItem({ member }) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeEditModal}>
+          <button className="ModalCancelBtn" onClick={closeEditModal}>
             취소
-          </Button>
-          <Button variant="primary" onClick={handleEditSubmit}>
+          </button>
+          <button className="ModalBtn" onClick={handleEditSubmit}>
             확인
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
       <Modal show={quitVisible} onHide={closeQuitModal}>
@@ -146,12 +148,12 @@ export default function AdminMemberItem({ member }) {
           '{member.userId}' 회원님의 정보를 삭제하시겠습니까?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeQuitModal}>
+          <button className="ModalCancelBtn" onClick={closeQuitModal}>
             취소
-          </Button>
-          <Button variant="primary" onClick={handleQuitSubmit}>
+          </button>
+          <button className="ModalBtn" onClick={handleQuitSubmit}>
             확인
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>
