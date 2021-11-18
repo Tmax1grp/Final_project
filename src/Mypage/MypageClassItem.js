@@ -55,39 +55,39 @@ export default function MypageClassItem({ setACat, item }) {
 
   return (
     <>
-      <TableRow>
-        <TableCell>{item.classroomId}</TableCell>
-        <TableCell>
+      <tr>
+        <td>{item.classroomId}</td>
+        <td>
           <Link
             to={`/classroommain/${item.classroomId}`}
             style={{ color: "black" }}
           >
             {item.name}
           </Link>
-        </TableCell>
-        <TableCell align="center">
+        </td>
+        <td align="center">
           <StatusTxt />
-        </TableCell>
-        <TableCell align="center">
+        </td>
+        <td align="center">
           {item.status == 1 ? (
-            <button onClick={showDeleteModal}>수강취소신청</button>
+            <button className="clsbutton" onClick={showDeleteModal}>수강취소신청</button>
           ) : (
             <></>
           )}
-        </TableCell>
-      </TableRow>
+        </td>
+      </tr>
       <Modal show={quitVisible} onHide={showDeleteModal}>
         <Modal.Header>
           <Modal.Title>수강 취소 확인</Modal.Title>
         </Modal.Header>
         <Modal.Body>'{item.name}' 수업의 수강을 취소하시겠습니까?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeDeleteModal}>
+          <button className="clsbutton" onClick={closeDeleteModal}>
             닫기
-          </Button>
-          <Button variant="primary" onClick={handleDeleteSubmit}>
+          </button>
+          <button className="clsbutton" onClick={handleDeleteSubmit}>
             확인
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>
