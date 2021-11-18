@@ -189,13 +189,15 @@ export default function MypageDetail() {
         <button className="clsbutton" type="submit" onClick={handleSubmit}>
           개인정보 수정 확인
         </button>
-        <button
-          className="col-3 mt-4 mb-2 outbutton"
-          type="submit"
-          onClick={showQuitModal}
-        >
-          회원탈퇴
-        </button>
+        <div align="right" style={{minHeight:"50px", maxHeight:"50px"}}>
+          <button
+            className="col-3 mt-4 mb-2 outbutton"
+            type="submit"
+            onClick={showQuitModal}
+            >
+            회원탈퇴
+          </button>
+          </div>
       </Form>
       <Modal show={quitVisible} onHide={showQuitModal}>
         <Modal.Header>
@@ -203,10 +205,10 @@ export default function MypageDetail() {
         </Modal.Header>
         <Modal.Body>탈퇴하시겠습니까?</Modal.Body>
         <Modal.Footer>
-          <button className="clsbutton" onClick={closeQuitModal}>
+          <button className="ModalCancelBtn" onClick={closeQuitModal}>
             닫기
           </button>
-          <button className="clsbutton" onClick={handleQuitSubmit}>
+          <button className="ModalBtn" onClick={handleQuitSubmit}>
             확인
           </button>
         </Modal.Footer>

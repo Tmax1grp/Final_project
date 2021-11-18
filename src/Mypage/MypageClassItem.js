@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
-import { TableBody, TableRow, TableCell } from "@mui/material";
+import { Modal } from "react-bootstrap";
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import styles from "./Mypage.module.css";
 
 export default function MypageClassItem({ setACat, item }) {
   const [quitVisible, setQuitVisible] = useState(false);
@@ -56,19 +57,19 @@ export default function MypageClassItem({ setACat, item }) {
   return (
     <>
       <tr>
-        <td>{item.classroomId}</td>
+        <td className={styles.MemberCell}>{item.classroomId}</td>
         <td>
           <Link
+            className={styles.ClassLink}
             to={`/classroommain/${item.classroomId}`}
-            style={{ color: "black" }}
           >
             {item.name}
           </Link>
         </td>
-        <td align="center">
+        <td className={styles.MemberCell}>
           <StatusTxt />
         </td>
-        <td align="center">
+        <td className={styles.MemberCell}>
           {item.status == 1 ? (
             <button className="clsbutton" onClick={showDeleteModal}>수강취소신청</button>
           ) : (

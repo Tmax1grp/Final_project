@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Table } from 'react-bootstrap';
-// import {
-//   Table,
-//   TableContainer,
-//   TableHead,
-//   TableBody,
-//   TableRow,
-//   TableCell,
-// } from "@mui/material";
+import Table from "react-bootstrap/Table";
 import axios from "axios";
 
 import MypageClassItem from "./MypageClassItem";
+
+import styles from "./Mypage.module.css";
 
 export default function MypageLecture() {
   const [myClasses, setMyClasses] = useState(null);
@@ -22,7 +16,6 @@ export default function MypageLecture() {
         params: { userId: sessionStorage.userId },
       })
       .then((res) => {
-        // console.log(res.data)
         setMyClasses(res.data);
         setACat(false);
       })
@@ -30,14 +23,14 @@ export default function MypageLecture() {
   }, [aCat]);
 
   return (
-    // <TableContainer>
-      <Table responsive="sm">
+    <>
+      <Table bordered hover responsive="md">
         <thead>
           <tr>
-            <th>번호</th>
-            <th>강의이름</th>
-            <th align="center">수강상태</th>
-            <th align="center">수강취소</th>
+            <th className={styles.MemberCell}>번호</th>
+            <th className={styles.MemberCell}>강의이름</th>
+            <th className={styles.MemberCell}>수강상태</th>
+            <th className={styles.MemberCell}>수강취소</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +49,6 @@ export default function MypageLecture() {
           )}
         </tbody>
       </Table>
-    // </TableContainer>
+    </>
   );
 }

@@ -97,17 +97,35 @@ input[type=password] {font-family: dotum, sans-serif;}
   /* transition: background-color .1s linear,border-color .1s linear; */
 }
 
+.start {
+  float: right;
+  min-width: 120px;
+  height: 50px;
+  margin: 10px;
+  padding: 0 23px;
+  border-radius: 25px;
+  /* border: 1px solid #FFCA95; */
+  font-weight: 1000;
+  font-size: 100%;
+  color: #20314E;
+  line-height: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  /* background-color: #FFCA95; */
+  text-decoration: none;
+  /* z-index: 11; */
+  /* -webkit-transitsion: background-color .1s linear,border-color .1s linear;
+  -moz-transition: background-color .1s linear,border-color .1s linear; */
+  /* transition: background-color .1s linear,border-color .1s linear; */
+}
+
+
 .left .maintitle-left {
   font-family: 'Black Han Sans', sans-serif;
 }
 
 .right .maintitle-right {
   font-family: 'Black Han Sans', sans-serif;
-}
-
-.left .intro {
-  font-family: 'OTWelcomeBA';
-  color: 'red';
 }
 
 body {

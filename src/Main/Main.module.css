@@ -1,0 +1,30 @@
+.main {
+  scroll-snap-type: mandatory;
+  overflow-y: scroll;
+}
+
+.main_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.intro {
+  min-height: 98vh;
+  /* background-color: red; */
+}
+
+.introduceleft {
+  font-family: 'OTWelcomeBA';
+  font-size: x-large;
+  color:honeydew;
+}
+
+.introduceright {
+  font-family: 'OTWelcomeBA';
+  font-size: x-large;
+  color:#475881;
+}

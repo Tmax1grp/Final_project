@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form, Row, Col } from "react-bootstrap";
+import { Modal, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 import styles from './Admin.module.css'
@@ -145,7 +145,7 @@ export default function AdminMemberItem({ member }) {
           <Modal.Title>사용자 탈퇴 확인</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          '{member.userId}' 회원님의 정보를 삭제하시겠습니까?
+          'userId:{member.userId}', 'userName:{member.userName}' 회원님의 정보를 삭제하시겠습니까?
         </Modal.Body>
         <Modal.Footer>
           <button className="ModalCancelBtn" onClick={closeQuitModal}>

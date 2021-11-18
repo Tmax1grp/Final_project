@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+
+import styles from "./ClassMember.module.css";
 
 export default function ClassMemberItem({ classId, member }) {
   const [statusTxt, setStatusTxt] = useState();
@@ -56,11 +58,11 @@ export default function ClassMemberItem({ classId, member }) {
   return (
     <>
       <tr>
-        <td></td>
-        <td>{member.userName}</td>
-        <td>{statusTxt}</td>
+        <td className={styles.MemberCell}>{member.userId}</td>
+        <td className={styles.MemberCell}>{member.userName}</td>
+        <td className={styles.MemberCell}>{statusTxt}</td>
         {member.status == 0 ? (
-          <td>
+          <td className={styles.MemberCell}>
             <button className="clsbutton" onClick={showAccModal}>
               승인
             </button>
@@ -68,7 +70,7 @@ export default function ClassMemberItem({ classId, member }) {
         ) : (
           <td></td>
         )}
-        <td>
+        <td className={styles.MemberCell}>
           <button className="clsbutton" onClick={showQuitModal}>
             변경
           </button>
