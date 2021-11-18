@@ -46,17 +46,19 @@ export default function AdminClassItem({ item }) {
         },
       })
       .then((res) => {
-        console.log(res.status);
+        // console.log(res.status);
+        closeEditModal();
+        document.location.href = "/admin";
       });
-    closeEditModal();
-    document.location.href = "/admin";
   };
 
   const handleDeleteSubmit = () => {
     console.log("[강의 삭제]: ", item.userId);
-    axios.delete(`/admin-service/admin/classroom/${item.classId}`);
-    closeDeleteModal();
-    document.location.href = "/admin";
+    axios.delete(`/admin-service/admin/classroom/${item.classId}`)
+    .then(()=> {
+      closeDeleteModal();
+      document.location.href = "/admin";
+    })
   };
 
   useEffect(() => {

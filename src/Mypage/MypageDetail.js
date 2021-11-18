@@ -77,11 +77,15 @@ export default function MypageDetail() {
     axios.put(`/user-service/users`, info).then((res) => {
       if (res.status === 200) {
         alert("변경 완료되었습니다!");
-        document.location.href = "/mypage";
       } else {
         alert("서버와의 통신이 원활하지 않습니다!");
       }
-    });
+    })
+    .then(()=> {
+      document.location.href = "/mypage";
+    }
+
+    );
   };
 
   const handleQuitSubmit = () => {
@@ -189,16 +193,16 @@ export default function MypageDetail() {
         <button className="clsbutton" type="submit" onClick={handleSubmit}>
           개인정보 수정 확인
         </button>
-        <div align="right" style={{minHeight:"50px", maxHeight:"50px"}}>
-          <button
-            className="col-3 mt-4 mb-2 outbutton"
-            type="submit"
-            onClick={showQuitModal}
-            >
-            회원탈퇴
-          </button>
-          </div>
       </Form>
+      <div align="right" style={{minHeight:"50px", maxHeight:"50px"}}>
+        <button
+          className="col-3 mt-4 mb-2 outbutton"
+          type="submit"
+          onClick={showQuitModal}
+          >
+          회원탈퇴
+        </button>
+      </div>
       <Modal show={quitVisible} onHide={showQuitModal}>
         <Modal.Header>
           <Modal.Title>사용자 탈퇴 확인</Modal.Title>

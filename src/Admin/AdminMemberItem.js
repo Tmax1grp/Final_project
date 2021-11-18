@@ -25,16 +25,20 @@ export default function AdminMemberItem({ member }) {
     console.log("[사용자 업데이트]: ", member.userId);
     console.log(values);
 
-    axios.put(`/user-service/users`, values);
-    closeEditModal();
-    document.location.href = "/admin";
+    axios.put(`/user-service/users`, values)
+    .then(() => {
+      closeEditModal();
+      document.location.href = "/admin";
+    })
   };
 
   const handleQuitSubmit = () => {
     console.log("[사용자 삭제]: ", member.userId);
-    axios.delete(`/admin-service/admin/user/${member.userId}`);
-    closeQuitModal();
-    document.location.href = "/admin";
+    axios.delete(`/admin-service/admin/user/${member.userId}`)
+    .then(()=> {
+      closeQuitModal();
+      document.location.href = "/admin";
+    })
   };
 
   useEffect(() => {

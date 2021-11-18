@@ -3,6 +3,7 @@ import React from "react";
 export default function RightDog() {
   return(
     <div className='right'>
+      <a href="/signup" className="start">시작하기</a>
       <div className='maintitle-right' style={{color:"#FFCA95", fontSize:"8em"}}>O MEET</div>
       <div className='dog'>
         <div className='ears2'></div>

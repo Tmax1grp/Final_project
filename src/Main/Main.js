@@ -10,7 +10,6 @@ export default function Main() {
     <div className="main">
       <section className="main_section">
         <LeftCat />
-        <a href="/signup" className="btn-start sticky-top">시작하기</a>
         <RightDog />
       </section>
       <section className="main_section">

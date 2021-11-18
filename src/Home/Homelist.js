@@ -86,7 +86,6 @@ export default function Homelist() {
     })
   }
   
-  console.log(cls)
   return (
     <div>
       <br />
