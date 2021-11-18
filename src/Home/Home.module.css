@@ -151,3 +151,49 @@ box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 transition: all 250ms ease-in-out 0s;
 
 } */
+
+/* footer */
+.container {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #333;
+  padding: 10px 0 10px 0;
+  border-radius: 5px;
+  margin-bottom : 20px;
+}
+
+.footer {
+  margin: 30px 0;
+  background-color: #20314E;
+}
+
+.FooterStrong{
+  font-family: 'OTWelcomeBA';
+  font-size: x-large;
+  color: #FFCA95;
+  margin: 0.3rem;
+}
+
+.FooterList{
+  font-family: 'OTWelcomeBA';
+  padding: 0.5rem;
+  margin: auto 0;
+  font-size: large;
+  color: white;
+}
+
+.FooterListKR{
+  display: flex;
+  align-items: center;
+  font-family: 'OTWelcomeBA';
+  padding: 0.3rem;
+  margin: auto 0.3rem;
+  font-size: large;
+  color: white;
+}
+
+.FooterLogo{
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: xx-large;
+  color: #FFCA95;
+}

@@ -91,7 +91,7 @@ export default function Homelist() {
     <div>
       <br />
       <div className={styles.home_container}>
-        <div className="" style={{height:"1000px", width: "80%", justifyContent: "center", alignItems: "center"}}>
+        <div className="" style={{minHeight:"1000px", width: "80%", justifyContent: "center", alignItems: "center"}}>
           <br />
           <div className="row">
             <h3 className="col-11">내 강의</h3> 

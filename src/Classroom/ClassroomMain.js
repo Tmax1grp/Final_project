@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Navmenu from '../Home/Navmenu';
-// import Footbar from '../Home/Footbar';
+import Footbar from '../Home/Footbar';
 import ClassHeader from '../layout/ClassHeader';
 import ClassBoardHome from '../Board/ClassBoardHome'
 import ClassBoardNotice from '../Board/ClassBoardNotice'
@@ -129,7 +129,7 @@ export default function ClassroomMain() {
           {/* <ClassBoardList /> */}
         </Tab.Container >
       </div >
-      {/* <Footbar /> */}
+      <Footbar />
     </div >
   );
 }

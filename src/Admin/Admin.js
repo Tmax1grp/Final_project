@@ -38,7 +38,7 @@ export default function Admin({ classId }) {
           </Row>
         </Tab.Container>
       </div>
-      {/* <Footbar /> */}
+      <Footbar />
     </>
   );
 }
