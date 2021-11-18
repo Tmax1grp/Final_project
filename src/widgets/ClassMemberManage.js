@@ -27,7 +27,7 @@ export default function ClassMemberManage({ classId }) {
       <Table responsive="sm">
         <thead>
           <tr>
-            <th>#</th>
+            <th>번호</th>
             <th>회원이름</th>
             <th>수강상태</th>
             <th>수강신청승인</th>

@@ -24,6 +24,11 @@ input[type=password] {font-family: dotum, sans-serif;}
   color: white;
 }
 
+/* .mypage_container {
+  width: 100%;
+  margin: 0;
+} */
+
 .mybutton {
   border : none;
   background-color: #20314E;
@@ -34,6 +39,14 @@ input[type=password] {font-family: dotum, sans-serif;}
 .clsbutton {
   border : none;
   background-color: #3d4a64;
+  border-radius: 1rem;
+  color: #fff;
+  margin-right: 0.3rem;
+}
+
+.outbutton {
+  border : none;
+  background-color: #da4632;
   border-radius: 1rem;
   color: #fff;
   margin-right: 0.3rem;
@@ -51,6 +64,10 @@ input[type=password] {font-family: dotum, sans-serif;}
 .replybutton {
   border : none;
   background: none;
+}
+
+.mypage_container {
+  display: flex;
 }
 
 .boardlink {
