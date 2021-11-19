@@ -51,7 +51,11 @@ export default function Signup() {
         sessionStorage.setItem('tel', res.data.tel)
     }
     // 로그인하면 메인페이지로 이동
-    document.location.href = '/home'
+    if (sessionStorage.userName == 'admin') {
+      document.location.href = './admin'
+    } else {
+      document.location.href = '/home'
+    }
     
   })
   .catch()

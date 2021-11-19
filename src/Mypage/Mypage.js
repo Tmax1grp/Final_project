@@ -20,7 +20,7 @@ export default function Mypage({ propKey }) {
   return (
     <>
       <Navmenu />
-      <div className="container" style={{alignItems:"center"}}>
+      <div className="container" style={{alignItems:"center", minHeight:"500px"}}>
         <Tab.Container
           activeKey={activeKey}
           id="left-tabs-example"

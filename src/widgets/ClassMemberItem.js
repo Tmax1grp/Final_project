@@ -37,9 +37,12 @@ export default function ClassMemberItem({ classId, member }) {
         userId: member.userId,
         status: 1,
       },
-    });
-    closeQuitModal();
-    document.location.href = `/classroommain/${classId}`;
+    })
+    .then(() => {
+      closeQuitModal();
+      document.location.href = `/classroommain/${classId}`;
+    })
+    ;
   };
   useEffect(() => {
     switch (member.status) {

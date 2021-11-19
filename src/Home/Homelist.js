@@ -43,7 +43,8 @@ export default function Homelist() {
     setIncls(e.target.value)
   }
   
-  const makeclsroom = () => {
+  const makeclsroom = (e) => {
+    e.preventDefault()
     let url = '/classroom-service/lectures'
     let data = {
       'userId' : sessionStorage.userId,
@@ -62,6 +63,7 @@ export default function Homelist() {
     .then(res => {
       alert("강의실 생성 성공")
       setShow(false)
+      window.location.href = "/home"
     }).catch(error => {
       alert("실패")
       console.log(error);

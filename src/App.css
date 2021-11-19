@@ -61,6 +61,17 @@ input[type=password] {font-family: dotum, sans-serif;}
   color: #fff; */
 }
 
+.totopbutton {
+  border: none;
+  overflow: hidden;
+  background-color: #20314E;
+  transition: all 200ms ease-in-out;
+}
+
+.totopbutton:hover {
+  transform: translateY(-4px);
+}
+
 .replybutton {
   border : none;
   background: none;
@@ -106,15 +117,13 @@ input[type=password] {font-family: dotum, sans-serif;}
   margin: 10px;
   padding: 0 23px;
   border-radius: 25px;
-  /* border: 1px solid #FFCA95; */
   font-weight: 1000;
   font-size: 100%;
-  color: #20314E;
   line-height: 50px;
   box-sizing: border-box;
   text-align: center;
-  background-color: #fff;
-  text-decoration: none;
+  background-color: #475881;
+  text-decoration: none;  
 }
 
 

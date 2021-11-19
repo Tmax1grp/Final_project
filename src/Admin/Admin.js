@@ -15,7 +15,7 @@ export default function Admin({ classId }) {
       <div className={styles.AdminContainer}>
         <Tab.Container defaultActiveKey="first">
           <Row>
-            <Col sm={3}>
+            <Col sm={2}>
               <Nav variant="tabs" className="flex-column">
                 <Nav.Item>
                   <Nav.Link eventKey="first">회원 관리</Nav.Link>
@@ -25,7 +25,7 @@ export default function Admin({ classId }) {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col sm={9}>
+            <Col sm={10}>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
                   <AdminMember />

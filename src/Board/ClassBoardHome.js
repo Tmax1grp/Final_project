@@ -21,11 +21,11 @@ export default function ClassBoardHome({setActiveKey, setArticleId, setBoardStat
       </div>
       <div>
         <Row>
-          <Col>
+          <Col lg={6}>
             <label>공지사항</label> 
             <ClassBoardSummaryNotice setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
           </Col>
-          <Col>
+          <Col lg={6}>
             <label>질문</label> 
             <ClassBoardSummaryDiscuss setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
           </Col>

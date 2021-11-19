@@ -54,11 +54,12 @@ export default function ClassroomMain() {
         }
       }).catch(err => console.log(err))
   }, [])
-
+  
+  
   return (
     <div>
       <Navmenu />
-      <div className={styles.clsroomcontainer}>
+      <div className={styles.clsroomcontainer} style={{minHeight:"600px"}}>
         <ClassHeader classId={classId} clsname={clsname} teacher={teacher} />
         <Tab.Container
           activeKey={activeKey}
@@ -105,7 +106,7 @@ export default function ClassroomMain() {
                         <ClassBoardHome setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} content={content}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="notice">
-                        <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                        <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} status={status}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="assignment">
                         <ClassBoardAssignment setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />

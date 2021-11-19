@@ -4,7 +4,7 @@ import { Pagination, Table, TableContainer, TableHead, TableBody, TableRow, Tabl
 
 import ClassBoardSearchMenu from './ClassBoardSearchMenu';
 
-export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId }) {
+export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId, status }) {
   const [totalPages, setTotalPages] = useState(10);
   const [pageNum, setPageNum] = useState(1);
   const [keyword, setKeyword] = useState({
@@ -86,7 +86,7 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       createTime = dateRaw.split("T")[1];
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
-
+    
     return (
       <TableRow>
         <TableCell scope="row">{clas.noticeId}</TableCell>
@@ -101,16 +101,20 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       </TableRow>
     )
   })
-
+ 
   return (
     <>
       <h4>공지사항</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
-          <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
-            <i className="fas fa-pen-square fa-2x"></i>
-          </button>
+          {
+            status == 5 ?
+            <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
+              <i className="fas fa-pen-square fa-2x"></i>
+            </button>
+            : null
+          }
         </div>
         <div className="col-10">
           <ClassBoardSearchMenu keyword={keyword} setKeyword={setKeyword} />

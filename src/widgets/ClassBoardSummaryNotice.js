@@ -24,14 +24,22 @@ export default function ClassBoardSummaryNotice({setActiveKey, setArticleId, set
       setArticleId(article.noticeId);
       setBoardStatus(1);
     }
+    
+    const text = article.content.substr(0, 45)
 
+    const title = article.title.substr(0, 25)+"..."
+    
     return (
       <div className="card">
         <div className="card-header" onClick={goDetail}>
-          {article.title}
+          {
+            article.title.length > 25 ?
+            <>{title}</>
+             : <>{article.title}</>
+          }
         </div>
         <div className="list-group-item" style={{minHeight:"100px", maxHeight:"100px"}}>
-          {HtmlReactParser(article.content)}
+          {HtmlReactParser(text + " ...")}
         </div>
       </div>
     )
