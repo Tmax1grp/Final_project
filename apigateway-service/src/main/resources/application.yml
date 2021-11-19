@@ -1,0 +1,190 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: apigateway-service
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3001"
+              - "http://localhost:3002"
+              - "http://192.168.201.126:3000"
+              - "http://10.10.20.16.3000"
+              - "https://10.10.20.16.3000"
+              - "http://10.10.20.16.3001"
+              -
+              - "http://10.10.20.17.3001"
+              - "http://10.10.20.17:3000"
+
+              - "http://10.10.20.69:3002"
+              - "http://10.10.20.36:3001"
+              - "http://localhost:3000"
+              - "http://localhost:5000"
+              - "http://35.82.227.83:3000"
+              - "http://35.112.12.39:3000"
+              - "http://3.142.173.27:3000"
+              - "http://192.168.201.107:3000"
+              - "http://192.168.201.107:3001"
+              - "http://192.168.201.109:3000"
+              - "http://192.168.201.109:3001"
+              - "http://192.168.201.110:3000"
+              - "http://192.168.201.110:3001"
+              - "http://ec2-3-17-41-125.us-east-2.compute.amazonaws.com:5000"
+              - "http://ec2-3-142-173-27.us-east-2.compute.amazonaws.com:3000"
+            allowCredentials: true
+            allowedHeaders:
+              - x-requested-with
+              - authorization
+              - content-type
+              - credential
+              - X-AUTH-TOKEN
+              - X-CSRF-TOKEN
+            allowedMethods:
+              - POST
+              - GET
+              - PUT
+              - OPTIONS
+              - DELETE
+      routes:
+
+        - id: notice-service
+          uri: lb://NOTICE-SERVICE
+          predicates:
+            - Path=/notice-service/**
+            - Method=GET, POST, DELETE , PUT
+          filters:
+            - RewritePath=/notice-service/(?<segment>.*), /${segment}
+        #  - AuthorizationHeaderFilter
+
+        - id: lecture-service
+          uri: lb://LECTURE-SERVICE
+          predicates:
+            - Path=/lecture-service/**
+            - Method=GET, POST, DELETE , PUT
+          filters:
+            - RewritePath=/lecture-service/(?<segment>.*), /${segment}
+        #  - AuthorizationHeaderFilter
+
+        - id: classroom-service
+          uri: lb://CLASSROOM-SERVICE
+          predicates:
+            - Path=/classroom-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/classroom-service/(?<segment>.*), /${segment}
+        #            - AuthorizationHeaderFilter
+
+        - id: admin-service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+            - Path=/admin-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/admin-service/(?<segment>.*), /${segment}
+        #            - AuthorizationHeaderFilter
+
+        - id: assignment-service
+          uri: lb://ASSIGNMENT-SERVICE
+          predicates:
+            - Path=/assignment-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/assignment-service/(?<segment>.*), /$\{segment}
+        #            - AuthorizationHeaderFilter
+
+        - id: discuss-service
+          uri: lb://DISCUSS-SERVICE
+          predicates:
+            - Path=/discuss-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/discuss-service/(?<segment>.*), /$\{segment}
+        #            - AuthorizationHeaderFilter
+
+        - id: reference-service
+          uri: lb://REFERENCE-SERVICE
+          predicates:
+            - Path=/reference-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/reference-service/(?<segment>.*), /$\{segment}
+        #            - AuthorizationHeaderFilter
+
+
+        - id: chat-service
+          uri: lb://CHAT-SERVICE
+          predicates:
+            - Path=/chat-service/**
+            - Method=GET, POST, DELETE, PUT
+          filters:
+            - RewritePath=/chat-service/(?<segment>.*), /$\{segment}
+        #            - AuthorizationHeaderFilter
+
+        - id: user-service
+          predicates:
+            - Path=/user-service/health_check
+            - Method=GET
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          predicates:
+            - Path=/user-service/users
+            - Method=PUT
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          predicates:
+            - Path=/user-service/users, /user-service/duplicatedEmail, /user-service/login
+            - Method=POST
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          predicates:
+            - Path=/user-service/swagger*/**, /user-service/configuration/**, /user-service/webjars/**, /user-service/v2/api-docs, /user-service/actuator/**, /user-service/h2*/**
+            - Method=GET, POST, DELETE
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          predicates:
+            - Path=/user-service/**
+            - Method=GET, PUT, DELETE, POST
+          uri: lb://USER-SERVICE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh, info
