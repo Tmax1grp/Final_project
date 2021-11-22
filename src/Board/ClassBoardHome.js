@@ -2,8 +2,9 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ClassBoardSummaryDiscuss from '../widgets/ClassBoardSummaryDiscuss';
 import ClassBoardSummaryNotice from '../widgets/ClassBoardSummaryNotice';
+import styles from './Board.module.css';
 
-export default function ClassBoardHome({setActiveKey, setArticleId, setBoardStatus, classId, content}) {
+export default function ClassBoardHome({ setActiveKey, setArticleId, setBoardStatus, classId, content }) {
 
   return (
     <div>
@@ -13,21 +14,25 @@ export default function ClassBoardHome({setActiveKey, setArticleId, setBoardStat
         </div>
         <ul className="list-group list-group-flush">
           {
-            content == '' ? 
-            <p>강의소개가 없습니다.</p>
-          : <li className="list-group-item">{content}</li>
+            content == '' ?
+              <p>강의소개가 없습니다.</p>
+              : <li className="list-group-item">{content}</li>
           }
         </ul>
       </div>
       <div>
         <Row>
           <Col lg={6}>
-            <label>공지사항</label> 
-            <ClassBoardSummaryNotice setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
+            <div className={styles.summaryLabel}>
+              <label>공지사항</label>
+            </div>
+            <ClassBoardSummaryNotice setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} />
           </Col>
           <Col lg={6}>
-            <label>질문</label> 
-            <ClassBoardSummaryDiscuss setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId}/>
+            <div className={styles.summaryLabel}>
+              <label>질문</label>
+            </div>
+            <ClassBoardSummaryDiscuss setActiveKey={setActiveKey} setArticleId={setArticleId} setBoardStatus={setBoardStatus} classId={classId} />
           </Col>
         </Row>
       </div>

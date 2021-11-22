@@ -12,18 +12,20 @@ export default function Admin({ classId }) {
   return (
     <>
       <Navmenu />
-      <div className={styles.AdminContainer}>
+      <div className={styles.AdminContainer} style={{ margin: "auto", alignItems: "center", minHeight: "500px" }}>
         <Tab.Container defaultActiveKey="first">
           <Row>
             <Col sm={2}>
-              <Nav variant="tabs" className="flex-column">
-                <Nav.Item>
-                  <Nav.Link eventKey="first">회원 관리</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="second">강의 관리</Nav.Link>
-                </Nav.Item>
-              </Nav>
+              <div className={styles.MyNav}>
+                <Nav className="flex-column">
+                  <Nav.Item className={styles.MyNavItem}>
+                    <Nav.Link className={styles.sidemenu} eventKey="first">회원 관리</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
+                    <Nav.Link className={styles.sidemenu} eventKey="second">강의 관리</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </div>
             </Col>
             <Col sm={10}>
               <Tab.Content>

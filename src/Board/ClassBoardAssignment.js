@@ -90,22 +90,22 @@ export default function ClassBoardAssignment({ setBoardStatus, setArticleId, cla
 
     return (
       <TableRow>
-        <TableCell scope="row">{clas.assignmentId}</TableCell>
+        <TableCell align="center" scope="row">{clas.assignmentId}</TableCell>
         <TableCell>
           <button className="boardlink" onClick={() => { enterassignmentdetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
         </TableCell>
         <TableCell>{clas.userName}</TableCell>
-        <TableCell>{createDate}</TableCell>
-        <TableCell>{clas.clickCnt}</TableCell>
+        <TableCell align="center">{createDate}</TableCell>
+        <TableCell align="center">{clas.clickCnt}</TableCell>
       </TableRow>
     )
   })
 
   return (
     <>
-    <h4>과제게시판</h4>
+      <h4>과제게시판</h4>
       {/*게시글 보드 상단 바 */}
       <div className="row">
         <div className="col-2">
@@ -123,11 +123,11 @@ export default function ClassBoardAssignment({ setBoardStatus, setArticleId, cla
         <Table className="table">
           <TableHead className="thead-dark">
             <TableRow>
-              <TableCell scope="col">번호</TableCell>
-              <TableCell scope="col">제목</TableCell>
-              <TableCell scope="col">작성자</TableCell>
-              <TableCell scope="col">등록일</TableCell>
-              <TableCell scope="col">조회수</TableCell>
+              <TableCell style={{ width: "5%" }} align="center" scope="col">번호</TableCell>
+              <TableCell style={{ width: "50%" }} scope="col">제목</TableCell>
+              <TableCell style={{ width: "20%" }} scope="col">작성자</TableCell>
+              <TableCell style={{ width: "15%" }} align="center" scope="col">등록일</TableCell>
+              <TableCell style={{ width: "10%" }} align="center" scope="col">조회수</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -135,12 +135,14 @@ export default function ClassBoardAssignment({ setBoardStatus, setArticleId, cla
               classes.length > 0 ?
                 classesList
                 :
-                <>검색된 게시글이 없습니다!</>
+                <TableCell colSpan={5}>검색된 게시글이 없습니다!</TableCell>
             }
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
+      </div>
     </>
   );
 }

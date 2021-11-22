@@ -60,6 +60,31 @@
   -webkit-transition: all .3s ease-in-out;
 }
 
+.MyNav{
+  text-align: center;
+}
+
+.MyNavItem{
+  margin: 2px 0px;
+  background-color: #568;
+  border-radius: 5px;
+  border-color: #568;
+  border-style: solid;
+}
+
+.MyNavItem:hover{
+  background-color: #20314E;
+  border-radius: 5px;
+  border-color: #20314E;
+  border-style: solid;
+}
+
 .sidemenu {
-  color: #20314E;
+  font-size: larger;
+  color: white;
+}
+
+.sidemenu:hover {
+  font-weight: bold;
+  color: white;
 }

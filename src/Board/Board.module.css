@@ -13,3 +13,10 @@
   margin: 1rem 0;
 }
 
+.summaryLabel{
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'OTWelcomeBA';
+  font-size: 1.5rem;
+  font-weight: 300;
+}

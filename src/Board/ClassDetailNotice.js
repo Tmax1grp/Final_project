@@ -65,10 +65,15 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
         'Authorization': sessionStorage.token
       }
     }
+    
     axios.put(url, data, config)
       .then(res => {
         setACat(false);
-        // setBoardStatus(0);
+        // setBoardStatus(0);  
+        setNewreply({
+          ...newreply,
+          "content": ""
+        })
       })
   }
 
@@ -88,7 +93,7 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
           <hr/>
           <p className="col-2" style={{color:"black"}}>{item.userName}</p>
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
-          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"0.7rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
+          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"1rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
           {
             sessionStorage.userId == item.userId ? (
               <button className="col-1 replybutton" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>
@@ -117,7 +122,7 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
         <hr className="m-3"/>
         <div className="card-body">
           <p className="card-title" style={{color:"black"}}>{sessionStorage.userName}</p>
-          <input className="card-subtitle col-11" type="text" placeholder="댓글을 남겨보세요" name="content" onChange={handleChangeForm} style={{borderBlockColor:"#3d4a64", borderRadius:"0.3rem 0 0 0.3rem"}} />
+          <input className="card-subtitle col-11" type="text" value={newreply.content} placeholder="댓글을 남겨보세요" name="content" onChange={handleChangeForm} style={{borderBlockColor:"#3d4a64", borderRadius:"0.3rem 0 0 0.3rem"}} />
           <button align="right" className="col-1 clsbutton" onClick={sendreply} style={{margin:"0", borderRadius:"0 0.3rem 0.3rem 0", height:"33px"}} >등록</button>
         </div>
         {replylist}

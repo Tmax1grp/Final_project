@@ -9,15 +9,15 @@ export default function ClassBoardSummaryDiscuss({setActiveKey, setArticleId, se
 
   useEffect(() => {
     axios.get(`/discuss-service/${classId}/discuss/all/1`)
-    .then(res => {
-      setDiscArticles(res.data.content);
-    })
-    .catch((err) =>
-      console.log(err)
-    )
+      .then(res => {
+        setDiscArticles(res.data.content);
+      })
+      .catch((err) =>
+        console.log(err)
+      )
   },[])
 
-  const discarticlelist = discarticles.slice(0 , 2).map((article) => {
+  const discarticlelist = discarticles.slice(0, 2).map((article) => {
 
     const goDetail = () => {
       setActiveKey("discuss");
@@ -34,8 +34,8 @@ export default function ClassBoardSummaryDiscuss({setActiveKey, setArticleId, se
         <div className="card-header" onClick={goDetail}>
           {
             article.title.length > 25 ?
-            <>{title}</>
-             : <>{article.title}</>
+              <>{title}</>
+              : <>{article.title}</>
           }
         </div>
         <div className="list-group-item" style={{minHeight:"100px", maxHeight:"100px"}}>
@@ -47,7 +47,18 @@ export default function ClassBoardSummaryDiscuss({setActiveKey, setArticleId, se
 
   return (
     <div>
-      {discarticlelist}
+      {
+        discarticles.length > 0 ?
+          discarticlelist :
+          <div className="card">
+            <div className="card-header">
+              질문 게시글이 없습니다.
+            </div>
+            <div className="list-group-item" style={{ minHeight: "100px", maxHeight: "100px" }}>
+              질문 게시글이 없습니다.
+            </div>
+          </div>
+      }
     </div>
   )
 }

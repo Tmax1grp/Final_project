@@ -122,7 +122,7 @@ export default function MypageDetail() {
 
   return (
     <>
-      <Form >
+      <Form style={{margin: "auto"}}>
         <Form.Group as={Row} className="mb-2" controlId="userName">
           <Form.Label column sm="4">
             이름
@@ -194,9 +194,9 @@ export default function MypageDetail() {
           개인정보 수정 확인
         </button>
       </Form>
-      <div align="right" style={{minHeight:"50px", maxHeight:"50px"}}>
+      <div style={{minHeight:"50px", maxHeight:"50px"}}>
         <button
-          className="col-3 mt-4 mb-2 outbutton"
+          className="offset-8 col-3 mt-4 mb-2 outbutton"
           type="submit"
           onClick={showQuitModal}
           >

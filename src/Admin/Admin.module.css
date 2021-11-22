@@ -1,7 +1,10 @@
 .AdminContainer{
     width: 1200px;
-    margin: 0 auto;
-    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 1%;
+    margin: 0;
 }
 
 .MemberCell{
@@ -21,4 +24,33 @@
 .ClassLink:hover{
     text-decoration: none;
     color: black;
+}
+
+.MyNav{
+  text-align: center;
+}
+
+.MyNavItem{
+  margin: 2px 0px;
+  background-color: #568;
+  border-radius: 5px;
+  border-color: #568;
+  border-style: solid;
+}
+
+.MyNavItem:hover{
+  background-color: #20314E;
+  border-radius: 5px;
+  border-color: #20314E;
+  border-style: solid;
+}
+
+.sidemenu {
+  font-size: larger;
+  color: white;
+}
+
+.sidemenu:hover {
+  font-weight: bold;
+  color: white;
 }

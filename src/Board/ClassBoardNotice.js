@@ -86,22 +86,22 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       createTime = dateRaw.split("T")[1];
       createTime = createTime.split(":")[1] + ":" + createTime.split(":")[2];
     }
-    
+
     return (
       <TableRow>
-        <TableCell scope="row">{clas.noticeId}</TableCell>
+        <TableCell align="center" scope="row">{clas.noticeId}</TableCell>
         <TableCell>
           <button className="boardlink" onClick={() => { enternoticedetail(); handleOpenArticle(); }}>
             {clas.title}
           </button>
         </TableCell>
         <TableCell>{clas.userName}</TableCell>
-        <TableCell>{createDate}</TableCell>
-        <TableCell>{clas.clickCnt}</TableCell>
+        <TableCell align="center">{createDate}</TableCell>
+        <TableCell align="center">{clas.clickCnt}</TableCell>
       </TableRow>
     )
   })
- 
+
   return (
     <>
       <h4>공지사항</h4>
@@ -110,10 +110,10 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
         <div className="col-2">
           {
             status == 5 ?
-            <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
-              <i className="fas fa-pen-square fa-2x"></i>
-            </button>
-            : null
+              <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
+                <i className="fas fa-pen-square fa-2x"></i>
+              </button>
+              : null
           }
         </div>
         <div className="col-10">
@@ -126,11 +126,11 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
         <Table className="table">
           <TableHead className="thead-dark">
             <TableRow>
-              <TableCell scope="col">번호</TableCell>
-              <TableCell scope="col">제목</TableCell>
-              <TableCell scope="col">작성자</TableCell>
-              <TableCell scope="col">등록일</TableCell>
-              <TableCell scope="col">조회수</TableCell>
+              <TableCell style={{ width: "5%" }} align="center" scope="col">번호</TableCell>
+              <TableCell style={{ width: "50%" }} scope="col">제목</TableCell>
+              <TableCell style={{ width: "20%" }} scope="col">작성자</TableCell>
+              <TableCell style={{ width: "15%" }} align="center" scope="col">등록일</TableCell>
+              <TableCell style={{ width: "10%" }} align="center" scope="col">조회수</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -138,12 +138,14 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
               classes.length > 0 ?
                 classesList
                 :
-                <>검색된 게시글이 없습니다!</>
+                <TableCell colSpan={5}>검색된 게시글이 없습니다!</TableCell>
             }
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Pagination count={totalPages} page={pageNum} onChange={handlePageSelect} />
+      </div>
     </>
   );
 }

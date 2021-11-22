@@ -86,6 +86,12 @@ input[type=password] {font-family: dotum, sans-serif;}
   background-color: #fff;
 }
 
+.boardlink:hover {
+  text-decoration: underline;
+  border: none;
+  background-color: #fff;
+}
+
 .btn-start {
   float: right;
   min-width: 120px;

@@ -68,24 +68,24 @@ export default function ClassroomMain() {
         >
           <Row>
             <Col xl={2} sm={2}>
-              <div style={{backgroundColor:"#FFEBCD"}}>
+              <div className={styles.MyNav}>
                 <Nav className="flex-column">
-                  <Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
                     <Nav.Link eventKey="home" className={styles.sidemenu}>홈</Nav.Link>
                   </Nav.Item>
                   {/* <Nav.Item>
                     <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
                   </Nav.Item> */}
-                  <Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
                     <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
                     <Nav.Link eventKey="assignment" className={styles.sidemenu}>과제게시판</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
                     <Nav.Link eventKey="discuss" className={styles.sidemenu}>질문게시판</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item className={styles.MyNavItem}>
                     <Nav.Link eventKey="reference" className={styles.sidemenu}>자료게시판</Nav.Link>
                   </Nav.Item>
                   {
