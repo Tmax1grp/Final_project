@@ -16,6 +16,10 @@
   text-decoration: none;
 }
 
+.nav_a:hover { 
+  text-decoration: underline; 
+}
+
 .nav_p {
   color: #fff;
   margin: 0;
@@ -182,6 +186,15 @@ transition: all 250ms ease-in-out 0s;
   color: white;
 }
 
+.FooterList:hover{
+  font-family: 'OTWelcomeBA';
+  text-decoration: underline;
+  padding: 0.5rem;
+  margin: auto 0;
+  font-size: large;
+  color: #FFCA95;
+}
+
 .FooterListKR{
   display: flex;
   align-items: center;
@@ -190,6 +203,11 @@ transition: all 250ms ease-in-out 0s;
   margin: auto 0.3rem;
   font-size: large;
   color: white;
+}
+
+.FooterListKR:hover{
+  text-decoration: underline;
+  color:#FFCA95;
 }
 
 .FooterLogo{

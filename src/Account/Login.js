@@ -73,8 +73,8 @@ export default function Signup() {
             <div className="form-content">
               <input id="email" name="email" placeholder="email" type="email" value={values.email} onChange={handleChangeForm}/>
               <input id="password" name="password" placeholder="password" type="password" style={{fontWeight:"bold"}} value={values.password} onChange={handleChangeForm}/>
-              <div className="button" onClick={onClickLogin}>
-                로그인
+              <div className="button" onClick={onClickLogin} style={{fontSize:"1.5rem", height:"50px"}}>
+                <p style={{margin:"-0.5rem"}}>로그인</p>
               </div>
               {/* <Link to="/">아이디찾기</Link> 
               <Link to="/">비밀번호찾기</Link> */}

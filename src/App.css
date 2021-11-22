@@ -33,6 +33,7 @@ input[type=password] {font-family: dotum, sans-serif;}
   border : none;
   background-color: #20314E;
   border-radius: 1rem;
+  font-size: 1.2rem;
   color: #fff;
 }
 
