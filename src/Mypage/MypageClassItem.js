@@ -26,7 +26,7 @@ export default function MypageClassItem({ setACat, item }) {
         console.log(res.status);
       })
       .catch((err) => console.log(err));
-    // document.location.href = '/mypage'
+    document.location.href = '/mypage'
     setACat(true);
   };
 

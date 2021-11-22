@@ -96,8 +96,8 @@ export default function Homelist() {
           <br />
           <div className="row">
             <h3 className="col-11">내 강의</h3> 
-            <button className="mybutton col-1" variant="primary" onClick={handleShow}>
-              강의실 생성
+            <button className="mybutton col-1" variant="primary" onClick={handleShow} style={{padding:"2px 0"}}>
+              <p style={{margin:"0.3rem 0 0 0"}}>강의실 생성</p>
             </button>
             <Modal show={show} onHide={handleClose} className={styles.modal}>
               <form>
@@ -152,7 +152,7 @@ export default function Homelist() {
           <div className="row">
             <h3 className="col-11">수강중인 강의</h3> 
             <button className="mybutton col-1" variant="primary" onClick={handleShow2}>
-            수강신청
+              <p style={{margin:"0.3rem 0 0 0"}}>수강신청</p>
             </button>
             <Modal show={show2} onHide={handleClose2} className={styles.modal}>
               <form>

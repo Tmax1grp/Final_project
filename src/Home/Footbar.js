@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import styles from './Home.module.css'
+import Logo from '../assets/logo.png'
 
 export default function Footbar() {
   return (
@@ -7,6 +8,13 @@ export default function Footbar() {
       <Navbar expand="lg" className={styles.footer}>
         <div className={styles.container}>
           <Row>
+            <Col lg={{ span: 2 }}>
+              {/* <Navbar.Brand className="align-middle" className={styles.FooterLogo} href="/home" style={{ color: "#FFCA95" }}>NICE TO MEET</Navbar.Brand> */}
+              <div>
+              <img src={Logo} style={{maxWidth:"200px", margin:"1rem"}}/>
+              </div>
+            </Col>
+            <Col lg="1"></Col>
             <Col lg="3">
               <p className={styles.FooterStrong}>About Us</p>
               <Nav.Link href="https://github.com/Tmax1grp" className={styles.FooterListKR}>[티맥스클라우드/한국품질재단]<br />클라우드 네이티브 애플리케이션<br />개발자 양성 과정 1팀</Nav.Link>
@@ -39,9 +47,7 @@ export default function Footbar() {
                 황선호
               </Nav.Link>
             </Col>
-            <Col lg={{ span: 2 }}>
-              <Navbar.Brand className="align-middle" className={styles.FooterLogo} href="/home" style={{ color: "#FFCA95" }}>NICE TO MEET</Navbar.Brand>
-            </Col>
+            
           </Row>
         </div>
       </Navbar>

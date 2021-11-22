@@ -102,7 +102,7 @@ export default function Signup() {
             <h2 style={{color:"#20314E"}}>회원가입</h2>
             <div className="form-content">
               <input id="email" name="email" placeholder="Email" type="email" value={values.email} onChange={handleChangeForm} />
-              <div className="button2" onClick={checkEmail} style={{margin:"-1rem 0 1rem 0"}}><p style={{fontSize:"1rem", height:"0.2rem"}}>중복확인</p></div>
+              <div className="button2" onClick={checkEmail} style={{margin:"-1rem 0 1rem 0"}}><p style={{fontSize:"1.2rem", height:"0.2rem"}}>중복확인</p></div>
               <input id="username" name="username" placeholder="Name" type="text"  value={values.username} onChange={handleChangeForm}/>
               <input id="password" name="password" placeholder="Password" type="password" style={{fontWeight:"bold"}} value={values.password} onChange={handleChangeForm}/>
               <p style={{color:"black", fontSize:"1rem", margin:"-25px 0px 0px 0px", height:"35px", color:"grey"}}>비밀번호는 숫자, 문자, 특수문자 3가지 포함 8자리 이상입니다.</p>
