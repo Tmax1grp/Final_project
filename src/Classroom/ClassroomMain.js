@@ -68,33 +68,35 @@ export default function ClassroomMain() {
         >
           <Row>
             <Col xl={2} sm={2}>
-              <Nav variant="tabs" className="flex-column">
-                <Nav.Item>
-                  <Nav.Link eventKey="home" className={styles.sidemenu}>홈</Nav.Link>
-                </Nav.Item>
-                {/* <Nav.Item>
-                  <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
-                </Nav.Item> */}
-                <Nav.Item>
-                  <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="assignment" className={styles.sidemenu}>과제게시판</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="discuss" className={styles.sidemenu}>질문게시판</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="reference" className={styles.sidemenu}>자료게시판</Nav.Link>
-                </Nav.Item>
-                {
-                  status === 5 ?
-                    <Nav.Item>
-                      <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
-                    </Nav.Item>
-                    : <></>
-                }
-              </Nav>
+              <div style={{backgroundColor:"#FFEBCD"}}>
+                <Nav className="flex-column">
+                  <Nav.Item>
+                    <Nav.Link eventKey="home" className={styles.sidemenu}>홈</Nav.Link>
+                  </Nav.Item>
+                  {/* <Nav.Item>
+                    <Nav.Link eventKey="curr" className={styles.sidemenu}>강의커리큘럼</Nav.Link>
+                  </Nav.Item> */}
+                  <Nav.Item>
+                    <Nav.Link eventKey="notice" className={styles.sidemenu}>공지사항</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="assignment" className={styles.sidemenu}>과제게시판</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="discuss" className={styles.sidemenu}>질문게시판</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="reference" className={styles.sidemenu}>자료게시판</Nav.Link>
+                  </Nav.Item>
+                  {
+                    status === 5 ?
+                      <Nav.Item>
+                        <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
+                      </Nav.Item>
+                      : <></>
+                  }
+                </Nav>
+              </div>
             </Col>
             <Col xl={10} sm={10}>
               <Tab.Content>
