@@ -8,6 +8,7 @@ import styles from "./ClassMember.module.css";
 export default function ClassMemberManage({ classId }) {
   
   const [members, setMembers] = useState(null);
+  const [aCat, setACat] = useState(false);
 
   useEffect(() => {
     axios.get('/lecture-service/students', {
@@ -17,10 +18,11 @@ export default function ClassMemberManage({ classId }) {
     })
     .then(res => {
       setMembers(res.data);
+      setACat(false);
     }).catch((err) =>
       console.log(err)
     )
-  }, [])
+  }, [aCat])
 
   return (
     <>
@@ -41,7 +43,7 @@ export default function ClassMemberManage({ classId }) {
             members !== null ?
               members.filter(member => member.status == 0 || member.status == 1)
                 .map(member => {
-                  return (<ClassMemberItem classId={classId} key={member.userId} member={member} />);
+                  return (<ClassMemberItem setACat={setACat} classId={classId} key={member.userId} member={member} />);
                 })
               :
               <>사용자 데이터를 불러올 수 없습니다.</>
