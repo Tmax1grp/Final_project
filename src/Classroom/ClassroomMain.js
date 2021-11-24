@@ -90,7 +90,7 @@ export default function ClassroomMain() {
                   </Nav.Item>
                   {
                     status === 5 ?
-                      <Nav.Item>
+                      <Nav.Item className={styles.MyNavItem}>
                         <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
                       </Nav.Item>
                       : <></>
