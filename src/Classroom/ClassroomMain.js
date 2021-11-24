@@ -89,7 +89,7 @@ export default function ClassroomMain() {
                     <Nav.Link eventKey="reference" className={styles.sidemenu}>자료게시판</Nav.Link>
                   </Nav.Item>
                   {
-                    status === 5 ?
+                    status === 5 | sessionStorage.userName == "admin" ?
                       <Nav.Item className={styles.MyNavItem}>
                         <Nav.Link eventKey="수강생관리" className={styles.sidemenu}>수강생관리</Nav.Link>
                       </Nav.Item>
@@ -100,7 +100,7 @@ export default function ClassroomMain() {
             </Col>
             <Col xl={10} sm={10}>
               <Tab.Content>
-                <BoardArticleView activeKey={activeKey} classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} />
+                <BoardArticleView activeKey={activeKey} classId={classId} articleId={articleId} boardStatus={boardStatus} setBoardStatus={setBoardStatus} status={status}/>
                 {
                   boardStatus == 0 ?
                     <>
@@ -111,13 +111,13 @@ export default function ClassroomMain() {
                         <ClassBoardNotice setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} status={status}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="assignment">
-                        <ClassBoardAssignment setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                        <ClassBoardAssignment setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} status={status}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="discuss">
-                        <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                        <ClassBoardDiscuss setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} status={status}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="reference">
-                        <ClassBoardReference setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} />
+                        <ClassBoardReference setBoardStatus={setBoardStatus} setArticleId={setArticleId} classId={classId} status={status}/>
                       </Tab.Pane>
                       <Tab.Pane eventKey="수강생관리">
                         <ClassMemberManage classId={classId} />

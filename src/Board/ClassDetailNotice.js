@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import HtmlReactParser from 'html-react-parser';
 
-export default function ClassDetailNotice({ aCat, setACat, name, classId, articleId, setBoardStatus }) {
+export default function ClassDetailNotice({ aCat, setACat, name, classId, articleId, setBoardStatus, status }) {
 
   const [ board, setBoards ] = useState({title:" ", content:" ", userName:" "});
   const [ reply, setReply ] = useState([]);
@@ -95,7 +95,7 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
           <p className="card-text col-2 " style={{color:"black", fontSize:"1rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
           {
-            sessionStorage.userId == item.userId ? (
+            sessionStorage.userId == item.userId | status == 5 | sessionStorage.userName == "admin" ? (
               <button className="col-1 replybutton mb-3" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>
               ) : null
             }
@@ -127,7 +127,7 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
       </div>
       <div align="right" className="m-3">
         {
-          sessionStorage.userId == board.userId ? (
+          sessionStorage.userId == board.userId | status == 5 | sessionStorage.userName == "admin" ? (
             <div>
               <button className="clsbutton" onClick={golist}>목록</button>
               <button className="clsbutton" onClick={goModify}>

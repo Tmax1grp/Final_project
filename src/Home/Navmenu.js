@@ -19,8 +19,14 @@ export default function Navmenu() {
         <div className="container">
           <Navbar.Brand className={styles.nav_logo} href="/home" style={{color: "#FFCA95"}}>NICE TO MEET</Navbar.Brand>
           <div className={styles.menu_list}>
-            <p className={styles.nav_p}><a className={styles.nav_a} href="/mypage"><i className="far fa-user fa-lg"></i> {sessionStorage.userName}님 </a>
-            <button className={styles.logout} onClick={Logout}><i className="fas fa-sign-out-alt"></i></button></p>
+            { 
+              sessionStorage.userName == "admin" ? (
+                <p className={styles.nav_p}><a className={styles.nav_a} href="/admin"><i className="far fa-user fa-lg"></i> {sessionStorage.userName}님 </a> 
+                <button className={styles.logout} onClick={Logout}><i className="fas fa-sign-out-alt"></i></button></p>
+                ) :
+                <p className={styles.nav_p}><a className={styles.nav_a} href="/mypage"><i className="far fa-user fa-lg"></i> {sessionStorage.userName}님 </a>
+                <button className={styles.logout} onClick={Logout}><i className="fas fa-sign-out-alt"></i></button></p>
+            }
           </div>
         </div>
       </Navbar>

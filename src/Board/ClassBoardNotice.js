@@ -109,7 +109,7 @@ export default function ClassBoardNotice({ setBoardStatus, setArticleId, classId
       <div className="row">
         <div className="col-2">
           {
-            status == 5 ?
+            status == 5 | sessionStorage.userName == "admin" ?
               <button className="writebutton" onClick={() => { setBoardStatus(2) }}>
                 <i className="fas fa-pen-square fa-2x"></i>
               </button>

@@ -35,7 +35,7 @@ export default function Mypage({ propKey }) {
                     <Nav.Link className={styles.sidemenu} eventKey="members">개인정보 관리</Nav.Link>
                   </Nav.Item>
                   <Nav.Item className={styles.MyNavItem}>
-                    <Nav.Link className={styles.sidemenu} eventKey="classes">수강중인 강의</Nav.Link>
+                    <Nav.Link className={styles.sidemenu} eventKey="classes">강의 관리</Nav.Link>
                   </Nav.Item>
               </Nav>
               </div>
