@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 
 import styles from "./ClassMember.module.css";
 
-export default function ClassMemberItem({ classId, member }) {
+export default function ClassMemberItem({ setACat, classId, member }) {
   const [statusTxt, setStatusTxt] = useState();
 
   const [quitVisible, setQuitVisible] = useState(false);
@@ -23,9 +23,11 @@ export default function ClassMemberItem({ classId, member }) {
         userId: member.userId,
         status: 2,
       },
-    });
-    closeQuitModal();
-    document.location.href = `/classroommain/${classId}`;
+    }).then(() => {
+      closeQuitModal();
+      setACat(true);
+      // document.location.href = `/classroommain/${classId}`;
+    })
   };
 
   const handleAccSubmit = () => {
@@ -38,11 +40,12 @@ export default function ClassMemberItem({ classId, member }) {
         status: 1,
       },
     })
-    .then(() => {
-      closeQuitModal();
-      document.location.href = `/classroommain/${classId}`;
-    })
-    ;
+      .then(() => {
+        closeQuitModal();
+        setACat(true);
+        // document.location.href = `/classroommain/${classId}`;
+      })
+      ;
   };
   useEffect(() => {
     switch (member.status) {
