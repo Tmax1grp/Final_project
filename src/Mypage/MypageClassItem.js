@@ -24,10 +24,10 @@ export default function MypageClassItem({ setACat, item }) {
       })
       .then((res) => {
         console.log(res.status);
+        setACat(true);
+        document.location.href = '/mypage'
       })
       .catch((err) => console.log(err));
-    document.location.href = '/mypage'
-    setACat(true);
   };
 
   function StatusTxt() {
