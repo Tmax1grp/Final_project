@@ -93,11 +93,10 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
           <hr/>
           <p className="col-2" style={{color:"black"}}>{item.userName}</p>
           <p className="card-text col-7" style={{color:"black"}}>{item.content}</p>
-          <p className="card-text col-2 mt-2 mb-2" style={{color:"black", fontSize:"1rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
+          <p className="card-text col-2 " style={{color:"black", fontSize:"1rem", textAlign:"center", textAlign:"bottom", margin:"0"}}>{item.createDate.split("T")[0]}</p>
           {
             sessionStorage.userId == item.userId ? (
-              <button className="col-1 replybutton" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>
-              // <i class="fas fa-times-circle"></i>
+              <button className="col-1 replybutton mb-3" onClick={replydelete}><i class="fas fa-times fa-lg"></i></button>
               ) : null
             }
           
@@ -110,7 +109,6 @@ export default function ClassDetailNotice({ aCat, setACat, name, classId, articl
     <div>
       <div className="card m-3">
         <div className="card-body">
-          {/* <h5 class="card-title"><span style={{fontWeight:"bold"}}>[공지사항] </span>{board.title}</h5> */}
           <h5 class="card-title">{board.title}</h5>
           <h6 class="card-subtitle m-1 text-muted">{board.userName} {board.createDate}</h6>
         </div>

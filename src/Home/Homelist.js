@@ -137,9 +137,9 @@ export default function Homelist() {
                       </div>
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`}}>
-                        <h2>{item.name}</h2>
-                        <p style={{color:"#fff"}}>[소개] {item.content}</p>
-                        <button className="card-button">강의실 입장</button>
+                      <h2>{item.name.substr(0, 15)+"..."}</h2>
+                      <p style={{color:"#fff"}}>[소개] {item.content.substr(0, 10)+"..."}</p>
+                      <button className="card-button">강의실 입장</button>
                     </div>
                   </Link>
                 </div> 
@@ -188,7 +188,8 @@ export default function Homelist() {
                     </div>
                     <div className="card-back row" style={{backgroundImage:`url(${"https://picsum.photos/id/"+`${item.classroomId}`+"/350/400"})`, fontFamily:'OTWelcomeBA'}}>
                         <h2>{item.name}</h2>
-                        <p style={{color:"#fff"}}>[소개] {item.content}</p>
+                        {/* const title = article.title.substr(0, 25)+"..." */}
+                        <p style={{color:"#fff"}}>[소개] {item.content.substr(0, 10)+"..."}</p>
                         {/* <button className="card-button"><a href={`/classroomain/${item.classId}`}>강의실 입장</a></button> */}
                         <button className="card-button">강의실 입장</button>
                     </div>
