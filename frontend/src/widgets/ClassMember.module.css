@@ -1,0 +1,18 @@
+.MemberCell{
+  text-align: center;
+}
+
+.ClassLink{
+  text-decoration: none;
+  color: black;
+}
+
+.ClassLink:visited{
+  text-decoration: none;
+  color: black;
+}
+
+.ClassLink:hover{
+  text-decoration: none;
+  color: black;
+}

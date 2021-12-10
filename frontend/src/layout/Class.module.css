@@ -1,0 +1,90 @@
+.clsroomcontainer {
+  width: 1350px;
+  margin: 0 auto;
+  margin-top: 30px;
+  /* background-color: lightblue; */
+  /* display: content; */
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+.sun {
+  position:relative;
+  margin:30px auto;
+  margin-bottom:40px;
+  -webkit-border-radius:6px;
+     -moz-border-radius:6px;
+          border-radius:6px;
+  padding:15px;
+  text-align:left;
+  background:#FFEBCD;
+}
+
+.sun_button {
+  border : none;
+  padding: 0 0.5rem;
+  height: 2rem;
+  background-color: #3d4a64;
+  border-radius: 1rem;
+  color: #fff;
+}
+
+.sun .title {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+.sun:checked {background:#F1C40F;}
+
+.sun li {
+  list-style:none;
+  color: #20314E;
+  font-weight:600;
+  display:inline-block;
+}
+
+.sun li > a, a:visited {
+  padding:15px;
+  color:#fff;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.sun li > a:hover {
+  background:rgba(0, 0, 0, 0.1);
+  transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.MyNav{
+  text-align: center;
+}
+
+.MyNavItem{
+  margin: 2px 0px;
+  background-color: #568;
+  border-radius: 5px;
+  border-color: #568;
+  border-style: solid;
+}
+
+.MyNavItem:hover{
+  background-color: #20314E;
+  border-radius: 5px;
+  border-color: #20314E;
+  border-style: solid;
+}
+
+.sidemenu {
+  font-size: larger;
+  color: white;
+}
+
+.sidemenu:hover {
+  font-weight: bold;
+  color: white;
+}

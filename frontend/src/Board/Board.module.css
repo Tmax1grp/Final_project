@@ -1,0 +1,22 @@
+.container {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid #333;
+  padding: 10px 0 30px 0;
+  border-radius: 5px;
+  margin-bottom : 50px;
+}
+
+.titleinput {
+  width: 90%;
+  height: 40px;
+  margin: 1rem 0;
+}
+
+.summaryLabel{
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'OTWelcomeBA';
+  font-size: 1.5rem;
+  font-weight: 300;
+}

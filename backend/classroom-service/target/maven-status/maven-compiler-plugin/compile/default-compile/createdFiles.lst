@@ -1,0 +1,10 @@
+com\example\classroomservice\dto\ClassroomDto.class
+com\example\classroomservice\vo\RequestClassroom.class
+com\example\classroomservice\entity\ClassroomEntity.class
+com\example\classroomservice\vo\ResponseClassroom.class
+com\example\classroomservice\ClassroomServiceApplication.class
+com\example\classroomservice\controller\ClassroomController.class
+com\example\classroomservice\service\ClassRoomService.class
+com\example\classroomservice\jpa\ClassroomRepository.class
+com\example\classroomservice\entity\LectureEntity.class
+com\example\classroomservice\jpa\LectureRepository.class
