@@ -31,7 +31,7 @@
 
 
 ## 구조
-
+![NOM시스템구조도](./images/NOM_시스템_구조도.jpg)
 
 ## 환경
 ### 프론트엔드
@@ -40,7 +40,7 @@
 ### 백엔드
 
 ## 프로젝트 소개 PPT
-https://docs.google.com/presentation/d/1-FOuzQLZ2hqo7SECCZ-GM3XqgRUrW-wMOhDzATqusEA/edit?usp=sharing
+https://docs.google.com/presentation/d/1-FOuzQLZ2hqo7SECCZ-GM3XqgRUrW-wMOhDzATqusEA
 
 ## 시연영상
 https://youtu.be/tOWpIOcZ_PQ
